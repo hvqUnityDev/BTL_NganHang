@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.Scripts.DAO;
 
 namespace WindowsFormsApp2
 {
@@ -16,7 +17,7 @@ namespace WindowsFormsApp2
         public fKhachHang()
         {
             InitializeComponent();
-            Show();
+            Show_ThongTin();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -24,18 +25,30 @@ namespace WindowsFormsApp2
             this.Hide();    // ẩn form hiẹn tại 
             fChuyenTien fChuyenTien = new fChuyenTien(); // khai báo biến
             fChuyenTien.ShowDialog();// hiển thi và dừng chờ 
-            this.Show(); // khi chuyển tiền đóng thì hiển thị  lại khách hàng 
+            Show_SoDu(); // khi chuyển tiền đóng thì hiển thị  lại khách hàng 
+            this.Show();
         }
 
         private bool isShow = true;
 
         private void label2_Click(object sender, EventArgs e)
         {
-            Show();
-
+            Show_SoDu();
         }
 
-        void Show()
+        void Show_ThongTin()
+        {
+            lbName.Text = AccountDAO.Ins.TheAccount.HoTen;
+            lbSTK.Text = AccountDAO.Ins.TheAccount.SoTK;
+            lbMoney.Text = AccountDAO.Ins.TheAccount.SoDu;
+
+            money = lbMoney.Text;
+            Show_SoDu();
+        }
+
+        private string money;
+
+        void Show_SoDu()
         {
             if (isShow == true)
             {
@@ -44,7 +57,7 @@ namespace WindowsFormsApp2
             }
             else
             {
-                lbMoney.Text = 99999.ToString();
+                lbMoney.Text = money;
                 isShow = true;
             }
         }
@@ -59,7 +72,12 @@ namespace WindowsFormsApp2
             this.Hide();
             fPhanHoi fPhanHoi = new fPhanHoi();
             fPhanHoi.ShowDialog();
-            this.Show();
+            this.Show_SoDu();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

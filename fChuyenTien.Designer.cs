@@ -46,9 +46,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 41);
+            this.label1.Location = new System.Drawing.Point(34, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 20);
+            this.label1.Size = new System.Drawing.Size(142, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "số tài khoản thụ hưởng ";
             // 
@@ -65,18 +65,21 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(44, 61);
+            this.groupBox1.Location = new System.Drawing.Point(39, 49);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(711, 332);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(632, 266);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(542, 280);
+            this.button1.Location = new System.Drawing.Point(482, 224);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 36);
+            this.button1.Size = new System.Drawing.Size(137, 29);
             this.button1.TabIndex = 6;
             this.button1.Text = "chuyển khoản";
             this.button1.UseVisualStyleBackColor = true;
@@ -84,82 +87,90 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(248, 255);
+            this.textBox5.Location = new System.Drawing.Point(220, 204);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(245, 26);
+            this.textBox5.Size = new System.Drawing.Size(218, 22);
             this.textBox5.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(34, 261);
+            this.label5.Location = new System.Drawing.Point(30, 209);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(179, 20);
+            this.label5.Size = new System.Drawing.Size(150, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "Nội dung chuyển khoản ";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(248, 199);
+            this.textBox4.Location = new System.Drawing.Point(220, 159);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(245, 26);
+            this.textBox4.Size = new System.Drawing.Size(218, 22);
             this.textBox4.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 206);
+            this.label4.Location = new System.Drawing.Point(34, 165);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 20);
+            this.label4.Size = new System.Drawing.Size(49, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "sô tiền ";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(248, 144);
+            this.textBox3.Location = new System.Drawing.Point(220, 115);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(245, 26);
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(218, 22);
             this.textBox3.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 144);
+            this.label3.Location = new System.Drawing.Point(34, 115);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 20);
+            this.label3.Size = new System.Drawing.Size(117, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Ho tên người nhận ";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(248, 87);
+            this.textBox2.Location = new System.Drawing.Point(220, 70);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(245, 26);
+            this.textBox2.Size = new System.Drawing.Size(218, 22);
             this.textBox2.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 94);
+            this.label2.Location = new System.Drawing.Point(34, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 20);
+            this.label2.Size = new System.Drawing.Size(94, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "tên ngân hàng ";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(248, 34);
+            this.textBox1.Location = new System.Drawing.Point(220, 27);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(245, 26);
+            this.textBox1.Size = new System.Drawing.Size(218, 22);
             this.textBox1.TabIndex = 1;
             // 
             // fChuyenTien
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 450);
+            this.ClientSize = new System.Drawing.Size(715, 360);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "fChuyenTien";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fChuyenTien";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

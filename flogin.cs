@@ -20,11 +20,13 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+
             if (AccountDAO.Ins.Login(tbxUseName.Text, tbxpassWord.Text))
             {
                 this.Hide();
-                fKhachHang fKhachHang = new fKhachHang();
-                fKhachHang.ShowDialog();
+                fKhachHang ok = new fKhachHang();
+                ok.ShowDialog();
                 this.Show();
             }
             else
