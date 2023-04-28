@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.Scripts.DAO;
 
 namespace WindowsFormsApp2
 {
@@ -19,16 +20,23 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            fKhachHang fKhachHang = new fKhachHang();   
-            fKhachHang.ShowDialog();
-            this.Show();    
+            if (AccountDAO.Ins.Login(tbxUseName.Text, tbxpassWord.Text))
+            {
+                this.Hide();
+                fKhachHang fKhachHang = new fKhachHang();
+                fKhachHang.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Try Again!");
+            }
+
         }
 
         private void btnthoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
-
         }
 
         private void flogin_FormClosing(object sender, FormClosingEventArgs e)
