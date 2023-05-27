@@ -8,7 +8,7 @@ namespace WindowsFormsApp2.Scripts.Interface
 {
     interface Element_ChangePIN
     {
-        bool CheckNewPassword(string txtNewPass, string txtNewPassAgain;
+        bool CheckNewPassword(string txtNewPass, string txtNewPassAgain);
         int ChangePIN(string txtOldPass, string txtNewPass);
     }
 }
