@@ -35,14 +35,14 @@
             this.lbName = new System.Windows.Forms.Label();
             this.lbMoney = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.lbSTK = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -97,10 +97,11 @@
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.Location = new System.Drawing.Point(73, 17);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(452, 39);
+            this.lbName.Size = new System.Drawing.Size(438, 38);
             this.lbName.TabIndex = 4;
             this.lbName.Text = "CHÀO MỪNG TÀI KHOẢN:";
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbName.Click += new System.EventHandler(this.lbName_Click);
             // 
             // lbMoney
             // 
@@ -131,6 +132,46 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(356, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(187, 16);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "MỜI BẠN CHỌN CHỨC NĂNG";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(288, 32);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(145, 57);
+            this.button6.TabIndex = 6;
+            this.button6.Text = "RÚT TIỀN ";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(491, 138);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(134, 57);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "THOÁT";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(285, 138);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(145, 57);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "ĐỔI MÃ PIN";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // lbSTK
             // 
@@ -181,46 +222,6 @@
             this.label2.Size = new System.Drawing.Size(62, 24);
             this.label2.TabIndex = 10;
             this.label2.Text = "Số Dư";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(285, 138);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 57);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "ĐỔI MÃ PIN";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(491, 138);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(134, 57);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "THOÁT";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(288, 32);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(145, 57);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "RÚT TIỀN ";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(356, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 16);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "MỜI BẠN CHỌN CHỨC NĂNG";
             // 
             // fKhachHang
             // 

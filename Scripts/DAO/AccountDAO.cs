@@ -27,19 +27,18 @@ namespace WindowsFormsApp2.Scripts.DAO
         private AccountDAO() { }
 
         public bool Login(string userName, string passWord) {
-            string query = $"SELECT dbo.login('{userName}','{passWord}')";
-            if ((int)DataProvider.Ins.ExecuteScalar(query) == 1)
-            {
-                query = "select * from thongtinnguoidung where email = '" + userName + "' and password = '" + passWord + "'";
+            
+            string query = "USP_Login @userName , @passWord";
 
-                DataTable table = DataProvider.Ins.ExecuteQuery(query);
+            if ((int)DataProvider.Ins.ExecuteScalar(query, new object[] {userName, passWord}) == 1)
+            { 
+                query = "EXEC USP_GetInfoWithUserNameAndPassword @userName , @passWord ";
+
+                DataTable table = DataProvider.Ins.ExecuteQuery(query, new object[] {userName, passWord});
                 theAccount = new DTO.Account(table.Rows[0]);
-
-                query = "select * from taikhoan where ID_nguoisudung = '" + theAccount.IDNguoiSuDung + "'";
-                table = DataProvider.Ins.ExecuteQuery(query);
-                theAccount.SetMoreValue(table.Rows[0]);
                 return true;
             }
+
             return false;
         }
 

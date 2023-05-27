@@ -208,4 +208,4 @@ SELECT dbo.login('anh2002@gmail.com','999999999')
 select * from thongtinnguoidung where email = 'anh2002@gmail.com'and password = '999999999'
 select * from taikhoan where ID_nguoisudung = 'id03'
 
-select * from taikhoan where so_tai_khoan = '1971971971' or so_tai_khoan = '1973973973'
+select count(*) from taikhoan where so_tai_khoan = '1971971971' or so_tai_khoan = '1973973973'

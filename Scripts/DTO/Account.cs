@@ -53,6 +53,8 @@ namespace WindowsFormsApp2.Scripts.DTO
             Sdt = row["sdt"].ToString();
             Password = row["password"].ToString();
             Email = row["email"].ToString();
+
+            SetMoreValue(row);
         }
 
         private string iDTK;
@@ -61,7 +63,7 @@ namespace WindowsFormsApp2.Scripts.DTO
         private string trangThai;
         private string soDu;
 
-        public void SetMoreValue(DataRow row)
+        private void SetMoreValue(DataRow row)
         {
             iDTK = row["IDTK"].ToString();
             SoTK = row["so_tai_khoan"].ToString();

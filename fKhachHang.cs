@@ -89,5 +89,10 @@ namespace WindowsFormsApp2
         {
 
         }
+
+        private void lbName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
