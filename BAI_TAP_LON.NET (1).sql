@@ -7,6 +7,8 @@ select * from thongtinnguoidung
 select * from  nguoisudung
 select * from  TaiKhoan
 
+UPDATE taikhoan SET so_du = 10 WHERE so_tai_khoan = '1970190190';
+
  --bang thông tin người dùng--
  CREATE TABLE thongtinnguoidung(
   ID_nguoisudung CHAR(255) PRIMARY KEY,
