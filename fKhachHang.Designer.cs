@@ -42,8 +42,8 @@
             this.lbSTK = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +78,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "VAY TIỀN";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+//            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnPhanHoi
             // 
@@ -104,7 +104,7 @@
             this.lbName.TabIndex = 4;
             this.lbName.Text = "Ho tená";
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbName.Click += new System.EventHandler(this.lbName_Click);
+    //        this.lbName.Click += new System.EventHandler(this.lbName_Click);
             // 
             // lbMoney
             // 
@@ -134,7 +134,7 @@
             this.groupBox1.Size = new System.Drawing.Size(914, 211);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+  //          this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label1
             // 
@@ -154,6 +154,7 @@
             this.button6.TabIndex = 6;
             this.button6.Text = "RÚT TIỀN ";
             this.button6.UseVisualStyleBackColor = true;
+    //        this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -186,7 +187,7 @@
             this.lbSTK.Size = new System.Drawing.Size(110, 24);
             this.lbSTK.TabIndex = 8;
             this.lbSTK.Text = "1972972972";
-            this.lbSTK.Click += new System.EventHandler(this.lbSTK_Click);
+//            this.lbSTK.Click += new System.EventHandler(this.lbSTK_Click);
             // 
             // label3
             // 
@@ -216,17 +217,6 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(185, 235);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 24);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Số Dư";
-            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -239,7 +229,18 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "CHÀO MỪNG TÀI KHOẢN:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+     //       this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(185, 235);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 24);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Số Dư";
             // 
             // fKhachHang
             // 

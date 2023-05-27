@@ -27,15 +27,13 @@ namespace WindowsFormsApp2
 
         private void ChangePassword()
         {
-            if(!CheckNewPassword())
+            if(!ChangePINDAO.Ins.CheckNewPassword(txtNewPass.Text, txtNewPassAgain.Text))
             {
                 MessageBox.Show("Đổi PIN thất bại - 2 mật khẩu mới phải trùng nhau.");
                 return;
             }
 
-            string query = "EXEC USP_changePin @soTaiKhoan , @oldPin , @newPin";
-            int n = DataProvider.Ins.ExecuteNonQuery(query, new object[] {AccountDAO.Ins.TheAccount.SoTK , Int64.Parse(txtOldPass.Text), Int64.Parse(txtNewPass.Text) });
-            if(n == 0)
+            if(ChangePINDAO.Ins.ChangePIN() == 0)
             {
                 MessageBox.Show("Đổi PIN thất bại.");
             }
@@ -52,16 +50,5 @@ namespace WindowsFormsApp2
             txtOldPass.Text = "";
             txtNewPassAgain.Text = "";
         }
-
-        private bool CheckNewPassword()
-        {
-            if(txtNewPass.Text ==txtNewPassAgain.Text)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
     }
 }

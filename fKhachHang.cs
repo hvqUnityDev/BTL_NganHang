@@ -62,11 +62,6 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -76,32 +71,12 @@ namespace WindowsFormsApp2
             this.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.Hide();
             fDoiMaPin fDoiMaPin = new fDoiMaPin();
             fDoiMaPin.ShowDialog();
             this.Show();
-        }
-
-        private void lbSTK_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

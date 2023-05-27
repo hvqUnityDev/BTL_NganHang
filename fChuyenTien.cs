@@ -7,42 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.Scripts;
+using WindowsFormsApp2.Scripts.DAO;
+using WindowsFormsApp2.Scripts.DTO;
 
 namespace WindowsFormsApp2
 {
     public partial class fChuyenTien : Form
     {
+        private bool isChecked = false;
         public fChuyenTien()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            fNhapMaPin nhapMaPin= new fNhapMaPin();
+            if (!isChecked) return;
+            if (!BankingDAO.Ins.CheckMoney(txtMoney.Text)) return;
+
             this.Hide();
+            fNhapMaPin nhapMaPin= new fNhapMaPin();
             nhapMaPin.ShowDialog(); 
-            
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void fChuyenTien_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
+            if(BankingDAO.Ins.CheckNameWithSTK(txtSTK.Text) != null)
+            {
+                txtName.Text = BankingDAO.Ins.CheckNameWithSTK(txtSTK.Text);
+                isChecked = true;
+            }
         }
     }
 }

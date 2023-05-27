@@ -245,3 +245,21 @@ END
 EXEC USP_changePin @soTaiKhoan = 1970 , @oldPin = 190191, @newPin = 91           
 
 select * from TaiKhoan
+SELECT * FROM nguoisudung 
+	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
+	WHERE thongtinnguoidung.email = 'tu1990@gmail.com' AND thongtinnguoidung.password = 123123123
+
+---------------
+drop proc USP_GetNameUser
+
+CREATE PROC USP_GetNameUser @soTaiKhoan INT
+AS
+BEGIN
+SELECT ho_ten FROM nguoisudung 
+	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
+	WHERE @soTaiKhoan = TaiKhoan.so_tai_khoan
+END
+
+EXEC USP_GetNameUser @soTaiKhoan = 1970

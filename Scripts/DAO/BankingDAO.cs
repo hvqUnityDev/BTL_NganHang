@@ -4,18 +4,20 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace WindowsFormsApp2.Scripts.DAO
 {
-    public class ChuyenKhoanDAO
+    public class BankingDAO
     {
-        private static ChuyenKhoanDAO ins;
-        public static ChuyenKhoanDAO Ins
+        private static BankingDAO ins;
+        public static BankingDAO Ins
         {
             get
             {
                 if (ins == null)
-                    ins = new ChuyenKhoanDAO();
+                    ins = new BankingDAO();
                 return ins;
             }
 
@@ -23,7 +25,39 @@ namespace WindowsFormsApp2.Scripts.DAO
         }
 
 
-        private ChuyenKhoanDAO() { }
+        private BankingDAO() { }
+
+        public bool CheckMoney(string txtMoney)
+        {
+            if (Int64.Parse(txtMoney) <= Int64.Parse(AccountDAO.Ins.TheAccount.SoDu))
+            {
+                return true;
+            }
+
+            MessageBox.Show("Số dư không đủ.");
+            return false;
+        }
+
+        public string CheckNameWithSTK(string txtSTK)
+        {
+            if (txtSTK == "")
+            {
+                MessageBox.Show("Thử lại!");
+                return null;
+            }
+
+            string query = "EXEC USP_GetNameUser @soTaiKhoan";
+            DataTable table = DataProvider.Ins.ExecuteQuery(query, new object[] { Int64.Parse(txtSTK.Text.ToString()) });
+
+            string stk = table.Rows[0]["ho_ten"].ToString();
+            if (stk == AccountDAO.Ins.TheAccount.SoTK)
+            {
+                MessageBox.Show("Không được chuyển tiền cho bản thân.");
+                return null;
+            }
+
+            return stk;
+        }
 
         public void ChuyenKhoan(string fromSTk, string toSTk, string soTien)
         {
