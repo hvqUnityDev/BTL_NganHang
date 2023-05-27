@@ -31,10 +31,10 @@ namespace WindowsFormsApp2.Scripts.DAO
             return false;
         }
 
-        public int ChangePIN()
+        public int ChangePIN(string txtOldPass, string txtnewPass)
         {
             string query = "EXEC USP_changePin @soTaiKhoan , @oldPin , @newPin";
-            return (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] { AccountDAO.Ins.TheAccount.SoTK, Int64.Parse(txtOldPass.Text), Int64.Parse(txtNewPass.Text) });
+            return (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] { AccountDAO.Ins.TheAccount.SoTK, Int64.Parse(txtOldPass), Int64.Parse(txtNewPass) });
         }
     }
 }

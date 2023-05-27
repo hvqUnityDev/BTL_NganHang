@@ -91,9 +91,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\DAO\AccountDAO.cs" />
-    <Compile Include="Scripts\DAO\ChuyenKhoanDAO.cs" />
+    <Compile Include="Scripts\DAO\ChangePINDAO.cs" />
+    <Compile Include="Scripts\DAO\BankingDAO.cs" />
     <Compile Include="Scripts\DataProvider.cs" />
     <Compile Include="Scripts\DTO\Account.cs" />
+    <Compile Include="Scripts\DTO\Bill.cs" />
     <EmbeddedResource Include="fChuyenTien.resx">
       <DependentUpon>fChuyenTien.cs</DependentUpon>
     </EmbeddedResource>

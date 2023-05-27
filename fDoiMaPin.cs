@@ -33,7 +33,7 @@ namespace WindowsFormsApp2
                 return;
             }
 
-            if(ChangePINDAO.Ins.ChangePIN() == 0)
+            if(ChangePINDAO.Ins.ChangePIN(txtOldPass.Text, txtNewPass.Text) == 0)
             {
                 MessageBox.Show("Đổi PIN thất bại.");
             }
