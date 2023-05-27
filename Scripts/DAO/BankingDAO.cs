@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using WindowsFormsApp2.Scripts.DTO;
 
 namespace WindowsFormsApp2.Scripts.DAO
 {
-    public class BankingDAO
+    public class BankingDAO : Element_Banking
     {
         private static BankingDAO ins;
         public static BankingDAO Ins
@@ -38,27 +39,6 @@ namespace WindowsFormsApp2.Scripts.DAO
             return false;
         }
 
-        public string CheckNameWithSTK(string txtSTK)
-        {
-            if (txtSTK == "")
-            {
-                MessageBox.Show("Thử lại!");
-                return null;
-            }
-
-            string query = "EXEC USP_GetNameUser @soTaiKhoan";
-            DataTable table = DataProvider.Ins.ExecuteQuery(query, new object[] { Int64.Parse(txtSTK.Text.ToString()) });
-
-            string stk = table.Rows[0]["ho_ten"].ToString();
-            if (stk == AccountDAO.Ins.TheAccount.SoTK)
-            {
-                MessageBox.Show("Không được chuyển tiền cho bản thân.");
-                return null;
-            }
-
-            return stk;
-        }
-
         public void ChuyenKhoan(string fromSTk, string toSTk, string soTien)
         {
             fromSTk = AccountDAO.Ins.TheAccount.SoTK;
@@ -85,6 +65,27 @@ namespace WindowsFormsApp2.Scripts.DAO
             }
 
             return false;
+        }
+
+        public string CheckNameWithSTK(string txtSTK)
+        {
+            if (txtSTK == "")
+            {
+                MessageBox.Show("Thử lại!");
+                return null;
+            }
+
+            string query = "EXEC USP_GetNameUser @soTaiKhoan";
+            DataTable table = DataProvider.Ins.ExecuteQuery(query, new object[] { Int64.Parse(txtSTK.ToString()) });
+
+            string stk = table.Rows[0]["ho_ten"].ToString();
+            if (stk == AccountDAO.Ins.TheAccount.SoTK)
+            {
+                MessageBox.Show("Không được chuyển tiền cho bản thân.");
+                return null;
+            }
+
+            return stk;
         }
     }
 }

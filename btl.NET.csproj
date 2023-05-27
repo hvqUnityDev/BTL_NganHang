@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSetForTest.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetForTest.xsd</DependentUpon>
+    </Compile>
     <Compile Include="fChuyenTien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +101,8 @@
     <Compile Include="Scripts\DataProvider.cs" />
     <Compile Include="Scripts\DTO\Account.cs" />
     <Compile Include="Scripts\DTO\Bill.cs" />
+    <Compile Include="Scripts\Interface\Element_Account.cs" />
+    <Compile Include="Scripts\Interface\Element.cs" />
     <EmbeddedResource Include="fChuyenTien.resx">
       <DependentUpon>fChuyenTien.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +133,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="DataSetForTest.xsc">
+      <DependentUpon>DataSetForTest.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetForTest.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetForTest.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetForTest.xss">
+      <DependentUpon>DataSetForTest.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

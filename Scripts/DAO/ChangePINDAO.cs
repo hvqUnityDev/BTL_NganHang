@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp2.Scripts.Interface;
 
 namespace WindowsFormsApp2.Scripts.DAO
 {
-    public class ChangePINDAO
+    public class ChangePINDAO : Element_ChangePIN
     {
         private static ChangePINDAO ins;
         public static ChangePINDAO Ins
@@ -31,7 +32,7 @@ namespace WindowsFormsApp2.Scripts.DAO
             return false;
         }
 
-        public int ChangePIN(string txtOldPass, string txtnewPass)
+        public int ChangePIN(string txtOldPass, string txtNewPass)
         {
             string query = "EXEC USP_changePin @soTaiKhoan , @oldPin , @newPin";
             return (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] { AccountDAO.Ins.TheAccount.SoTK, Int64.Parse(txtOldPass), Int64.Parse(txtNewPass) });
