@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp2
 {
-    public partial class fNhapMaOTP : Form
+    public partial class fNapDT : Form
     {
-        public fNhapMaOTP()
+        public fNapDT()
         {
             InitializeComponent();
-        }
-
-        private void nhapMaOtp_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

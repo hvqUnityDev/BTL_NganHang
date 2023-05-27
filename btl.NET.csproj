@@ -64,11 +64,23 @@
     <Compile Include="fKhachHang.Designer.cs">
       <DependentUpon>fKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="fNapDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fNapDT.Designer.cs">
+      <DependentUpon>fNapDT.cs</DependentUpon>
+    </Compile>
     <Compile Include="fNhapMaOTP.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fNhapMaOTP.Designer.cs">
       <DependentUpon>fNhapMaOTP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fDoiMaPin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fDoiMaPin.Designer.cs">
+      <DependentUpon>fDoiMaPin.cs</DependentUpon>
     </Compile>
     <Compile Include="fPhanHoi.cs">
       <SubType>Form</SubType>
@@ -91,11 +103,17 @@
     <EmbeddedResource Include="fChuyenTien.resx">
       <DependentUpon>fChuyenTien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fDoiMaPin.resx">
+      <DependentUpon>fDoiMaPin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flogin.resx">
       <DependentUpon>flogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fKhachHang.resx">
       <DependentUpon>fKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fNapDT.resx">
+      <DependentUpon>fNapDT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fNhapMaOTP.resx">
       <DependentUpon>fNhapMaOTP.cs</DependentUpon>
