@@ -30,49 +30,56 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.fTiepTuc = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(189, 23);
+            this.label1.Location = new System.Drawing.Point(169, 98);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 26);
+            this.label1.Size = new System.Drawing.Size(130, 22);
             this.label1.TabIndex = 0;
-            this.label1.Text = "nhập mã pin ";
+            this.label1.Text = "Nhập mã pin ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(57, 96);
+            this.textBox1.Location = new System.Drawing.Point(114, 146);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(401, 26);
+            this.textBox1.Size = new System.Drawing.Size(247, 22);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // fTiepTuc
+            // btnAccept
             // 
-            this.fTiepTuc.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.fTiepTuc.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.fTiepTuc.Location = new System.Drawing.Point(57, 168);
-            this.fTiepTuc.Name = "fTiepTuc";
-            this.fTiepTuc.Size = new System.Drawing.Size(409, 42);
-            this.fTiepTuc.TabIndex = 2;
-            this.fTiepTuc.Text = "Tiếp tục ";
-            this.fTiepTuc.UseVisualStyleBackColor = false;
-            this.fTiepTuc.Click += new System.EventHandler(this.button1_Click);
+            this.btnAccept.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAccept.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.btnAccept.Location = new System.Drawing.Point(95, 218);
+            this.btnAccept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(274, 34);
+            this.btnAccept.TabIndex = 5;
+            this.btnAccept.Text = "Tiếp tục ";
+            this.btnAccept.UseVisualStyleBackColor = false;
+            this.btnAccept.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // fNhapMaPin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 250);
-            this.Controls.Add(this.fTiepTuc);
+            this.ClientSize = new System.Drawing.Size(462, 353);
+            this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(480, 400);
+            this.MinimumSize = new System.Drawing.Size(480, 400);
             this.Name = "fNhapMaPin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "fVayTien";
+            this.Text = "Xác Nhận Mã Pin";
             this.Load += new System.EventHandler(this.fnhapmapin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -83,6 +90,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button fTiepTuc;
+        private System.Windows.Forms.Button btnAccept;
     }
 }

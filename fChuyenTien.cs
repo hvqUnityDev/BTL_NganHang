@@ -34,5 +34,15 @@ namespace WindowsFormsApp2
         {
 
         }
+
+        private void fChuyenTien_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
