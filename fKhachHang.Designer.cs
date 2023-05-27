@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -92,14 +93,16 @@
             // 
             // lbName
             // 
-            this.lbName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(73, 17);
+            this.lbName.Location = new System.Drawing.Point(199, 108);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(438, 38);
+            this.lbName.Size = new System.Drawing.Size(138, 38);
             this.lbName.TabIndex = 4;
-            this.lbName.Text = "CHÀO MỪNG TÀI KHOẢN:";
+            this.lbName.Text = "Ho tená";
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbName.Click += new System.EventHandler(this.lbName_Click);
             // 
@@ -199,6 +202,7 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.lbName);
             this.groupBox2.Controls.Add(this.label3);
@@ -222,6 +226,20 @@
             this.label2.Size = new System.Drawing.Size(62, 24);
             this.label2.TabIndex = 10;
             this.label2.Text = "Số Dư";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(91, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(438, 38);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "CHÀO MỪNG TÀI KHOẢN:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // fKhachHang
             // 
@@ -263,5 +281,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
     }
 }

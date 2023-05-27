@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp2.Scripts.DTO
 {
@@ -26,7 +27,6 @@ namespace WindowsFormsApp2.Scripts.DTO
         public string NgaySinh { get => ngaySinh; set => ngaySinh = value; }
         public string HoTen { get => hoTen; set => hoTen = value; }
         public string IDNguoiSuDung { get => iDNguoiSuDung; set => iDNguoiSuDung = value; }
-        public string IDTK { get => iDTK; set => iDTK = value; }
         public string SoTK { get => soTK; set => soTK = value; }
         public string Pin { get => pin; set => pin = value; }
         public string TrangThai { get => trangThai; set => trangThai = value; }
@@ -57,7 +57,6 @@ namespace WindowsFormsApp2.Scripts.DTO
             SetMoreValue(row);
         }
 
-        private string iDTK;
         private string soTK;
         private string pin;
         private string trangThai;
@@ -65,7 +64,7 @@ namespace WindowsFormsApp2.Scripts.DTO
 
         private void SetMoreValue(DataRow row)
         {
-            iDTK = row["IDTK"].ToString();
+            
             SoTK = row["so_tai_khoan"].ToString();
             Pin = row["pin"].ToString();
             SoDu = row["so_du"].ToString();

@@ -72,7 +72,8 @@ namespace WindowsFormsApp2
             this.Hide();
             fPhanHoi fPhanHoi = new fPhanHoi();
             fPhanHoi.ShowDialog();
-            this.Show_SoDu();
+            Show_SoDu();
+            this.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -82,7 +83,10 @@ namespace WindowsFormsApp2
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            this.Hide();
+            fDoiMaPin fDoiMaPin = new fDoiMaPin();
+            fDoiMaPin.ShowDialog();
+            this.Show();
         }
 
         private void lbSTK_Click(object sender, EventArgs e)
@@ -91,6 +95,11 @@ namespace WindowsFormsApp2
         }
 
         private void lbName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
