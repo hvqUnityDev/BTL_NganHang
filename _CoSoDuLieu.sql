@@ -266,6 +266,8 @@ BEGIN
 	WHERE thongtinnguoidung.email LIKE '%' + @email + '%'
 end
 
+use ql_nganhang
+
 select * from thongtinnguoidung
 
 exec USP_getListUserWithEmail @email = 'n'
@@ -279,6 +281,16 @@ FROM nguoisudung
 inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
 WHERE  thongtinnguoidung.SDT  LIKE '%' + @SDT + '%'
 
+END
+
+-- with name
+CREATE PROC USP_getListUserWithName @Name NVARCHAR(20)
+AS
+BEGIN
+SELECT * 
+FROM nguoisudung
+inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+WHERE  thongtinnguoidung.ho_ten  LIKE '%' + @Name + '%'
 END
 
 
