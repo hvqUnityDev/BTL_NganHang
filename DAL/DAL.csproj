@@ -44,12 +44,10 @@
   <ItemGroup>
     <Compile Include="AccountDAO.cs" />
     <Compile Include="BankingDAO.cs" />
-    <Compile Include="ChangePINDAO.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="FeedBackDAO.cs" />
     <Compile Include="Interface\IAccount.cs" />
     <Compile Include="Interface\IBanking.cs" />
-    <Compile Include="Interface\IChangePIN.cs" />
     <Compile Include="Interface\IFeedBack.cs" />
     <Compile Include="Interface\IManager.cs" />
     <Compile Include="Interface\IMobileRecharge.cs" />

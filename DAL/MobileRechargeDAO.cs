@@ -23,17 +23,6 @@ namespace WindowsFormsApp2.Scripts.DAO
             private set => ins = value;
         }
 
-        private List<string> NetworkNames = new List<string>() {"Viettel", "Mobifone", "Vinaphone" };
-
-        public void AddHomeNetwork(ComboBox cb)
-        {
-            cb.Items.Clear();
-            foreach (string networkName in NetworkNames)
-            {
-                cb.Items.Add(networkName);
-            }
-        }
-
         public int MobileRecharge(string networkName, string phoneNumber, string money)
         {
             string query = "exec USP_MobileRecharge @soTaiKhoanGoc = 1970, @soTien = 30";

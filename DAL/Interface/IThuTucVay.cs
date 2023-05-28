@@ -9,8 +9,6 @@ namespace WindowsFormsApp2.Scripts.Interface
 {
     public interface IThuTucVay
     {
-        void InitGoiVay(ComboBox cb);
-        string LinkDieuKhoan();
         void Send(string txtCCCD, string txtSDT, string txtGoiVay);
     }
 }

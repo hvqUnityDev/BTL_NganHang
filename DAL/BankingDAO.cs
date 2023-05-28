@@ -14,6 +14,7 @@ namespace DAO
 {
     public class BankingDAO : IBanking
     {
+
         private static BankingDAO ins;
         public static BankingDAO Ins
         {
@@ -26,25 +27,6 @@ namespace DAO
 
             private set => ins = value;
         }
-
-
-        private BankingDAO() { }
-
-        public bool CheckMoney(string txtMoney)
-        {
-            if (txtMoney.Length <= 0)
-            {
-                return false;
-            }
-
-            if (Int64.Parse(txtMoney) <= Int64.Parse(AccountDAO.Ins.TheAccount.SoDu))
-            {
-                return true;
-            }
-            
-            return false;
-        }
-
         public void ChuyenKhoan(string toSTk, string money)
         {
             string fromSTk = AccountDAO.Ins.TheAccount.SoTK;
@@ -60,26 +42,8 @@ namespace DAO
             }
         }
 
-        bool UpdateMoney(string stk, string soTien)
-        {
-            string query = "SET so_du = " + soTien + " WHERE so_tai_khoan = '" + stk + "'";
-            int value = (int)DataProvider.Ins.ExecuteNonQuery(query);
-            if( value == 1)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         public string CheckNameWithSTK(string txtSTK)
         {
-            if (txtSTK == "")
-            {
-                MessageBox.Show("Thử lại!");
-                return null;
-            }
-
             string query = "EXEC USP_GetNameUser @soTaiKhoan";
             DataTable table = DataProvider.Ins.ExecuteQuery(query, new object[] { Int64.Parse(txtSTK) });
 
@@ -102,6 +66,18 @@ namespace DAO
         {
             string query = "USP_CheckPIN @soTaiKhoan , @maPIN";
             return (int)DataProvider.Ins.ExecuteScalar(query, new object[] {AccountDAO.Ins.TheAccount.SoTK , txtPIN });
+        }
+
+        public int ChangePIN(string txtOldPass, string txtNewPass)
+        {
+            string query = "EXEC USP_changePin @soTaiKhoan , @oldPin , @newPin";
+            return (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] { AccountDAO.Ins.TheAccount.SoTK, Int64.Parse(txtOldPass), Int64.Parse(txtNewPass) });
+        }
+
+        public DataTable SaoKe()
+        {
+            string query = "select * from ls";
+            return DataProvider.Ins.ExecuteQuery(query);
         }
     }
 }

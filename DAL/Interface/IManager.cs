@@ -10,7 +10,6 @@ namespace WindowsFormsApp2.Scripts.Interface
 {
     interface IManager
     {
-        void InitTypeSearch(ComboBox cbTypeSearch);
         void ShowListView_NhanVien(ListView lsvNhanVien);
         void Search(string txtType, string txtKeyword, ListView lsvNhanVien);
     }

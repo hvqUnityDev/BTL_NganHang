@@ -10,6 +10,5 @@ namespace WindowsFormsApp2.Scripts.Interface
     public interface IMobileRecharge
     {
         int MobileRecharge(string networkName, string phoneNumber, string money);
-        void AddHomeNetwork(ComboBox cb);
     }
 }

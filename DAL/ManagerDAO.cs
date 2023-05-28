@@ -13,7 +13,6 @@ namespace WindowsFormsApp2.Scripts.DAO
 {
     public class ManagerDAO : IManager
     {
-        private List<string> typesSearch = new List<string>() { "Họ Tên", "SĐT", "Email" };
         private List<Employee> listEmployee = new List<Employee>();
 
         private static ManagerDAO ins;
@@ -59,15 +58,6 @@ namespace WindowsFormsApp2.Scripts.DAO
                 lsvItem.SubItems.Add(item.Email.ToString());
                 lsvNhanVien.Items.Add(lsvItem);
                 i++;
-            }
-        }
-
-        public void InitTypeSearch(ComboBox cbTypeSearch)
-        {
-            cbTypeSearch.Items.Clear();
-            foreach (var item in typesSearch)
-            {
-                cbTypeSearch.Items.Add(item);
             }
         }
 
