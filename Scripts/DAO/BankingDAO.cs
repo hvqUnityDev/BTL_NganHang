@@ -45,10 +45,9 @@ namespace WindowsFormsApp2.Scripts.DAO
             return false;
         }
 
-        public void ChuyenKhoan(string fromSTk, string toSTk, string soTien)
+        public void ChuyenKhoan(string toSTk, string money)
         {
-            fromSTk = AccountDAO.Ins.TheAccount.SoTK;
-            toSTk = "1973973973";
+            string fromSTk = AccountDAO.Ins.TheAccount.SoTK;
             string query = "select Count(*) from taikhoan where so_tai_khoan = '"+ toSTk + "'";
 
             int value = (int)DataProvider.Ins.ExecuteScalar(query);
@@ -82,7 +81,7 @@ namespace WindowsFormsApp2.Scripts.DAO
             }
 
             string query = "EXEC USP_GetNameUser @soTaiKhoan";
-            DataTable table = DataProvider.Ins.ExecuteQuery(query, new object[] { Int64.Parse(txtSTK.ToString()) });
+            DataTable table = DataProvider.Ins.ExecuteQuery(query, new object[] { Int64.Parse(txtSTK) });
 
             if (table.Rows.Count < 1)
             {
@@ -90,15 +89,13 @@ namespace WindowsFormsApp2.Scripts.DAO
                 return null;
             }
 
-            string stk = table.Rows[0]["ho_ten"].ToString();
-
-            if (stk == AccountDAO.Ins.TheAccount.SoTK)
+            if (txtSTK == AccountDAO.Ins.TheAccount.SoTK)
             {
                 MessageBox.Show("Không được chuyển tiền cho bản thân.");
                 return null;
             }
 
-            return stk;
+            return table.Rows[0]["ho_ten"].ToString();
         }
 
         public int CheckPIN(string txtPIN)

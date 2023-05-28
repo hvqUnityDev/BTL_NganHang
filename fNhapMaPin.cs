@@ -13,19 +13,23 @@ namespace WindowsFormsApp2
 {
     public partial class fNhapMaPin : Form
     {
-        int count = 3;
+        public Action DoItWhenCorrectPIN;
+
+        int count;
 
         public fNhapMaPin()
         {
             InitializeComponent();
-            
+            count = 2;
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            if(BankingDAO.Ins.CheckPIN(txtPIN.Text) == 1)
+            if (BankingDAO.Ins.CheckPIN(txtPIN.Text) == 1)
             {
                 MessageBox.Show("Thành Công!");
+                DoItWhenCorrectPIN?.Invoke();
+                DoItWhenCorrectPIN = null;
                 this.Close();
             }
             else
@@ -37,6 +41,9 @@ namespace WindowsFormsApp2
                     this.Close();
                 }
             }
+
+            txtPIN.Text = "";
         }
+
     }
 }

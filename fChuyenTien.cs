@@ -31,8 +31,15 @@ namespace WindowsFormsApp2
             if (!BankingDAO.Ins.CheckMoney(numMoney.Text)) return;
 
             this.Hide();
-            fNhapMaPin nhapMaPin= new fNhapMaPin();
+            fNhapMaPin nhapMaPin = new fNhapMaPin();
+            nhapMaPin.DoItWhenCorrectPIN = Banking;
             nhapMaPin.ShowDialog(); 
+        }
+
+        private void Banking()
+        {
+            BankingDAO.Ins.ChuyenKhoan(txtSTK.Text, numMoney.Value.ToString());
+            MessageBox.Show($"ChuyenKhoan {txtSTK.Text} {numMoney.Value}");
         }
 
         private void button3_Click(object sender, EventArgs e)
