@@ -89,6 +89,15 @@ CREATE TABLE BillInfo (
   FOREIGN KEY (ID_Bill) REFERENCES Bill(ID_Bill),
   FOREIGN KEY (IDSP) REFERENCES SanPham(IDSP)
 );
+CREATE TABLE LichSuGiaoDich (
+    id INT PRIMARY KEY,
+    stk_den VARCHAR(50),
+    so_tien FLOAT,
+    message VARCHAR(255),
+    sent_date DATE,
+	IDGiaoDich INT PRIMARY KEY,
+	FOREIGN KEY (IDGiaoDich) REFERENCES GiaoDich(IDGiaoDich)
+);
 
 --nhap du lieu cho bang thông tin người dùng----
 insert into thongtinnguoidung values(1, N'trần văn H', 08011990, N'nghệ an', N'nam', '0363338021', N'tu1990@gmail.com', '123123123')
