@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RP_SaoKe.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RP_SaoKe.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSetForTest.cs">
       <DependentUpon>DataSetForTest.xsd</DependentUpon>
     </Compile>
@@ -116,21 +122,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RP_SaoKe.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RP_SaoKe.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Scripts\DAO\AccountDAO.cs" />
     <Compile Include="Scripts\DAO\ChangePINDAO.cs" />
     <Compile Include="Scripts\DAO\BankingDAO.cs" />
+    <Compile Include="Scripts\DAO\GiamDocDAO.cs" />
     <Compile Include="Scripts\DataProvider.cs" />
     <Compile Include="Scripts\DTO\Account.cs" />
     <Compile Include="Scripts\DTO\Bill.cs" />
-    <Compile Include="Scripts\Interface\Element_Account.cs" />
-    <Compile Include="Scripts\Interface\Element_Banking.cs" />
-    <Compile Include="Scripts\Interface\Element_ChangePIN.cs" />
+    <Compile Include="Scripts\DTO\Employee.cs" />
+    <Compile Include="Scripts\Interface\IAccount.cs" />
+    <Compile Include="Scripts\Interface\IBanking.cs" />
+    <Compile Include="Scripts\Interface\IChangePIN.cs" />
+    <EmbeddedResource Include="RP_SaoKe.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RP_SaoKe.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="fChuyenTien.resx">
       <DependentUpon>fChuyenTien.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,10 +173,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RP_SaoKe.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RP_SaoKe.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="DataSetForTest.xsc">
       <DependentUpon>DataSetForTest.xsd</DependentUpon>
     </None>

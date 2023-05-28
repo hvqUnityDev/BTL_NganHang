@@ -8,7 +8,7 @@ using WindowsFormsApp2.Scripts.DTO;
 
 namespace WindowsFormsApp2.Scripts.DAO
 {
-    public class AccountDAO : Element_Account
+    public class AccountDAO : IAccount
     {
         private static AccountDAO ins;
         public static AccountDAO Ins

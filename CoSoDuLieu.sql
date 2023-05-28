@@ -225,16 +225,7 @@ EXEC USP_GetInfoWithUserNameAndPassword @userName = 'hop1992@gmail.com' , @passW
 select * from taikhoan
 
 -- Register
- CREATE TABLE thongtinnguoidung(
-  ID_nguoisudung INT PRIMARY KEY NOT NULL,
-  ho_ten NVARCHAR(255) NOT NULL,
-  ngay_sinh INT NOT NULL,
-  dia_chi NVARCHAR(255) NOT NULL,
-  gioi_tinh NVARCHAR(255) NOT NULL,
-  SDT NVARCHAR(20) NOT NULL,
-  email NVARCHAR(255) NOT NULL,
-  password NVARCHAR(255) NOT NULL
-);
+
 CREATE PROC USP_register
  @userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh INT, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
 AS
@@ -317,14 +308,23 @@ END
 EXEC USP_GetNameUser @soTaiKhoan = 1970
 
 ----------------------------
-CREATE PROC USP_Banking @soTaiKhoanGoc INT,@soTaiKhoanNhan INT,@soTien INT
-AS
-BEGIN 
+create table ls 
+(
+	id char(20),
+	stknhan char(20),
+	sotien char(20),
+	ngaygd char(20)
+)
+go
+select * from ls
 
-	UPDATE TaiKhoan 
-	SET so_du = so_du - @soTien
-	WHERE TaiKhoan.so_tai_khoan = @soTaiKhoanGoc
+insert into ls values('141', '1970', '1000000', '19042023')
+insert into ls values('142', '1971', '500000', '19042023')
+insert into ls values('143', '1972', '500000', '17042023')
+insert into ls values('144', '1973', '200000', '03042023')
+insert into ls values('145', '1974', '1000000', '10042023')
 
+<<<<<<< HEAD
 	UPDATE TaiKhoan 
 	SET so_du = so_du + @soTien
 	WHERE TaiKhoan.so_tai_khoan = @soTaiKhoanNhan
@@ -342,3 +342,8 @@ BEGIN
 	WHERE @can_cuoc = vay_von.can_cuoc
 END
 
+=======
+--------------------
+select * from thongtinnguoidung
+exec USP_Banking @soTaiKhoanGoc = 1970, @soTaiKhoanNhan = 1974 ,@soTien = 50
+>>>>>>> c6e116f98e1c2816450a63e7e7e452813e3091fb

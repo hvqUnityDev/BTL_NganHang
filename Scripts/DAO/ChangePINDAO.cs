@@ -7,7 +7,7 @@ using WindowsFormsApp2.Scripts.Interface;
 
 namespace WindowsFormsApp2.Scripts.DAO
 {
-    public class ChangePINDAO : Element_ChangePIN
+    public class ChangePINDAO : IChangePIN
     {
         private static ChangePINDAO ins;
         public static ChangePINDAO Ins

@@ -18,6 +18,7 @@ namespace WindowsFormsApp2
         public fKhachHang()
         {
             InitializeComponent();
+            isShow = true;
             Show_ThongTin();
         }
 
@@ -82,11 +83,9 @@ namespace WindowsFormsApp2
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
-
-            string query = "select * from GiaoDich";
+            string query = "select * from ls";
             DataTable dt = DataProvider.Ins.ExecuteQuery(query);
-            
+
             RP_SaoKe r = new RP_SaoKe();
             r.SetDataSource(dt);
 
