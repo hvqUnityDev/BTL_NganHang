@@ -66,6 +66,12 @@
     <Compile Include="fChuyenTien.Designer.cs">
       <DependentUpon>fChuyenTien.cs</DependentUpon>
     </Compile>
+    <Compile Include="fGiamdoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fGiamdoc.Designer.cs">
+      <DependentUpon>fGiamdoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="flogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fDoiMaPin.resx">
       <DependentUpon>fDoiMaPin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fGiamdoc.resx">
+      <DependentUpon>fGiamdoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flogin.resx">
       <DependentUpon>flogin.cs</DependentUpon>
