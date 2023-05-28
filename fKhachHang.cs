@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.Scripts;
 using WindowsFormsApp2.Scripts.DAO;
 
 namespace WindowsFormsApp2
@@ -77,6 +78,21 @@ namespace WindowsFormsApp2
             fDoiMaPin fDoiMaPin = new fDoiMaPin();
             fDoiMaPin.ShowDialog();
             this.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
+
+            string query = "select * from GiaoDich";
+            DataTable dt = DataProvider.Ins.ExecuteQuery(query);
+            
+            RP_SaoKe r = new RP_SaoKe();
+            r.SetDataSource(dt);
+
+            fSaoKe fSaoKe = new fSaoKe();
+            fSaoKe.crystalReportViewer.ReportSource = r;
+            fSaoKe.ShowDialog();
         }
     }
 }

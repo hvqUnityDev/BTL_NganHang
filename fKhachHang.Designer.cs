@@ -36,7 +36,7 @@
             this.lbMoney = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnSaoKe = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lbSTK = new System.Windows.Forms.Label();
@@ -78,7 +78,6 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "VAY TIỀN";
             this.button3.UseVisualStyleBackColor = true;
-//            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnPhanHoi
             // 
@@ -104,7 +103,6 @@
             this.lbName.TabIndex = 4;
             this.lbName.Text = "Ho tená";
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-    //        this.lbName.Click += new System.EventHandler(this.lbName_Click);
             // 
             // lbMoney
             // 
@@ -121,7 +119,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.btnSaoKe);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnChuyenTien);
@@ -134,7 +132,6 @@
             this.groupBox1.Size = new System.Drawing.Size(914, 211);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-  //          this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label1
             // 
@@ -145,16 +142,16 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "MỜI BẠN CHỌN CHỨC NĂNG";
             // 
-            // button6
+            // btnSaoKe
             // 
-            this.button6.Location = new System.Drawing.Point(288, 32);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(145, 57);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "RÚT TIỀN ";
-            this.button6.UseVisualStyleBackColor = true;
-    //        this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnSaoKe.Location = new System.Drawing.Point(288, 32);
+            this.btnSaoKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSaoKe.Name = "btnSaoKe";
+            this.btnSaoKe.Size = new System.Drawing.Size(145, 57);
+            this.btnSaoKe.TabIndex = 6;
+            this.btnSaoKe.Text = "SAO KÊ";
+            this.btnSaoKe.UseVisualStyleBackColor = true;
+            this.btnSaoKe.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -187,7 +184,6 @@
             this.lbSTK.Size = new System.Drawing.Size(110, 24);
             this.lbSTK.TabIndex = 8;
             this.lbSTK.Text = "1972972972";
-//            this.lbSTK.Click += new System.EventHandler(this.lbSTK_Click);
             // 
             // label3
             // 
@@ -229,7 +225,6 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "CHÀO MỪNG TÀI KHOẢN:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-     //       this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label2
             // 
@@ -280,7 +275,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnSaoKe;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
     }

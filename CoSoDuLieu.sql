@@ -263,3 +263,10 @@ SELECT ho_ten FROM nguoisudung
 END
 
 EXEC USP_GetNameUser @soTaiKhoan = 1970
+
+----------------------------
+use QL_NGANHANG
+select * from GiaoDich INNER JOIN 
+
+SELECT * from thongtinnguoidung
+select * from taikhoan
