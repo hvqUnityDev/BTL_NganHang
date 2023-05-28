@@ -23,10 +23,9 @@ namespace WindowsFormsApp2.Scripts.DAO
             private set => ins = value;
         }
 
-
         private AccountDAO() { }
 
-        private DTO.Account theAccount;
+        private WindowsFormsApp2.Scripts.DTO.Account theAccount;
         public Account TheAccount { get => theAccount; set => theAccount = value; }
 
         public bool Login(string userName, string passWord)

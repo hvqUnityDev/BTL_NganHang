@@ -4,7 +4,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
+using WindowsFormsApp2.Scripts;
 using WindowsFormsApp2.Scripts.DAO;
 using WindowsFormsApp2.Scripts.DTO;
 
