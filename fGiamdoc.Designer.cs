@@ -63,10 +63,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(26, 199);
+            this.tabControl1.Location = new System.Drawing.Point(26, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(719, 280);
+            this.tabControl1.Size = new System.Drawing.Size(719, 467);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -76,7 +76,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(711, 251);
+            this.tabPage1.Size = new System.Drawing.Size(711, 438);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Nhân sự";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
             this.lsvNhanVien.HideSelection = false;
             this.lsvNhanVien.Location = new System.Drawing.Point(6, 5);
             this.lsvNhanVien.Name = "lsvNhanVien";
-            this.lsvNhanVien.Size = new System.Drawing.Size(699, 240);
+            this.lsvNhanVien.Size = new System.Drawing.Size(699, 427);
             this.lsvNhanVien.TabIndex = 1;
             this.lsvNhanVien.UseCompatibleStateImageBehavior = false;
             this.lsvNhanVien.View = System.Windows.Forms.View.Details;
@@ -151,7 +151,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(711, 438);
+            this.tabPage2.Size = new System.Drawing.Size(711, 251);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Khách hàng";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -236,7 +236,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(12, 500);
+            this.button1.Location = new System.Drawing.Point(36, 500);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(224, 100);
             this.button1.TabIndex = 1;

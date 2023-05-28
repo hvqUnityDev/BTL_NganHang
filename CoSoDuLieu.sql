@@ -209,6 +209,7 @@ end
 
 EXEC USP_Login @userName = 'hop1992@gmail.com' , @passWord = '888888888'
 
+-------------------------------------------------------------------------
 drop proc USP_GetInfoWithUserNameAndPassword
 CREATE PROC USP_GetInfoWithUserNameAndPassword
 @userName nvarchar(255), @passWord nvarchar(255)
@@ -225,7 +226,7 @@ EXEC USP_GetInfoWithUserNameAndPassword @userName = 'hop1992@gmail.com' , @passW
 select * from taikhoan
 
 -- Register
-
+----------------------------------------------------------------------------------
 CREATE PROC USP_register
  @userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh INT, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
 AS
@@ -247,10 +248,14 @@ END
 CREATE PROC USP_getListUserWithEmail @email NVARCHAR(255)
 AS
 BEGIN
-SELECT * 
-FROM nguoisudung
-inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-WHERE  @email = nguoisudung.email
+	SELECT * FROM nguoisudung
+	inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+	WHERE thongtinnguoidung.email LIKE '%' + @email + '%'
+end
+
+select * from thongtinnguoidung
+
+exec USP_getListUserWithEmail @email = 'n'
 
   -- WITH SDT
 CREATE PROC USP_getListUserWithEmail @SDT NVARCHAR(20)
@@ -286,12 +291,6 @@ BEGIN
 END
 
 EXEC USP_changePin @soTaiKhoan = 1970 , @oldPin = 190191, @newPin = 91           
-
-select * from TaiKhoan
-SELECT * FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
-	WHERE thongtinnguoidung.email = 'tu1990@gmail.com' AND thongtinnguoidung.password = 123123123
 
 ---------------
 drop proc USP_GetNameUser
