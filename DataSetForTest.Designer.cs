@@ -287,8 +287,6 @@ namespace WindowsFormsApp2 {
             
             private global::System.Data.DataColumn columnNgayGiaoDich;
             
-            private global::System.Data.DataColumn columnNoiDung;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public dtDataTable() {
@@ -356,14 +354,6 @@ namespace WindowsFormsApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NoiDungColumn {
-                get {
-                    return this.columnNoiDung;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,14 +389,13 @@ namespace WindowsFormsApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public dtRow AdddtRow(string ID, string STK_Nhan, string SoTien, string NgayGiaoDich, string NoiDung) {
+            public dtRow AdddtRow(string ID, string STK_Nhan, string SoTien, string NgayGiaoDich) {
                 dtRow rowdtRow = ((dtRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         STK_Nhan,
                         SoTien,
-                        NgayGiaoDich,
-                        NoiDung};
+                        NgayGiaoDich};
                 rowdtRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtRow);
                 return rowdtRow;
@@ -433,7 +422,6 @@ namespace WindowsFormsApp2 {
                 this.columnSTK_Nhan = base.Columns["STK_Nhan"];
                 this.columnSoTien = base.Columns["SoTien"];
                 this.columnNgayGiaoDich = base.Columns["NgayGiaoDich"];
-                this.columnNoiDung = base.Columns["NoiDung"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -447,8 +435,9 @@ namespace WindowsFormsApp2 {
                 base.Columns.Add(this.columnSoTien);
                 this.columnNgayGiaoDich = new global::System.Data.DataColumn("NgayGiaoDich", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNgayGiaoDich);
-                this.columnNoiDung = new global::System.Data.DataColumn("NoiDung", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDung);
+                this.columnSTK_Nhan.MaxLength = 10;
+                this.columnSoTien.MaxLength = 10;
+                this.columnNgayGiaoDich.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -655,22 +644,6 @@ namespace WindowsFormsApp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string NoiDung {
-                get {
-                    try {
-                        return ((string)(this[this.tabledt.NoiDungColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDung\' in table \'dt\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledt.NoiDungColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tabledt.IDColumn);
             }
@@ -715,18 +688,6 @@ namespace WindowsFormsApp2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetNgayGiaoDichNull() {
                 this[this.tabledt.NgayGiaoDichColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNoiDungNull() {
-                return this.IsNull(this.tabledt.NoiDungColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNoiDungNull() {
-                this[this.tabledt.NoiDungColumn] = global::System.Convert.DBNull;
             }
         }
         

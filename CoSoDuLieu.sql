@@ -266,7 +266,47 @@ EXEC USP_GetNameUser @soTaiKhoan = 1970
 
 ----------------------------
 use QL_NGANHANG
-select * from GiaoDich INNER JOIN 
+select * from GiaoDich
 
 SELECT * from thongtinnguoidung
+
+select so_du from taikhoan where id_nguoisudung = 1 
+
+UPDATE TaiKhoan 
+	SET so_du = so_du - 10
+	WHERE TaiKhoan.id_nguoisudung = 1 
+
+CREATE PROC USP_Banking @soTaiKhoanGoc INT,@soTaiKhoanNhan INT,@soTien INT
+AS
+BEGIN 
+
+	UPDATE TaiKhoan 
+	SET so_du = so_du - @soTien
+	WHERE TaiKhoan.so_tai_khoan = @soTaiKhoanGoc
+
+	UPDATE TaiKhoan 
+	SET so_du = so_du + @soTien
+	WHERE TaiKhoan.so_tai_khoan = @soTaiKhoanNhan
+	
+END
 select * from taikhoan
+
+exec USP_Banking @soTaiKhoanGoc = 1970, @soTaiKhoanNhan = 1974 ,@soTien = 50
+
+-------------------------
+drop table ls
+create table ls 
+(
+	id char(20),
+	stknhan char(20),
+	sotien char(20),
+	ngaygd char(20)
+)
+go
+select * from ls
+
+insert into ls values('141', '1970', '1000000', '19042023')
+insert into ls values('142', '1971', '500000', '19042023')
+insert into ls values('143', '1972', '500000', '17042023')
+insert into ls values('144', '1973', '200000', '03042023')
+insert into ls values('145', '1974', '1000000', '10042023')
