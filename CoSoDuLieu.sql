@@ -256,21 +256,21 @@ END
 CREATE PROC USP_getListUserWithEmail @email NVARCHAR(255)
 AS
 BEGIN
-SELECT * 
-FROM nguoisudung
-inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-WHERE  @email = nguoisudung.email
+SELECT * FROM nguoisudung
+	inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+	WHERE thongtinnguoidung.email LIKE '%' + @email + '%'
 
   -- WITH SDT
-CREATE PROC USP_getListUserWithEmail @SDT NVARCHAR(20)
+CREATE PROC USP_getListUserWithSDT @SDT NVARCHAR(20)
 AS
 BEGIN
 SELECT * 
 FROM nguoisudung
 inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-WHERE  @SDT = nguoisudung.SDT
+WHERE  thongtinnguoidung.SDT  LIKE '%' + @SDT + '%'
 
 END
+
 
 EXEC USP_getListUser @userRole = 2
 
