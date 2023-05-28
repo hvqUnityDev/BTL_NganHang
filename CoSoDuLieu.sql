@@ -232,6 +232,15 @@ AS
 BEGIN
 insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password) values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord)
 END
+--UPDATE
+CREATE PROC USP_register
+ @userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh INT, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
+AS
+BEGIN
+UPDATE thongtinnguoidung 
+	SET ho_ten = @ho_ten, ngay_sinh = @ngay_sinh, dia_chi = @dia_chi, gioi_tinh = @gioi_tinh, SDT = @SDT, email = @userName, passWord = @passWord
+	WHERE @userName = thongtinnguoidung.email 
+END
 
  --SHOW USERS
 CREATE PROC USP_getListUser @userRole INT
