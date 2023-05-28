@@ -89,15 +89,6 @@ CREATE TABLE BillInfo (
   FOREIGN KEY (ID_Bill) REFERENCES Bill(ID_Bill),
   FOREIGN KEY (IDSP) REFERENCES SanPham(IDSP)
 );
-CREATE TABLE LichSuGiaoDich (
-    id INT PRIMARY KEY,
-    stk_den VARCHAR(50),
-    so_tien FLOAT,
-    message VARCHAR(255),
-    sent_date DATE,
-	IDGiaoDich INT PRIMARY KEY,
-	FOREIGN KEY (IDGiaoDich) REFERENCES GiaoDich(IDGiaoDich)
-);
 
 --nhap du lieu cho bang thông tin người dùng----
 insert into thongtinnguoidung values(1, N'trần văn H', 08011990, N'nghệ an', N'nam', '0363338021', N'tu1990@gmail.com', '123123123')
@@ -190,7 +181,6 @@ Go
 
 
  --LOGIN METHOD
- drop proc USP_Login
 CREATE PROC USP_Login 
 @userName nvarchar(255), @passWord nvarchar(255)
 as
@@ -202,20 +192,6 @@ end
 
 EXEC USP_Login @userName = 'hop1992@gmail.com' , @passWord = '888888888'
 
-drop proc USP_GetInfoWithUserNameAndPassword
-CREATE PROC USP_GetInfoWithUserNameAndPassword
-@userName nvarchar(255), @passWord nvarchar(255)
-as
-begin 
-	SELECT * FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
-	WHERE thongtinnguoidung.email = @userName AND thongtinnguoidung.password = @passWord;
-end 
-
-EXEC USP_GetInfoWithUserNameAndPassword @userName = 'hop1992@gmail.com' , @passWord = '888888888'
-
-select * from taikhoan
 
  --SHOW USERS
 CREATE PROC USP_getListUser @userRole INT
@@ -240,6 +216,62 @@ END
 
 EXEC USP_getuser @userid = 1
 
+CREATE PROC USP_GetInfoWithUserNameAndPassword
+@userName nvarchar(255), @passWord nvarchar(255)
+AS
+BEGIN 
+	 SELECT * FROM thongtinnguoidung INNER JOIN TaiKhoan ON thongtinnguoidung.ID_nguoisudung = TaiKhoan.ID_nguoisudung
+	 WHERE thongtinnguoidung.email = @userName AND thongtinnguoidung.password = @passWord;
+END 
+
+EXEC USP_GetInfoWithUserNameAndPassword  @userName = 'hop1992@gmail.com' , @passWord = '888888888'
+
+
+--FUNCTION ACCOUNT--
+CREATE FUNCTION dbo.transfermoney (@so_tai_khoan_gui  CHAR(255), @so_tai_khoan_nhan CHAR(255), @so_tien FLOAT)
+RETURNS INT AS
+BEGIN
+     DECLARE @from_balance FLOAT, @to_balance FLOAT;
+	 SELECT @from_balance = so_du FROM TaiKhoan WHERE so_tai_khoan = @so_tai_khoan_gui
+	 SELECT @to_balance = so_du FROM TaiKhoan WHERE so_tai_khoan = @so_tai_khoan_nhan
+	 IF @from_balance >= @so_tien
+     RETURN 1;
+	
+	 RETURN 0;
+END
+
+SELECT dbo.transfermoney('1974', '1973', '100000')
+
+--kiểm tra số tài khoản--
+CREATE FUNCTION dbo.kiem_tra(@so_tai_khoan CHAR(255)) 
+RETURNS INT AS
+BEGIN
+  DECLARE @count INT;
+  SELECT @count = count(TaiKhoan.so_tai_khoan) FROM TaiKhoan 
+  WHERE TaiKhoan.so_tai_khoan = @so_tai_khoan;
+  
+  IF @count > 0
+    RETURN 1;
+
+    RETURN 0;
+END
+
+SELECT dbo.kiem_tra('1974')
+
+--kiểm tra số tiền--
+CREATE FUNCTION dbo.checkmoney (@so_tai_khoan CHAR(255), @so_tien FLOAT)
+RETURNS BIT AS 
+BEGIN
+     DECLARE @balance FLOAT
+	 SELECT @balance = so_du FROM TaiKhoan WHERE so_tai_khoan = @so_tai_khoan
+	 IF @balance >= @so_tien
+	 RETURN 1;
+
+	 RETURN 0;
+END
+
+SELECT dbo.checkmoney('1974', '1000000')
+
 --PIN CHANGE--
 CREATE PROC USP_changePin  @soTaiKhoan INT,@oldPin INT,@newPin INT
 AS
@@ -251,45 +283,4 @@ BEGIN
 	
 END
 
-EXEC USP_changePin @soTaiKhoan = 1970 , @oldPin = 190191, @newPin = 91           
-
-select * from TaiKhoan
-SELECT * FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
-	WHERE thongtinnguoidung.email = 'tu1990@gmail.com' AND thongtinnguoidung.password = 123123123
-
----------------
-drop proc USP_GetNameUser
-
-CREATE PROC USP_GetNameUser @soTaiKhoan INT
-AS
-BEGIN
-SELECT ho_ten FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
-	WHERE @soTaiKhoan = TaiKhoan.so_tai_khoan
-END
-
-EXEC USP_GetNameUser @soTaiKhoan = 1970
-
-----------------------------
-create table ls 
-(
-	id char(20),
-	stknhan char(20),
-	sotien char(20),
-	ngaygd char(20)
-)
-go
-select * from ls
-
-insert into ls values('141', '1970', '1000000', '19042023')
-insert into ls values('142', '1971', '500000', '19042023')
-insert into ls values('143', '1972', '500000', '17042023')
-insert into ls values('144', '1973', '200000', '03042023')
-insert into ls values('145', '1974', '1000000', '10042023')
-
---------------------
-select * from thongtinnguoidung
-exec USP_Banking @soTaiKhoanGoc = 1970, @soTaiKhoanNhan = 1974 ,@soTien = 50
+EXEC USP_changePin @soTaiKhoan = 1970 , @oldPin = 190190, @newPin = 190191                                                                                                                                                                                                                                                            
