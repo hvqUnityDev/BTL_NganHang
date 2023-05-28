@@ -21,7 +21,7 @@ namespace WindowsFormsApp2
 
         private void Show_NhanVien()
         {
-            GiamDocDAO.Ins.ShowListView_NhanVien(lsvNhanVien);
+            ManagerDAO.Ins.ShowListView_NhanVien(lsvNhanVien);
         }
     }
 }

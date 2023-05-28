@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.Scripts.DAO;
 
 namespace WindowsFormsApp2
 {
@@ -15,6 +16,12 @@ namespace WindowsFormsApp2
         public fPhanHoi()
         {
             InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FeedBackDAO.Ins.SendFeedBack();
+            this.Close();
         }
     }
 }

@@ -9,15 +9,15 @@ using WindowsFormsApp2.Scripts.DTO;
 
 namespace WindowsFormsApp2.Scripts.DAO
 {
-    public class GiamDocDAO
+    public class ManagerDAO
     {
-        private static GiamDocDAO ins;
-        public static GiamDocDAO Ins
+        private static ManagerDAO ins;
+        public static ManagerDAO Ins
         {
             get
             {
                 if (ins == null)
-                    ins = new GiamDocDAO();
+                    ins = new ManagerDAO();
                 return ins;
             }
 
@@ -27,11 +27,11 @@ namespace WindowsFormsApp2.Scripts.DAO
         private List<Employee> listEmployee = new List<Employee>();
         public void ShowListView_NhanVien(ListView lsvNhanVien)
         {
-            string query = "";
+            string query = "select * from thongtinnguoidung";
 
             lsvNhanVien.Items.Clear();
             listEmployee.Clear();
-            var data = DataProvider.Ins.ExecuteQuery("select * from thongtinnguoidung");
+            var data = DataProvider.Ins.ExecuteQuery(query);
 
             foreach (DataRow row in data.Rows)
             {

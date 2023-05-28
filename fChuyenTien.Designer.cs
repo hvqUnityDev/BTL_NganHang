@@ -38,12 +38,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtMoney = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSTK = new System.Windows.Forms.TextBox();
+            this.numMoney = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMoney)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -57,6 +58,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.numMoney);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnCheck);
             this.groupBox1.Controls.Add(this.button2);
@@ -65,7 +67,6 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtMoney);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label3);
@@ -156,15 +157,6 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Nội dung chuyển khoản ";
             // 
-            // txtMoney
-            // 
-            this.txtMoney.Location = new System.Drawing.Point(220, 156);
-            this.txtMoney.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtMoney.Name = "txtMoney";
-            this.txtMoney.Size = new System.Drawing.Size(218, 22);
-            this.txtMoney.TabIndex = 4;
-//            this.txtMoney.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -183,7 +175,6 @@
             this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(218, 22);
             this.txtName.TabIndex = 3;
-  //          this.txtName.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label3
             // 
@@ -202,6 +193,34 @@
             this.txtSTK.Size = new System.Drawing.Size(218, 22);
             this.txtSTK.TabIndex = 2;
             // 
+            // numMoney
+            // 
+            this.numMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numMoney.Increment = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numMoney.Location = new System.Drawing.Point(220, 153);
+            this.numMoney.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numMoney.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numMoney.Name = "numMoney";
+            this.numMoney.Size = new System.Drawing.Size(218, 24);
+            this.numMoney.TabIndex = 12;
+            this.numMoney.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            // 
             // fChuyenTien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -214,6 +233,7 @@
             this.Text = "Chuyển tiền";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMoney)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -226,7 +246,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtMoney;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label3;
@@ -235,5 +254,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numMoney;
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPIN = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -42,16 +42,14 @@
             this.label1.Size = new System.Drawing.Size(130, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nhập mã pin ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // txtPIN
             // 
-            this.textBox1.Location = new System.Drawing.Point(114, 146);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(247, 22);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtPIN.Location = new System.Drawing.Point(95, 146);
+            this.txtPIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPIN.Name = "txtPIN";
+            this.txtPIN.Size = new System.Drawing.Size(274, 22);
+            this.txtPIN.TabIndex = 1;
             // 
             // btnAccept
             // 
@@ -64,7 +62,7 @@
             this.btnAccept.TabIndex = 5;
             this.btnAccept.Text = "Tiếp tục ";
             this.btnAccept.UseVisualStyleBackColor = false;
-            this.btnAccept.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // fNhapMaPin
             // 
@@ -72,7 +70,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 353);
             this.Controls.Add(this.btnAccept);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPIN);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximumSize = new System.Drawing.Size(480, 400);
@@ -80,7 +78,6 @@
             this.Name = "fNhapMaPin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Xác Nhận Mã Pin";
-            this.Load += new System.EventHandler(this.fnhapmapin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,7 +86,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPIN;
         private System.Windows.Forms.Button btnAccept;
     }
 }

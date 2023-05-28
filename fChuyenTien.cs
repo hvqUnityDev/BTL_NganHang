@@ -23,8 +23,12 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!isChecked) return;
-            if (!BankingDAO.Ins.CheckMoney(txtMoney.Text)) return;
+            if (!isChecked)
+            {
+                MessageBox.Show("Kiểm tra lại!");
+                return;
+            }
+            if (!BankingDAO.Ins.CheckMoney(numMoney.Text)) return;
 
             this.Hide();
             fNhapMaPin nhapMaPin= new fNhapMaPin();
@@ -37,6 +41,11 @@ namespace WindowsFormsApp2
             {
                 txtName.Text = BankingDAO.Ins.CheckNameWithSTK(txtSTK.Text);
                 isChecked = true;
+            }
+            else
+            {
+                txtName.Text = "";
+                isChecked = false;
             }
         }
     }

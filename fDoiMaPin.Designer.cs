@@ -75,7 +75,6 @@
             this.txtOldPass.Size = new System.Drawing.Size(375, 22);
             this.txtOldPass.TabIndex = 3;
             this.txtOldPass.UseSystemPasswordChar = true;
-//            this.txtOldPass.TextChanged += new System.EventHandler(this.txtOldPass_TextChanged);
             // 
             // txtNewPassAgain
             // 
@@ -84,7 +83,6 @@
             this.txtNewPassAgain.Size = new System.Drawing.Size(375, 22);
             this.txtNewPassAgain.TabIndex = 5;
             this.txtNewPassAgain.UseSystemPasswordChar = true;
- //           this.txtNewPassAgain.TextChanged += new System.EventHandler(this.txtNewPassAgain_TextChanged);
             // 
             // txtNewPass
             // 
@@ -93,7 +91,6 @@
             this.txtNewPass.Size = new System.Drawing.Size(375, 22);
             this.txtNewPass.TabIndex = 4;
             this.txtNewPass.UseSystemPasswordChar = true;
-//            this.txtNewPass.TextChanged += new System.EventHandler(this.txtNewPass_TextChanged);
             // 
             // btnAccept
             // 
@@ -103,7 +100,6 @@
             this.btnAccept.Size = new System.Drawing.Size(113, 73);
             this.btnAccept.TabIndex = 6;
             this.btnAccept.Text = "Xác nhận";
-            this.btnAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.button1_Click);
             // 

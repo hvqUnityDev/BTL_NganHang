@@ -37,7 +37,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSaoKe = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lbSTK = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,7 +49,8 @@
             // 
             // btnChuyenTien
             // 
-            this.btnChuyenTien.Location = new System.Drawing.Point(82, 31);
+            this.btnChuyenTien.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnChuyenTien.Location = new System.Drawing.Point(88, 69);
             this.btnChuyenTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChuyenTien.Name = "btnChuyenTien";
             this.btnChuyenTien.Size = new System.Drawing.Size(145, 57);
@@ -61,17 +61,20 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(683, 31);
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button2.Location = new System.Drawing.Point(689, 69);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(134, 58);
             this.button2.TabIndex = 1;
             this.button2.Text = "NẠP TIỀN ĐIỆN THOẠI ";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(491, 31);
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button3.Location = new System.Drawing.Point(497, 69);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(134, 57);
@@ -118,10 +121,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnSaoKe);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnChuyenTien);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
@@ -132,7 +134,6 @@
             this.groupBox1.Size = new System.Drawing.Size(914, 211);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-//            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label1
             // 
@@ -145,7 +146,8 @@
             // 
             // btnSaoKe
             // 
-            this.btnSaoKe.Location = new System.Drawing.Point(288, 32);
+            this.btnSaoKe.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSaoKe.Location = new System.Drawing.Point(294, 70);
             this.btnSaoKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaoKe.Name = "btnSaoKe";
             this.btnSaoKe.Size = new System.Drawing.Size(145, 57);
@@ -154,19 +156,10 @@
             this.btnSaoKe.UseVisualStyleBackColor = true;
             this.btnSaoKe.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(491, 138);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(134, 57);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "THOÁT";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(285, 138);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(825, 11);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 57);
@@ -245,6 +238,7 @@
             this.ClientSize = new System.Drawing.Size(982, 653);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnPhanHoi);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
@@ -274,7 +268,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSaoKe;
         private System.Windows.Forms.Label label1;

@@ -290,6 +290,54 @@ insert into ls values('143', '1972', '500000', '17042023')
 insert into ls values('144', '1973', '200000', '03042023')
 insert into ls values('145', '1974', '1000000', '10042023')
 
---------------------
 select * from thongtinnguoidung
+
+use ql_nganhang
+use QL_NGANHANG
+select * from GiaoDich
+
+SELECT * from thongtinnguoidung
+
+select so_du from taikhoan where id_nguoisudung = 1 
+-------------------------BANKIng-----------
+CREATE PROC USP_Banking @soTaiKhoanGoc INT,@soTaiKhoanNhan INT,@soTien INT
+AS
+BEGIN 
+
+    UPDATE TaiKhoan 
+    SET so_du = so_du - @soTien
+    WHERE TaiKhoan.so_tai_khoan = @soTaiKhoanGoc
+
+    UPDATE TaiKhoan 
+    SET so_du = so_du + @soTien
+    WHERE TaiKhoan.so_tai_khoan = @soTaiKhoanNhan
+    
+END
+select * from taikhoan
+
 exec USP_Banking @soTaiKhoanGoc = 1970, @soTaiKhoanNhan = 1974 ,@soTien = 50
+
+-----------Nap Dien Thoai - TODO: update vao ls giao dich---------
+CREATE PROC USP_MobileRecharge @soTaiKhoanGoc INT,@soTien INT
+AS
+BEGIN 
+
+    UPDATE TaiKhoan 
+    SET so_du = so_du - @soTien
+    WHERE TaiKhoan.so_tai_khoan = @soTaiKhoanGoc
+END
+
+exec USP_MobileRecharge @soTaiKhoanGoc = 1970, @soTien = 30
+
+------------check correct PIN ------------
+
+CREATE PROC USP_CheckPIN @soTaiKhoan INT,@maPIN int
+AS
+BEGIN 
+
+	select count(*) from Taikhoan where so_tai_khoan = @soTaiKhoan and @maPIN = pin
+END
+
+exec USP_CheckPIN @soTaiKhoan = 1970, @maPIN = 2
+
+select * from Taikhoan

@@ -69,7 +69,6 @@ namespace WindowsFormsApp2
             this.Hide();
             fPhanHoi fPhanHoi = new fPhanHoi();
             fPhanHoi.ShowDialog();
-            Show_SoDu();
             this.Show();
         }
 
@@ -92,6 +91,14 @@ namespace WindowsFormsApp2
             fSaoKe fSaoKe = new fSaoKe();
             fSaoKe.crystalReportViewer.ReportSource = r;
             fSaoKe.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            fNapDT f = new fNapDT();
+            f.ShowDialog();
+            this.Show();
         }
     }
 }

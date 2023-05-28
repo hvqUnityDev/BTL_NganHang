@@ -125,14 +125,19 @@
     <Compile Include="Scripts\DAO\AccountDAO.cs" />
     <Compile Include="Scripts\DAO\ChangePINDAO.cs" />
     <Compile Include="Scripts\DAO\BankingDAO.cs" />
-    <Compile Include="Scripts\DAO\GiamDocDAO.cs" />
+    <Compile Include="Scripts\DAO\FeedBackDAO.cs" />
+    <Compile Include="Scripts\DAO\ManagerDAO.cs" />
+    <Compile Include="Scripts\DAO\MobileRechargeDAO.cs" />
     <Compile Include="Scripts\DataProvider.cs" />
     <Compile Include="Scripts\DTO\Account.cs" />
     <Compile Include="Scripts\DTO\Bill.cs" />
+    <Compile Include="Scripts\DTO\Customer.cs" />
     <Compile Include="Scripts\DTO\Employee.cs" />
     <Compile Include="Scripts\Interface\IAccount.cs" />
     <Compile Include="Scripts\Interface\IBanking.cs" />
     <Compile Include="Scripts\Interface\IChangePIN.cs" />
+    <Compile Include="Scripts\Interface\IFeedBack.cs" />
+    <Compile Include="Scripts\Interface\IMobileRecharge.cs" />
     <EmbeddedResource Include="RP_SaoKe.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RP_SaoKe.cs</LastGenOutput>

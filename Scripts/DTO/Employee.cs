@@ -9,13 +9,12 @@ namespace WindowsFormsApp2.Scripts.DTO
 {
     public class Employee
     {
-
-        private string name;
-        private string dateOfBirth;
-        private string address;
-        private string sexName;
-        private string phoneNumber;
-        private string email;
+        protected string name;
+        protected string dateOfBirth;
+        protected string address;
+        protected string sexName;
+        protected string phoneNumber;
+        protected string email;
 
         public string Email { get => email; set => email = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }

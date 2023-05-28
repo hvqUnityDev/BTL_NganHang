@@ -41,6 +41,7 @@ namespace WindowsFormsApp2
             {
                 MessageBox.Show("Đổi PIN thành công.");
                 ResetText();
+                this.Close();
             }
         }
 

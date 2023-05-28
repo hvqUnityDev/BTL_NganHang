@@ -30,6 +30,12 @@ namespace WindowsFormsApp2.Scripts.DAO
 
         public bool CheckMoney(string txtMoney)
         {
+            if (txtMoney.Length <= 0)
+            {
+                MessageBox.Show("Nhập số tiền hợp lệ");
+                return false;
+            }
+
             if (Int64.Parse(txtMoney) <= Int64.Parse(AccountDAO.Ins.TheAccount.SoDu))
             {
                 return true;
@@ -78,7 +84,14 @@ namespace WindowsFormsApp2.Scripts.DAO
             string query = "EXEC USP_GetNameUser @soTaiKhoan";
             DataTable table = DataProvider.Ins.ExecuteQuery(query, new object[] { Int64.Parse(txtSTK.ToString()) });
 
+            if (table.Rows.Count < 1)
+            {
+                MessageBox.Show("Không tồn tại!");
+                return null;
+            }
+
             string stk = table.Rows[0]["ho_ten"].ToString();
+
             if (stk == AccountDAO.Ins.TheAccount.SoTK)
             {
                 MessageBox.Show("Không được chuyển tiền cho bản thân.");
@@ -86,6 +99,12 @@ namespace WindowsFormsApp2.Scripts.DAO
             }
 
             return stk;
+        }
+
+        public int CheckPIN(string txtPIN)
+        {
+            string query = "USP_CheckPIN @soTaiKhoan , @maPIN";
+            return (int)DataProvider.Ins.ExecuteScalar(query, new object[] {AccountDAO.Ins.TheAccount.SoTK , txtPIN });
         }
     }
 }

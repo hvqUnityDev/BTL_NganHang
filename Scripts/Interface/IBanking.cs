@@ -11,5 +11,6 @@ namespace WindowsFormsApp2.Scripts.DTO
         bool CheckMoney(string txtMoney);
         string CheckNameWithSTK(string txtSTK);
         void ChuyenKhoan(string fromSTk, string toSTk, string soTien);
+        int CheckPIN(string txtPIN);
     }
 }
