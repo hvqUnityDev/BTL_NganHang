@@ -86,7 +86,7 @@ namespace WindowsFormsApp2
             string query = "select * from ls";
             DataTable dt = DataProvider.Ins.ExecuteQuery(query);
 
-            CrystalReport1 r = new CrystalReport1();
+            RP_SaoKe r = new RP_SaoKe();
             r.SetDataSource(dt);
 
             fSaoKe fSaoKe = new fSaoKe();

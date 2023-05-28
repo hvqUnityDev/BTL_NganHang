@@ -10,7 +10,7 @@ using WindowsFormsApp2.Scripts.DTO;
 
 namespace WindowsFormsApp2.Scripts.DAO
 {
-    public class BankingDAO : Element_Banking
+    public class BankingDAO : IBanking
     {
         private static BankingDAO ins;
         public static BankingDAO Ins

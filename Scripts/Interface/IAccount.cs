@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp2.Scripts.DTO
 {
-    public interface Element_Account
+    public interface IAccount
     {
         bool Login(string username, string password);
     }

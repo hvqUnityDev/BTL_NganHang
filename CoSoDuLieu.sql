@@ -310,3 +310,6 @@ insert into ls values('142', '1971', '500000', '19042023')
 insert into ls values('143', '1972', '500000', '17042023')
 insert into ls values('144', '1973', '200000', '03042023')
 insert into ls values('145', '1974', '1000000', '10042023')
+
+--------------------
+select * from thongtinnguoidung

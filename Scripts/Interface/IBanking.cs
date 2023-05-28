@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp2.Scripts.DTO
 {
-    public interface Element_Banking
+    public interface IBanking
     {
         bool CheckMoney(string txtMoney);
         string CheckNameWithSTK(string txtSTK);

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.Scripts.DAO;
 
 namespace WindowsFormsApp2
 {
@@ -15,21 +16,12 @@ namespace WindowsFormsApp2
         public fGiamdoc()
         {
             InitializeComponent();
+            Show_NhanVien();
         }
 
-        private void fGiamdoc_Load(object sender, EventArgs e)
+        private void Show_NhanVien()
         {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
+            GiamDocDAO.Ins.ShowListView_NhanVien(lsvNhanVien);
         }
     }
 }
