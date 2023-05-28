@@ -72,6 +72,18 @@
     <Compile Include="fChuyenTien.Designer.cs">
       <DependentUpon>fChuyenTien.cs</DependentUpon>
     </Compile>
+    <Compile Include="fDangki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fDangki.Designer.cs">
+      <DependentUpon>fDangki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fVay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fVay.Designer.cs">
+      <DependentUpon>fVay.cs</DependentUpon>
+    </Compile>
     <Compile Include="fGiamdoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +180,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fSaoKe.resx">
       <DependentUpon>fSaoKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fVay.resx">
+      <DependentUpon>fVay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fDangki.resx">
+      <DependentUpon>fDangki.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
