@@ -94,7 +94,7 @@ CREATE TABLE vay_von (
     can_cuoc INT PRIMARY KEY,
     sdt VARCHAR(255),
     tien_vay FLOAT,
-    ngay_vay DATE
+    ngay_vay CHAR(50)
 );
 
 
