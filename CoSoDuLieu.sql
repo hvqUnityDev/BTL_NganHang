@@ -49,6 +49,7 @@ CREATE TABLE TaiKhoan (
  --bang giao dich--
 CREATE TABLE GiaoDich (
   IDGiaoDich INT PRIMARY KEY,
+  so_tien FLOAT,
   so_tien FLOAT NOT NULL,
   ngay_gd INT NOT NULL,
   so_tai_khoan CHAR(255) NOT NULL,
@@ -89,15 +90,13 @@ CREATE TABLE BillInfo (
   FOREIGN KEY (ID_Bill) REFERENCES Bill(ID_Bill),
   FOREIGN KEY (IDSP) REFERENCES SanPham(IDSP)
 );
-CREATE TABLE LichSuGiaoDich (
-    id INT PRIMARY KEY,
-    stk_den VARCHAR(50),
-    so_tien FLOAT,
-    message VARCHAR(255),
-    sent_date DATE,
-	IDGiaoDich INT PRIMARY KEY,
-	FOREIGN KEY (IDGiaoDich) REFERENCES GiaoDich(IDGiaoDich)
+CREATE TABLE vay_von (
+    can_cuoc INT PRIMARY KEY,
+    sdt VARCHAR(255),
+    tien_vay FLOAT,
+    ngay_vay DATE
 );
+
 
 --nhap du lieu cho bang thông tin người dùng----
 insert into thongtinnguoidung values(1, N'trần văn H', 08011990, N'nghệ an', N'nam', '0363338021', N'tu1990@gmail.com', '123123123')
@@ -183,6 +182,14 @@ insert into BillInfo values(1105, 105, 010, 50000000)
 
 select * from BillInfo
 
+
+insert into vay_von values(0402016407, '0363338021', 100000000, '20/05/2023')
+insert into vay_von values(0402016408, '0902040942', 250000000, '28/05/2023')
+insert into vay_von values(0402016409, '0335215726', 300000000, '10/04/2023')
+
+select * from vay_von
+
+
 --CÂU TRUY VẤN--
 -----------------------------------------------------------
 use QL_NGANHANG
@@ -217,6 +224,24 @@ EXEC USP_GetInfoWithUserNameAndPassword @userName = 'hop1992@gmail.com' , @passW
 
 select * from taikhoan
 
+-- Register
+ CREATE TABLE thongtinnguoidung(
+  ID_nguoisudung INT PRIMARY KEY NOT NULL,
+  ho_ten NVARCHAR(255) NOT NULL,
+  ngay_sinh INT NOT NULL,
+  dia_chi NVARCHAR(255) NOT NULL,
+  gioi_tinh NVARCHAR(255) NOT NULL,
+  SDT NVARCHAR(20) NOT NULL,
+  email NVARCHAR(255) NOT NULL,
+  password NVARCHAR(255) NOT NULL
+);
+CREATE PROC USP_register
+ @userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh INT, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
+AS
+BEGIN
+insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password) values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord)
+END
+
  --SHOW USERS
 CREATE PROC USP_getListUser @userRole INT
 AS
@@ -225,6 +250,25 @@ SELECT *
 FROM nguoisudung
 inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
 WHERE  @userRole = nguoisudung.ID_quyen
+
+END
+  -- WITH EMAIL
+CREATE PROC USP_getListUserWithEmail @email NVARCHAR(255)
+AS
+BEGIN
+SELECT * 
+FROM nguoisudung
+inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+WHERE  @email = nguoisudung.email
+
+  -- WITH SDT
+CREATE PROC USP_getListUserWithEmail @SDT NVARCHAR(20)
+AS
+BEGIN
+SELECT * 
+FROM nguoisudung
+inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+WHERE  @SDT = nguoisudung.SDT
 
 END
 
@@ -238,7 +282,6 @@ SELECT * FROM nguoisudung inner join  thongtinnguoidung on nguoisudung.ID_nguoiD
 WHERE @userid = ID_nguoiDung
 END
 
-EXEC USP_getuser @userid = 1
 
 --PIN CHANGE--
 CREATE PROC USP_changePin  @soTaiKhoan INT,@oldPin INT,@newPin INT
@@ -288,3 +331,14 @@ BEGIN
 	
 END
 exec USP_Banking @soTaiKhoanGoc = 1970, @soTaiKhoanNhan = 1974 ,@soTien = 50
+
+-- LOAN --
+
+CREATE PROC USP_searchLoan @can_cuoc INT 
+AS
+BEGIN 
+	SELECT * 
+	FROM vay_von 
+	WHERE @can_cuoc = vay_von.can_cuoc
+END
+
