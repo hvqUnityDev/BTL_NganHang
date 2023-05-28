@@ -181,7 +181,6 @@ Go
 
 
  --LOGIN METHOD
- drop proc USP_Login
 CREATE PROC USP_Login 
 @userName nvarchar(255), @passWord nvarchar(255)
 as
@@ -193,20 +192,6 @@ end
 
 EXEC USP_Login @userName = 'hop1992@gmail.com' , @passWord = '888888888'
 
-drop proc USP_GetInfoWithUserNameAndPassword
-CREATE PROC USP_GetInfoWithUserNameAndPassword
-@userName nvarchar(255), @passWord nvarchar(255)
-as
-begin 
-	SELECT * FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
-	WHERE thongtinnguoidung.email = @userName AND thongtinnguoidung.password = @passWord;
-end 
-
-EXEC USP_GetInfoWithUserNameAndPassword @userName = 'hop1992@gmail.com' , @passWord = '888888888'
-
-select * from taikhoan
 
  --SHOW USERS
 CREATE PROC USP_getListUser @userRole INT
@@ -231,6 +216,62 @@ END
 
 EXEC USP_getuser @userid = 1
 
+CREATE PROC USP_GetInfoWithUserNameAndPassword
+@userName nvarchar(255), @passWord nvarchar(255)
+AS
+BEGIN 
+	 SELECT * FROM thongtinnguoidung INNER JOIN TaiKhoan ON thongtinnguoidung.ID_nguoisudung = TaiKhoan.ID_nguoisudung
+	 WHERE thongtinnguoidung.email = @userName AND thongtinnguoidung.password = @passWord;
+END 
+
+EXEC USP_GetInfoWithUserNameAndPassword  @userName = 'hop1992@gmail.com' , @passWord = '888888888'
+
+
+--FUNCTION ACCOUNT--
+CREATE FUNCTION dbo.transfermoney (@so_tai_khoan_gui  CHAR(255), @so_tai_khoan_nhan CHAR(255), @so_tien FLOAT)
+RETURNS INT AS
+BEGIN
+     DECLARE @from_balance FLOAT, @to_balance FLOAT;
+	 SELECT @from_balance = so_du FROM TaiKhoan WHERE so_tai_khoan = @so_tai_khoan_gui
+	 SELECT @to_balance = so_du FROM TaiKhoan WHERE so_tai_khoan = @so_tai_khoan_nhan
+	 IF @from_balance >= @so_tien
+     RETURN 1;
+	
+	 RETURN 0;
+END
+
+SELECT dbo.transfermoney('1974', '1973', '100000')
+
+--kiểm tra số tài khoản--
+CREATE FUNCTION dbo.kiem_tra(@so_tai_khoan CHAR(255)) 
+RETURNS INT AS
+BEGIN
+  DECLARE @count INT;
+  SELECT @count = count(TaiKhoan.so_tai_khoan) FROM TaiKhoan 
+  WHERE TaiKhoan.so_tai_khoan = @so_tai_khoan;
+  
+  IF @count > 0
+    RETURN 1;
+
+    RETURN 0;
+END
+
+SELECT dbo.kiem_tra('1974')
+
+--kiểm tra số tiền--
+CREATE FUNCTION dbo.checkmoney (@so_tai_khoan CHAR(255), @so_tien FLOAT)
+RETURNS BIT AS 
+BEGIN
+     DECLARE @balance FLOAT
+	 SELECT @balance = so_du FROM TaiKhoan WHERE so_tai_khoan = @so_tai_khoan
+	 IF @balance >= @so_tien
+	 RETURN 1;
+
+	 RETURN 0;
+END
+
+SELECT dbo.checkmoney('1974', '1000000')
+
 --PIN CHANGE--
 CREATE PROC USP_changePin  @soTaiKhoan INT,@oldPin INT,@newPin INT
 AS
@@ -242,40 +283,4 @@ BEGIN
 	
 END
 
-EXEC USP_changePin @soTaiKhoan = 1970 , @oldPin = 190191, @newPin = 91           
-
-select * from TaiKhoan
-SELECT * FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
-	WHERE thongtinnguoidung.email = 'tu1990@gmail.com' AND thongtinnguoidung.password = 123123123
-
----------------
-drop proc USP_GetNameUser
-
-CREATE PROC USP_GetNameUser @soTaiKhoan INT
-AS
-BEGIN
-SELECT ho_ten FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
-	WHERE @soTaiKhoan = TaiKhoan.so_tai_khoan
-END
-
-EXEC USP_GetNameUser @soTaiKhoan = 1970
-
-----------------------------
-CREATE PROC USP_Banking @soTaiKhoanGoc INT,@soTaiKhoanNhan INT,@soTien INT
-AS
-BEGIN 
-
-	UPDATE TaiKhoan 
-	SET so_du = so_du - @soTien
-	WHERE TaiKhoan.so_tai_khoan = @soTaiKhoanGoc
-
-	UPDATE TaiKhoan 
-	SET so_du = so_du + @soTien
-	WHERE TaiKhoan.so_tai_khoan = @soTaiKhoanNhan
-	
-END
-exec USP_Banking @soTaiKhoanGoc = 1970, @soTaiKhoanNhan = 1974 ,@soTien = 50
+EXEC USP_changePin @soTaiKhoan = 1970 , @oldPin = 190190, @newPin = 190191                                                                                                                                                                                                                                                            
