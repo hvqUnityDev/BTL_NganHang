@@ -23,5 +23,10 @@ namespace WindowsFormsApp2
         {
             ManagerDAO.Ins.ShowListView_NhanVien(lsvNhanVien);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

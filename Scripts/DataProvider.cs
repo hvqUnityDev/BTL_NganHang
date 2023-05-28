@@ -26,8 +26,8 @@ namespace WindowsFormsApp2.Scripts
         private DataProvider() { }
 
         string strCon
-            // Quan
-            = @"Data Source=LAPTOP-89GT2MJ0\KTEAM;Initial Catalog=QL_NGANHANG;Integrated Security=True";
+            // ngoc
+            = @"Data Source=DESKTOP-FSQJB9O\ngocm;Initial Catalog=QL_NGANHANG;Integrated Security=True";
         
         
         public DataTable ExecuteQuery(string query, object[] parameter = null)

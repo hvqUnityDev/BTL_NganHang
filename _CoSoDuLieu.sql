@@ -49,10 +49,10 @@ CREATE TABLE TaiKhoan (
  --bang giao dich--
 CREATE TABLE GiaoDich (
   IDGiaoDich INT PRIMARY KEY,
-  so_tien FLOAT,
   so_tien FLOAT NOT NULL,
   ngay_gd INT NOT NULL,
   so_tai_khoan CHAR(255) NOT NULL,
+  so_tai_khoan_nhan CHAR(255)
   FOREIGN KEY (so_tai_khoan) REFERENCES TaiKhoan(so_tai_khoan)
 );
 
@@ -94,7 +94,7 @@ CREATE TABLE vay_von (
     can_cuoc INT PRIMARY KEY,
     sdt VARCHAR(255),
     tien_vay FLOAT,
-    ngay_vay DATE
+    ngay_vay CHAR(50)
 );
 
 
@@ -233,6 +233,15 @@ AS
 BEGIN
 	insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password) values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord)
 END
+--UPDATE
+CREATE PROC USP_register
+ @userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh INT, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
+AS
+BEGIN
+UPDATE thongtinnguoidung 
+	SET ho_ten = @ho_ten, ngay_sinh = @ngay_sinh, dia_chi = @dia_chi, gioi_tinh = @gioi_tinh, SDT = @SDT, email = @userName, passWord = @passWord
+	WHERE @userName = thongtinnguoidung.email 
+END
 
 SELECT * FROM nguoisudung 
 	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
@@ -262,15 +271,16 @@ select * from thongtinnguoidung
 exec USP_getListUserWithEmail @email = 'n'
 
   -- WITH SDT
-CREATE PROC USP_getListUserWithEmail @SDT NVARCHAR(20)
+CREATE PROC USP_getListUserWithSDT @SDT NVARCHAR(20)
 AS
 BEGIN
 SELECT * 
 FROM nguoisudung
 inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-WHERE  @SDT = nguoisudung.SDT
+WHERE  thongtinnguoidung.SDT  LIKE '%' + @SDT + '%'
 
 END
+
 
 EXEC USP_getListUser @userRole = 2
 
@@ -379,3 +389,11 @@ END
 exec USP_CheckPIN @soTaiKhoan = 1970, @maPIN = 2
 
 select * from ls
+
+-- SAVE BANKING
+
+CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_gd INT
+AS 
+BEGIN 
+insert into GiaoDich(so_tien,ngay_gd,so_tai_khoan,so_tai_khoan_nhan) values (@money,@ngay_gd,@from,@to)
+END
