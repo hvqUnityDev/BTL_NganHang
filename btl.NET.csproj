@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+    </Compile>
     <Compile Include="RP_SaoKe.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -140,6 +146,8 @@
     <Compile Include="Scripts\DAO\FeedBackDAO.cs" />
     <Compile Include="Scripts\DAO\ManagerDAO.cs" />
     <Compile Include="Scripts\DAO\MobileRechargeDAO.cs" />
+    <Compile Include="Scripts\DAO\RegisterDAO.cs" />
+    <Compile Include="Scripts\DAO\ThuTucVayDAO.cs" />
     <Compile Include="Scripts\DataProvider.cs" />
     <Compile Include="Scripts\DTO\Account.cs" />
     <Compile Include="Scripts\DTO\Bill.cs" />
@@ -150,6 +158,12 @@
     <Compile Include="Scripts\Interface\IChangePIN.cs" />
     <Compile Include="Scripts\Interface\IFeedBack.cs" />
     <Compile Include="Scripts\Interface\IMobileRecharge.cs" />
+    <Compile Include="Scripts\Interface\IRegister.cs" />
+    <Compile Include="Scripts\Interface\IThuTucVay.cs" />
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RP_SaoKe.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RP_SaoKe.cs</LastGenOutput>

@@ -228,11 +228,15 @@ select * from taikhoan
 -- Register
 ----------------------------------------------------------------------------------
 CREATE PROC USP_register
- @userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh INT, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
+	@userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh INT, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
 AS
 BEGIN
-insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password) values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord)
+	insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password) values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord)
 END
+
+SELECT * FROM nguoisudung 
+	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
 
  --SHOW USERS
 CREATE PROC USP_getListUser @userRole INT
@@ -315,18 +319,8 @@ create table ls
 	ngaygd char(20)
 )
 go
-select * from ls
-
-insert into ls values('141', '1970', '1000000', '19042023')
-insert into ls values('142', '1971', '500000', '19042023')
-insert into ls values('143', '1972', '500000', '17042023')
-insert into ls values('144', '1973', '200000', '03042023')
-insert into ls values('145', '1974', '1000000', '10042023')
-
-exec USP_Banking @soTaiKhoanGoc = 1970, @soTaiKhoanNhan = 1974 ,@soTien = 50
 
 -- LOAN --
-
 CREATE PROC USP_searchLoan @can_cuoc INT 
 AS
 BEGIN 
@@ -384,4 +378,4 @@ END
 
 exec USP_CheckPIN @soTaiKhoan = 1970, @maPIN = 2
 
-select * from Taikhoan
+select * from ls

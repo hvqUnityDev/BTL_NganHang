@@ -17,28 +17,31 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
-        private void fDangki_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            if(txtName.Text.Length <= 0 
+                || txtAddress.Text.Length <= 0 
+                || txtEmail.Text.Length <= 0 
+                || txtPassword.Text.Length <= 0 
+                || txtPasswordAgain.Text.Length <= 0
+                || txtPIN.Text.Length <= 0
+                || txtPINAgain.Text.Length <= 0) {
+                MessageBox.Show("Xin hãy điền đủ thông tin!");
+                return;
+            }
 
-        }
+            if(txtPassword.Text != txtPasswordAgain.Text)
+            {
+                MessageBox.Show("Hai mật khẩu không trùng nhau!");
+                return;
+            }
 
-       private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+            if (txtPIN.Text != txtPINAgain.Text)
+            {
+                MessageBox.Show("Hai PIN không trùng nhau!");
+                return;
+            }
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
         }
     }
