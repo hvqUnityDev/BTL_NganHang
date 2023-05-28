@@ -49,10 +49,10 @@ CREATE TABLE TaiKhoan (
  --bang giao dich--
 CREATE TABLE GiaoDich (
   IDGiaoDich INT PRIMARY KEY,
-  so_tien FLOAT,
   so_tien FLOAT NOT NULL,
   ngay_gd INT NOT NULL,
   so_tai_khoan CHAR(255) NOT NULL,
+  so_tai_khoan_nhan CHAR(255)
   FOREIGN KEY (so_tai_khoan) REFERENCES TaiKhoan(so_tai_khoan)
 );
 
@@ -356,3 +356,11 @@ END
 select * from thongtinnguoidung
 exec USP_Banking @soTaiKhoanGoc = 1970, @soTaiKhoanNhan = 1974 ,@soTien = 50
 >>>>>>> c6e116f98e1c2816450a63e7e7e452813e3091fb
+
+-- SAVE BANKING
+
+CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_gd INT
+AS 
+BEGIN 
+insert into GiaoDich(so_tien,ngay_gd,so_tai_khoan,so_tai_khoan_nhan) values (@money,@ngay_gd,@from,@to)
+END
