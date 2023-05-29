@@ -44,7 +44,7 @@ CREATE TABLE TaiKhoan (
   ngay_mo_tai_khoan date,
   ID_nguoisudung INT NOT NULL,
   FOREIGN KEY (ID_nguoisudung) REFERENCES thongtinnguoidung(ID_nguoisudung)
-);
+)
 
  --bang giao dich--
 CREATE TABLE GiaoDich (
@@ -99,11 +99,11 @@ CREATE TABLE vay_von (
 
 
 --nhap du lieu cho bang thông tin người dùng----
-insert into thongtinnguoidung values(1, N'trần văn H', 08011990, N'nghệ an', N'nam', '0363338021', N'tu1990@gmail.com', '123123123')
-insert into thongtinnguoidung values(2, N'trần thị P', 20121996, N'thanh hóa', N'nữ', '0902040942', N'phuong1996@gmail.com', '12345678')
-insert into thongtinnguoidung values(3, N'bùi thị A', 20102002, N'vinh', N'nữ', '0335215726', N'anh2002@gmail.com', '999999999')
-insert into thongtinnguoidung values(4, N'lê thị H', 19021992, N'thanh hóa', N'nữ', '0363520149', N'hop1992@gmail.com', '888888888')
-insert into thongtinnguoidung values(5, N'nguyễn xuân T', 01102000, N'hà nội', N'nam', '09502040942', N'tien2000@gmail.com', '55555555')
+insert into thongtinnguoidung values(1, N'trần văn H', '1990-08-01', N'nghệ an', N'nam', '0363338021', N'tu1990@gmail.com', '123123123')
+insert into thongtinnguoidung values(2, N'trần thị P', '1996-12-20', N'thanh hóa', N'nữ', '0902040942', N'phuong1996@gmail.com', '12345678')
+insert into thongtinnguoidung values(3, N'bùi thị A', '2002-10-20', N'vinh', N'nữ', '0335215726', N'anh2002@gmail.com', '999999999')
+insert into thongtinnguoidung values(4, N'lê thị H', '1992-02-19', N'thanh hóa', N'nữ', '0363520149', N'hop1992@gmail.com', '888888888')
+insert into thongtinnguoidung values(5, N'nguyễn xuân T', '2000-01-10', N'hà nội', N'nam', '09502040942', N'tien2000@gmail.com', '55555555')
 
 select * from thongtinnguoidung
 
@@ -124,21 +124,21 @@ insert into nguoisudung values(5, 05)
 select * from nguoisudung
 
 --nhap du lieu cho bang tai khoan--
-insert into TaiKhoan values(1970,  190190, N'hoạt động', '20000000', 'visa', 20022023, 1)
-insert into TaiKhoan values(1971,  971971, N'hoạt động', '10000000', 'napas', 20102022, 2)
-insert into TaiKhoan values(1972,  972972, N'hoạt động', '500000', 'napas', 10102022, 3)
-insert into TaiKhoan values(1973,  973973, N'hoạt động', '1000000', 'napas', 19012023, 4)
-insert into TaiKhoan values(1974,  974974, N'hoạt động', '350000', 'napas', 01022023, 5)
+insert into TaiKhoan values(1970,  190190, N'hoạt động', '20000000', 'visa', '2023-02-20', 1)
+insert into TaiKhoan values(1971,  971971, N'hoạt động', '10000000', 'napas', '2022-10-20', 2)
+insert into TaiKhoan values(1972,  972972, N'hoạt động', '500000', 'napas', '2022-10-10', 3)
+insert into TaiKhoan values(1973,  973973, N'hoạt động', '1000000', 'napas', '2023-01-19', 4)
+insert into TaiKhoan values(1974,  974974, N'hoạt động', '350000', 'napas', '2023-01-02', 5)
 
 
 select * from TaiKhoan
 
 --nhap du lieu cho bang giao dich--
-insert into GiaoDich values(141, '1000000', 19042023, 1970)
-insert into GiaoDich values(142, '500000', 19042023, 1971)
-insert into GiaoDich values(143, '500000', 17042023, 1972)
-insert into GiaoDich values(144, '200000', 03042023, 1973)
-insert into GiaoDich values(145, '1000000', 10042023, 1974)
+insert into GiaoDich values(141, '1000000', '2023-04-19', 1970)
+insert into GiaoDich values(142, '500000', '2023-04-19', 1971)
+insert into GiaoDich values(143, '500000', '2023-04-17', 1972)
+insert into GiaoDich values(144, '200000', '2023-03-04', 1973)
+insert into GiaoDich values(145, '1000000', '2023-10-04', 1974)
 
 select * from GiaoDich
 
