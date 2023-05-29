@@ -4,6 +4,12 @@ GO
 USE QL_NGANHANG
 GO
 
+--bang QUYỀN--
+CREATE TABLE quyen (
+ID_quyen INT PRIMARY KEY IDENTITY(1,1) ,
+ten_quyen NVARCHAR(255)
+);
+
  --bang thông tin người dùng--
  CREATE TABLE thongtinnguoidung(
   ID_nguoisudung INT PRIMARY KEY IDENTITY(1,1) NOT NULL , 
@@ -13,30 +19,21 @@ GO
   gioi_tinh NVARCHAR(255) NOT NULL,
   SDT NVARCHAR(20) NOT NULL,
   email NVARCHAR(255) NOT NULL,
-  password NVARCHAR(255) NOT NULL
-);
-
---bang QUYỀN--
-CREATE TABLE quyen (
-ID_quyen INT PRIMARY KEY IDENTITY(1,1) ,
-ten_quyen NVARCHAR(255)
-);
+  password NVARCHAR(255) NOT NULL,
+  ID_quyen INT NOT NULL,
+  FOREIGN KEY (ID_quyen) REFERENCES quyen(ID_quyen)
+  )
+select * from thongtinnguoidung
 
 --bang người sử dụng--
-CREATE TABLE nguoisudung(
-ID_nguoiDung INT PRIMARY KEY IDENTITY(1,1) NOT NULL ,
-ID_quyen CHAR(255) NOT NULL,
-CONSTRAINT ID_nguoiDung FOREIGN KEY(ID_nguoiDung) references thongtinnguoidung(ID_nguoisudung)
- );
+
  
- 
- select * from nguoisudung
  
  --bang tai khoan--
 
   --BỎ IDTK cho so_tai_khoan làm khóa chính
 CREATE TABLE TaiKhoan (
-  so_tai_khoan CHAR(255) PRIMARY KEY IDENTITY(1,1) NOT NULL,
+  so_tai_khoan CHAR(255) PRIMARY KEY NOT NULL,
   pin INT NOT NULL,
   trangthai NVARCHAR(255) NOT NULL,
   so_du FLOAT NOT NULL,
@@ -59,17 +56,16 @@ CREATE TABLE GiaoDich (
 
 --bang san pham--
 CREATE TABLE SanPham (
-  IDSP INT PRIMARY KEY,
+  IDSP INT PRIMARY KEY IDENTITY(1,1),
   tenSP NVARCHAR(255) NOT NULL,
   giaSP INT NOT NULL
 );
 
 --bang san pham chi tiet--
 CREATE TABLE SanPhamChiTiet (
-  IDSP INT NOT NULL,
+  IDSP INT NOT NULL  PRIMARY KEY IDENTITY(1,1),
   giaSP INT NOT NULL,
   so_luong INT NOT NULL
-  PRIMARY KEY IDENTITY(1,1) (IDSP),
   CONSTRAINT fk_SanPham FOREIGN KEY (IDSP) REFERENCES SanPham(IDSP)
 );
 
@@ -108,20 +104,12 @@ insert into thongtinnguoidung values(5, N'nguyễn xuân T', 01102000, N'hà n�
 select * from thongtinnguoidung
 
 --Nhap du lieu cho bang quyen--
-insert into quyen values(01, N'nhân viên')
-insert into quyen values(02, N'khách hàng')
-insert into quyen values(03, N'giám đốc')
+insert into quyen values( N'nhân viên')
+insert into quyen values (N'khách hàng')
+insert into quyen values( N'giám đốc')
 
 select * from quyen
 
---nhap du lieu cho bang nguoi su dung--
-insert into nguoisudung values(1, 01)
-insert into nguoisudung values(2, 02)
-insert into nguoisudung values(3, 03)
-insert into nguoisudung values(4, 04)
-insert into nguoisudung values(5, 05)
-
-select * from nguoisudung
 
 --nhap du lieu cho bang tai khoan--
 insert into TaiKhoan values(1970,  190190, N'hoạt động', '20000000', 'visa', 20022023, 1)
@@ -181,9 +169,9 @@ insert into BillInfo values(1105, 105, 010, 50000000)
 select * from BillInfo
 
 
-insert into vay_von values(0402016407, '0363338021', 100000000, '20/05/2023')
-insert into vay_von values(0402016408, '0902040942', 250000000, '28/05/2023')
-insert into vay_von values(0402016409, '0335215726', 300000000, '10/04/2023')
+insert into vay_von values( '0363338021', 100000000, '20/05/2023')
+insert into vay_von values( '0902040942', 250000000, '28/05/2023')
+insert into vay_von values( '0335215726', 300000000, '10/04/2023')
 
 select * from vay_von
 
@@ -195,7 +183,6 @@ Go
 
 
  --LOGIN METHOD
- drop proc USP_Login
 CREATE PROC USP_Login 
 @userName nvarchar(255), @passWord nvarchar(255)
 as
@@ -213,9 +200,8 @@ CREATE PROC USP_GetInfoWithUserNameAndPassword
 @userName nvarchar(255), @passWord nvarchar(255)
 as
 begin 
-	SELECT * FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
+	SELECT * FROM thongtinnguoidung 
+	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = thongtinnguoidung.ID_nguoisudung 
 	WHERE thongtinnguoidung.email = @userName AND thongtinnguoidung.password = @passWord;
 end 
 
@@ -226,14 +212,15 @@ select * from taikhoan
 -- Register
 ----------------------------------------------------------------------------------
 CREATE PROC USP_register
-	@userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh INT, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
+	@userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh DATE, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20),@id_quyen INT 
 AS
 BEGIN
-	insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password) values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord)
+	insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password,ID_quyen) values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord,@id_quyen)
 END
+select * from thongtinnguoidung
 --UPDATE
-CREATE PROC USP_register
- @userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh INT, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
+CREATE PROC USP_update
+ @userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh DATE, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
 AS
 BEGIN
 UPDATE thongtinnguoidung 
@@ -250,21 +237,17 @@ CREATE PROC USP_getListUser @userRole INT
 AS
 BEGIN
 SELECT * 
-FROM nguoisudung
-inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-WHERE  @userRole = nguoisudung.ID_quyen
+FROM thongtinnguoidung
+WHERE  @userRole = thongtinnguoidung.ID_quyen
 
 END
   -- WITH EMAIL
 CREATE PROC USP_getListUserWithEmail @email NVARCHAR(255)
 AS
 BEGIN
-	SELECT * FROM nguoisudung
-	inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+	SELECT * FROM thongtinnguoidung
 	WHERE thongtinnguoidung.email LIKE '%' + @email + '%'
 end
-
-use ql_nganhang
 
 select * from thongtinnguoidung
 
@@ -275,8 +258,7 @@ CREATE PROC USP_getListUserWithSDT @SDT NVARCHAR(20)
 AS
 BEGIN
 SELECT * 
-FROM nguoisudung
-inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+FROM thongtinnguoidung
 WHERE  thongtinnguoidung.SDT  LIKE '%' + @SDT + '%'
 
 END
@@ -286,8 +268,7 @@ CREATE PROC USP_getListUserWithName @Name NVARCHAR(20)
 AS
 BEGIN
 SELECT * 
-FROM nguoisudung
-inner join thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
+FROM thongtinnguoidung
 WHERE  thongtinnguoidung.ho_ten  LIKE '%' + @Name + '%'
 END
 
@@ -298,8 +279,8 @@ EXEC USP_getListUser @userRole = 2
 CREATE PROC USP_getuser @userid INT
 AS
 BEGIN
-SELECT * FROM nguoisudung inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-WHERE @userid = ID_nguoiDung
+SELECT * FROM thongtinnguoidung
+WHERE @userid = thongtinnguoidung.ID_nguoisudung
 END
 
 
@@ -322,9 +303,9 @@ drop proc USP_GetNameUser
 CREATE PROC USP_GetNameUser @soTaiKhoan INT
 AS
 BEGIN
-SELECT ho_ten FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
+SELECT ho_ten FROM thongtinnguoidung 
+	
+	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = thongtinnguoidung.ID_nguoisudung 
 	WHERE @soTaiKhoan = TaiKhoan.so_tai_khoan
 END
 
