@@ -10,7 +10,7 @@ using WindowsFormsApp2.Scripts;
 using WindowsFormsApp2.Scripts.DAO;
 using WindowsFormsApp2.Scripts.DTO;
 
-namespace DAO
+namespace DAL
 {
     public class BankingDAO : IBanking
     {
@@ -27,19 +27,18 @@ namespace DAO
 
             private set => ins = value;
         }
-        public void ChuyenKhoan(string toSTk, string money)
+        public void ChuyenKhoan(string toSTk, string money, string date)
         {
             string fromSTk = AccountDAO.Ins.TheAccount.SoTK;
-            string query = "select Count(*) from taikhoan where so_tai_khoan = '"+ toSTk + "'";
+            string query = "exec USP_Banking @soTaiKhoanGoc , @soTaiKhoanNhan , @soTien ";
+            DataProvider.Ins.ExecuteNonQuery(query, new object[] { Int64.Parse(fromSTk), Int64.Parse(toSTk), Int64.Parse(money) * 1.0f });
+            SaveLichSuGiaoDich(fromSTk, toSTk, money, date);
+        }
 
-            int value = (int)DataProvider.Ins.ExecuteScalar(query);
-
-            if(value == 1)
-            {
-                //UPDATE taikhoan SET so_du = 10 WHERE so_tai_khoan = '1970190190';
-                value = Int32.Parse(AccountDAO.Ins.TheAccount.SoDu);
-                query = "";
-            }
+        private void SaveLichSuGiaoDich(string from, string to, string money, string ngayGD)
+        {
+            string query = "exec USP_saveBanking @from , @to , @money , @ngay_gd ";
+            DataProvider.Ins.ExecuteScalar(query, new object[] { from, to , money, ngayGD });
         }
 
         public string CheckNameWithSTK(string txtSTK)
@@ -76,8 +75,8 @@ namespace DAO
 
         public DataTable SaoKe()
         {
-            string query = "select * from ls";
-            return DataProvider.Ins.ExecuteQuery(query);
+            string query = "usp_saoke @from ";
+            return DataProvider.Ins.ExecuteQuery(query, new object[] { AccountDAO.Ins.TheAccount.SoTK });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BLL;
+using CrystalDecisions.CrystalReports.Engine;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,7 +42,8 @@ namespace WindowsFormsApp2
         void Show_ThongTin()
         {
             AccountBLL accountBLL = new AccountBLL();
-            lbName.Text = accountBLL.GetHoTen();
+
+            lbName.Text = accountBLL.GetName();
             lbSTK.Text = accountBLL.GetSoTK();
             lbMoney.Text = accountBLL.GetSoDu(); 
 
@@ -83,13 +85,29 @@ namespace WindowsFormsApp2
 
         private void button6_Click(object sender, EventArgs e)
         {
-            CrystalReport1 r = new CrystalReport1();
+            RP_SaoKe r = new RP_SaoKe();
 
             BankingBLL bankingBLL = new BankingBLL();
             r.SetDataSource(bankingBLL.SaoKe());
 
             fSaoKe fSaoKe = new fSaoKe();
             fSaoKe.crystalReportViewer.ReportSource = r;
+
+            AccountBLL accountBLL = new AccountBLL();
+
+            TextObject txt;
+            txt = (TextObject)r.ReportDefinition.ReportObjects["txtName"];
+            txt.Text = accountBLL.GetName();
+
+            txt = (TextObject)r.ReportDefinition.ReportObjects["txtSTK"];
+            txt.Text = accountBLL.GetSoTK();
+
+            txt = (TextObject)r.ReportDefinition.ReportObjects["txtDateOfBirth"];
+            txt.Text = accountBLL.GetDateOfBirth();
+
+            txt = (TextObject)r.ReportDefinition.ReportObjects["txtAddress"];
+            txt.Text = accountBLL.GetAddress();
+
             fSaoKe.ShowDialog();
         }
 

@@ -9,15 +9,20 @@ namespace BLL
 {
     public class AccountBLL
     {
-        public string GetHoTen()
+        public string GetDateOfBirth()
+        {
+            return AccountDAO.Ins.TheAccount.NgaySinh;
+        }
+
+        public string GetName()
         {
             return AccountDAO.Ins.TheAccount.HoTen;
         }
 
-        /// <summary>
-        /// comment
-        /// </summary>
-        /// <returns></returns>
+        public string GetAddress()
+        {
+            return AccountDAO.Ins.TheAccount.DiaChi;
+        }
 
         public string GetSoDu()
         {
@@ -34,8 +39,7 @@ namespace BLL
             if(username == null || password == null) return false;
             if(username.Length <= 0 || password.Length <= 0) return false; 
 
-            AccountDAO accountDAO = new AccountDAO();
-            if(!accountDAO.Login(username, password)) return false;
+            if(!AccountDAO.Ins.Login(username, password)) return false;
 
             return true;
         }

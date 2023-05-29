@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -39,9 +39,9 @@ namespace BLL
             return BankingDAO.Ins.CheckNameWithSTK(txtSTK);
         }
 
-        public void ChuyenKhoan(string txtSTk, string money) 
+        public void ChuyenKhoan(string txtSTk, string money, string date) 
         { 
-            BankingDAO.Ins.ChuyenKhoan(txtSTk, money);
+            BankingDAO.Ins.ChuyenKhoan(txtSTk, money, date);
         }
 
         public int CheckPIN(string txtPIN)

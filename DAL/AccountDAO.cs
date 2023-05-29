@@ -24,7 +24,7 @@ namespace WindowsFormsApp2.Scripts.DAO
         }
 
         private Account theAccount;
-        public Account TheAccount { get => theAccount; set => theAccount = value; }
+        public Account TheAccount { get => theAccount; private set => theAccount = value; }
 
         public bool Login(string userName, string passWord)
         {

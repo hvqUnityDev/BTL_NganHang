@@ -9,7 +9,7 @@ namespace WindowsFormsApp2.Scripts.DTO
     public interface IBanking
     {
         string CheckNameWithSTK(string txtSTK);
-        void ChuyenKhoan(string toSTk, string soTien);
+        void ChuyenKhoan(string toSTk, string soTien, string date);
         int CheckPIN(string txtPIN);
     }
 }
