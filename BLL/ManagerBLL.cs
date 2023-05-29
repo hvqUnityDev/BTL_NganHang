@@ -35,6 +35,8 @@ namespace BLL
             ManagerDAO.Ins.Search(txtTypeSearcht, txtKeyword, lsvNhanVien);
         }
 
+        
+
         public void ShowListView_NhanVien(ListView lsvNhanVien)
         {
             if(lsvNhanVien == null)
@@ -46,6 +48,26 @@ namespace BLL
             ManagerDAO.Ins.ShowListView_NhanVien(lsvNhanVien);
         }
 
+        public void ShowListView_ThuTuc(ListView lsvThuTuc)
+        {
+            if (lsvThuTuc == null)
+            {
+                MessageBox.Show("Thử lại!");
+                return;
+            }
 
+            ManagerDAO.Ins.ShowListView_ThuTuc(lsvThuTuc);
+        }
+
+        public void ShowListView_KhachHang(ListView lsvCustomer)
+        {
+            if (lsvCustomer == null)
+            {
+                MessageBox.Show("Thử lại!");
+                return;
+            }
+
+            ManagerDAO.Ins.ShowListView_Customer(lsvCustomer);
+        }
     }
 }

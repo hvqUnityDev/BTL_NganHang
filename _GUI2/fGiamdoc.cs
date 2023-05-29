@@ -29,13 +29,54 @@ namespace WindowsFormsApp2
         private void Show_NhanVien()
         {
             ManagerBLL managerBLL = new ManagerBLL();
-            managerBLL.ShowListView_NhanVien(lsvNhanVien);
+            managerBLL.ShowListView_NhanVien(lsvThuTuc);
         }
+
+        private void Show_KhachHang()
+        {
+            ManagerBLL managerBLL = new ManagerBLL();
+            managerBLL.ShowListView_KhachHang(lsvCustomer);
+        }
+
+        private void Show_ThuTuc()
+        {
+            ManagerBLL managerBLL = new ManagerBLL();
+            managerBLL.ShowListView_ThuTuc(lsvThuTuc);
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
             ManagerBLL managerBLL = new ManagerBLL();
-            managerBLL.Search(cbTypeSearch.Text, txtKeyword.Text, lsvNhanVien);
+            if ( tabControl1.SelectedIndex == 0){
+                managerBLL.Search(cbTypeSearch.Text, txtKeyword.Text, lsvThuTuc);
+            }
+            else if(tabControl1.SelectedIndex == 1)
+            {
+                managerBLL.Search(cbTypeSearch.Text, txtKeyword.Text, lsvCustomer);
+            }
+            else if (tabControl1.SelectedIndex == 2)
+            { 
+                managerBLL.Search(cbTypeSearch.Text, txtKeyword.Text, lsvThuTuc);
+            }
+
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lsvThuTuc_MouseClick(object sender, MouseEventArgs e)
+        {
+            string txtID = lsvThuTuc.SelectedItems[0].SubItems[0].Text;
+
+            txtIDPicked.Text = txtID;
         }
     }
 }

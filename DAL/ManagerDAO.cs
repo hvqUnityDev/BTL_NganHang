@@ -28,12 +28,6 @@ namespace WindowsFormsApp2.Scripts.DAO
             private set => ins = value;
         }
 
-        public void ShowListView_NhanVien(ListView lsvNhanVien)
-        {
-            string query = "select * from thongtinnguoidung";
-            ShowNhanVien(lsvNhanVien, query, null);
-        }
-
         void ShowNhanVien(ListView lsvNhanVien, string query, object[] objects)
         {
             lsvNhanVien.Items.Clear();
@@ -77,23 +71,41 @@ namespace WindowsFormsApp2.Scripts.DAO
             ShowNhanVien(lsv, query, new object[] {keyWord});
         }
 
-        public void Search(string txtType, string txtKeyword, ListView lsvNhanVien)
+        public void Search(string txtType, string txtKeyword, ListView lsv)
         {
             switch (txtType)
             {
                 case "Họ Tên":
-                    SearchWithName(txtKeyword, lsvNhanVien);
+                    SearchWithName(txtKeyword, lsv);
                     break;
                 case "SĐT":
-                    SearchWithSDT(txtKeyword, lsvNhanVien);
+                    SearchWithSDT(txtKeyword, lsv);
                     break;
                 case "Email":
-                    SearchWithEmail(txtKeyword, lsvNhanVien);
+                    SearchWithEmail(txtKeyword, lsv);
                     break;
                 default:
                     MessageBox.Show("Kiểu không đúng!");
                     break;
             }
+        }
+
+        public void ShowListView_NhanVien(ListView lsvNhanVien)
+        {
+            string query = "select * from thongtinnguoidung where idquyen = 2";
+            ShowNhanVien(lsvNhanVien, query, null);
+        }
+
+        public void ShowListView_ThuTuc(ListView lsvThuTuc)
+        {
+            string query = "select * from vay_von";
+            ShowNhanVien(lsvThuTuc, query, null);
+        }
+
+        public void ShowListView_Customer(ListView lsvCustomer)
+        {
+            string query = "select * from thongtinnguoidung where idquyen = 1";
+            ShowNhanVien(lsvCustomer, query, null);
         }
     }
 }
