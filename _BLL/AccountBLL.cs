@@ -14,6 +14,11 @@ namespace BLL
             return AccountDAO.Ins.TheAccount.HoTen;
         }
 
+        /// <summary>
+        /// comment
+        /// </summary>
+        /// <returns></returns>
+
         public string GetSoDu()
         {
             return AccountDAO.Ins.TheAccount.SoDu;
