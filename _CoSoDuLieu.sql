@@ -12,7 +12,7 @@ ten_quyen NVARCHAR(255)
 
  --bang thông tin người dùng--
  CREATE TABLE thongtinnguoidung(
-  ID_nguoisudung INT PRIMARY KEY IDENTITY(1,1) NOT NULL , 
+  ID_ngu.oisudung INT PRIMARY KEY IDENTITY(1,1) NOT NULL , 
   ho_ten NVARCHAR(255) NOT NULL,
   ngay_sinh date NOT NULL,
   dia_chi NVARCHAR(255) NOT NULL,
@@ -33,8 +33,7 @@ select * from thongtinnguoidung
 
   --BỎ IDTK cho so_tai_khoan làm khóa chính
 CREATE TABLE TaiKhoan (
-  so_tai_khoan CHAR(255) PRIMARY KEY NOT NULL,
-  pin INT NOT NULL,
+  9	-+-*  pin INT NOT NULL,
   trangthai NVARCHAR(255) NOT NULL,
   so_du FLOAT NOT NULL,
   loai_tai_khoan NVARCHAR(255) NOT NULL,
@@ -69,37 +68,28 @@ CREATE TABLE SanPhamChiTiet (
   CONSTRAINT fk_SanPham FOREIGN KEY (IDSP) REFERENCES SanPham(IDSP)
 );
 
---bang bill--
-CREATE TABLE Bill (
-  ID_Bill INT PRIMARY KEY IDENTITY(1,1),
-  ID_nguoiDung INT,
-  so_tien INT NOT NULL,
-  FOREIGN KEY (ID_nguoiDung) REFERENCES thongtinnguoidung (ID_nguoisudung)
-);
-
---bang billinfo--
-CREATE TABLE BillInfo (
-  ID_BillInfo INT PRIMARY KEY IDENTITY(1,1),
-  ID_Bill INT NOT NULL,
-  IDSP INT NOT NULL,
-  so_tien INT NOT NULL,
-  FOREIGN KEY (ID_Bill) REFERENCES Bill(ID_Bill),
-  FOREIGN KEY (IDSP) REFERENCES SanPham(IDSP)
-);
 CREATE TABLE vay_von (
-    can_cuoc INT PRIMARY KEY IDENTITY(1,1),
-    sdt VARCHAR(255),
-    tien_vay FLOAT,
+    Id INT NOT NULL IDENTITY(1,1),
+    id_nguoisudung  INT NOT NULL,
+    IDSP INT ,
     ngay_vay date,
+    Id_status INT,
+    FOREIGN KEY(Id_status) REFERENCES status(ID)
+    FOREIGN KEY(IDSP) REFERENCES SanPham(IDSP),
+    FOREIGN KEY(id_nguoisudung) REFERENCES thongtinnguoidung(id_nguoisudung)
 );
+CREATE TABLE status (
+  ID INT PRIMARY KEY IDENTITY(1,1),
+  status_name CHAR(255)
+)
 
 
 --nhap du lieu cho bang thông tin người dùng----
-insert into thongtinnguoidung values(1, N'trần văn H', 08011990, N'nghệ an', N'nam', '0363338021', N'tu1990@gmail.com', '123123123')
-insert into thongtinnguoidung values(2, N'trần thị P', 20121996, N'thanh hóa', N'nữ', '0902040942', N'phuong1996@gmail.com', '12345678')
-insert into thongtinnguoidung values(3, N'bùi thị A', 20102002, N'vinh', N'nữ', '0335215726', N'anh2002@gmail.com', '999999999')
-insert into thongtinnguoidung values(4, N'lê thị H', 19021992, N'thanh hóa', N'nữ', '0363520149', N'hop1992@gmail.com', '888888888')
-insert into thongtinnguoidung values(5, N'nguyễn xuân T', 01102000, N'hà nội', N'nam', '09502040942', N'tien2000@gmail.com', '55555555')
+insert into thongtinnguoidung values( N'trần văn H', '1990-08-01', N'nghệ an', N'nam', '0363338021', N'tu1990@gmail.com', '123123123',1)
+insert into thongtinnguoidung values( N'trần thị P',  '1996-12-20', N'thanh hóa', N'nữ', '0902040942', N'phuong1996@gmail.com', '12345678',1)
+insert into thongtinnguoidung values( N'bùi thị A', '2002-10-20', N'vinh', N'nữ', '0335215726', N'anh2002@gmail.com', '999999999',1)
+insert into thongtinnguoidung values( N'lê thị H', '1992-02-19', N'thanh hóa', N'nữ', '0363520149', N'hop1992@gmail.com', '888888888',2)
+insert into thongtinnguoidung values( N'nguyễn xuân T', '2000-01-10', N'hà nội', N'nam', '09502040942', N'tien2000@gmail.com', '55555555',3)
 
 select * from thongtinnguoidung
 
@@ -112,70 +102,54 @@ select * from quyen
 
 
 --nhap du lieu cho bang tai khoan--
-insert into TaiKhoan values(1970,  190190, N'hoạt động', '20000000', 'visa', 20022023, 1)
-insert into TaiKhoan values(1971,  971971, N'hoạt động', '10000000', 'napas', 20102022, 2)
-insert into TaiKhoan values(1972,  972972, N'hoạt động', '500000', 'napas', 10102022, 3)
-insert into TaiKhoan values(1973,  973973, N'hoạt động', '1000000', 'napas', 19012023, 4)
-insert into TaiKhoan values(1974,  974974, N'hoạt động', '350000', 'napas', 01022023, 5)
+insert into TaiKhoan values('1970', 190190, N'hoạt động', '20000000', 'visa', '2023-02-20',2)
+insert into TaiKhoan values('1971', 971971, N'hoạt động', '10000000', 'napas', '2022-10-20', 3)
+insert into TaiKhoan values('1972', 972972, N'hoạt động', '500000', 'napas', '2022-10-10', 4)
+insert into TaiKhoan values('1973', 973973, N'hoạt động', '1000000', 'napas', '2023-01-19', 5)
+insert into TaiKhoan values('1974', 974974, N'hoạt động', '350000', 'napas', '2023-01-02', 6)
 
 
 select * from TaiKhoan
 
 --nhap du lieu cho bang giao dich--
-insert into GiaoDich values(141, '1000000', 19042023, 1970)
-insert into GiaoDich values(142, '500000', 19042023, 1971)
-insert into GiaoDich values(143, '500000', 17042023, 1972)
-insert into GiaoDich values(144, '200000', 03042023, 1973)
-insert into GiaoDich values(145, '1000000', 10042023, 1974)
+insert into GiaoDich values( '1000000', '2023-04-19', '1970', '1080', 'TRAN VAN H CHUYEN TIEN')
+insert into GiaoDich values( '500000', '2023-04-19', '1971', '1081', 'LE THI H CHUYEN TIEN')
+insert into GiaoDich values( '500000', '2023-04-17', '1972', '1082', 'KHUONG THI D CHUYEN TIEN')
+insert into GiaoDich values( '200000', '2023-03-04', '1973', '1083', 'VU TUAN A CHUYEN TIEN')
+insert into GiaoDich values( '1000000', '2023-10-04', '1974', '1084', 'NGHUYEN THI T CHUYEN TIEN')
 
 select * from GiaoDich
 
 
 --nhap du lieu cho bang san pham--
-insert into SanPham values(010, N'gói vay 1 triệu', 1000000)
-insert into SanPham values(020, N'gói vay 10 triệu', 10000000)
-insert into SanPham values(030, N'gói vay 30 triệu', 30000000)
-insert into SanPham values(040, N'gói vay 50 triệu', 50000000)
-insert into SanPham values(050, N'gói vay 100 triệu', 100000000)
+insert into SanPham values( N'gói vay 1 triệu', 1000000)
+insert into SanPham values( N'gói vay 10 triệu', 10000000)
+insert into SanPham values( N'gói vay 30 triệu', 30000000)
+insert into SanPham values( N'gói vay 50 triệu', 50000000)
+insert into SanPham values( N'gói vay 100 triệu', 100000000)
 
 select * from SanPham
 
 --nhap du lieu cho bang san pham chi tiet--
-insert into SanPhamChiTiet values(010, 30000000, 100)
-insert into SanPhamChiTiet values(020, 25000000, 300)
-insert into SanPhamChiTiet values(030, 25000000, 200)
-insert into SanPhamChiTiet values(040, 30000000, 100)
-insert into SanPhamChiTiet values(050, 30000000, 100)
+insert into SanPhamChiTiet values( 30000000, 100)
+insert into SanPhamChiTiet values( 25000000, 300)
+insert into SanPhamChiTiet values( 25000000, 200)
+insert into SanPhamChiTiet values( 30000000, 100)
+insert into SanPhamChiTiet values( 30000000, 100)
 
 select * from SanPhamChiTiet
 
---nhap du lieu cho bang bill--
-insert into Bill values(101, 1, 50000000)
-insert into Bill values(102, 2, 60000000)
-insert into Bill values(103, 3, 40000000)
-insert into Bill values(104, 4, 40000000)
-insert into Bill values(105, 5, 50000000)
-
-
-select * from Bill
-
---nhap du lieu cho bang bill infor--
-insert into BillInfo values(1101, 101, 010, 50000000)
-insert into BillInfo values(1102, 102, 020, 60000000)
-insert into BillInfo values(1103, 103, 040, 40000000)
-insert into BillInfo values(1104, 104, 030, 40000000)
-insert into BillInfo values(1105, 105, 010, 50000000)
-
-select * from BillInfo
-
-
-insert into vay_von values( '0363338021', 100000000, '20/05/2023')
-insert into vay_von values( '0902040942', 250000000, '28/05/2023')
-insert into vay_von values( '0335215726', 300000000, '10/04/2023')
+insert into vay_von values( 2, 1, '2023-05-20',1)
+insert into vay_von values( 2, 3, '2023-05-28',2)
+insert into vay_von values( 2, 4, '2023-04-10',3)
 
 select * from vay_von
 
+insert into status values('Đang chờ')
+insert into status values('Hoàn thành')
+insert into status values('Từ chối')
 
+select * from status
 --CÂU TRUY VẤN--
 -----------------------------------------------------------
 use QL_NGANHANG
