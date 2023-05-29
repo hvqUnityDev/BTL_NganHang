@@ -1,4 +1,7 @@
-﻿CREATE DATABASE QL_NGANHANG
+﻿use master
+drop database ql_nganhang
+
+CREATE DATABASE QL_NGANHANG
 GO
 
 USE QL_NGANHANG
@@ -12,7 +15,7 @@ ten_quyen NVARCHAR(255)
 
  --bang thông tin người dùng--
  CREATE TABLE thongtinnguoidung(
-  ID_ngu.oisudung INT PRIMARY KEY IDENTITY(1,1) NOT NULL , 
+  ID_nguoisudung INT PRIMARY KEY IDENTITY(1,1) NOT NULL , 
   ho_ten NVARCHAR(255) NOT NULL,
   ngay_sinh date NOT NULL,
   dia_chi NVARCHAR(255) NOT NULL,
@@ -25,18 +28,11 @@ ten_quyen NVARCHAR(255)
   )
 select * from thongtinnguoidung
 
---bang người sử dụng--
-
- 
- 
- --bang tai khoan--
-
   --BỎ IDTK cho so_tai_khoan làm khóa chính
 CREATE TABLE TaiKhoan (
-  9	-+-*  pin INT NOT NULL,
-  trangthai NVARCHAR(255) NOT NULL,
+  so_tai_khoan CHAR(255) NOT NULL primary key,
+  pin INT NOT NULL,
   so_du FLOAT NOT NULL,
-  loai_tai_khoan NVARCHAR(255) NOT NULL,
   ngay_mo_tai_khoan date,
   ID_nguoisudung INT NOT NULL,
   FOREIGN KEY (ID_nguoisudung) REFERENCES thongtinnguoidung(ID_nguoisudung)
@@ -60,13 +56,10 @@ CREATE TABLE SanPham (
   giaSP INT NOT NULL
 );
 
---bang san pham chi tiet--
-CREATE TABLE SanPhamChiTiet (
-  IDSP INT NOT NULL  PRIMARY KEY IDENTITY(1,1),
-  giaSP INT NOT NULL,
-  so_luong INT NOT NULL
-  CONSTRAINT fk_SanPham FOREIGN KEY (IDSP) REFERENCES SanPham(IDSP)
-);
+CREATE TABLE status (
+  ID INT PRIMARY KEY IDENTITY(1,1),
+  status_name NVarCHAR(255)
+)
 
 CREATE TABLE vay_von (
     Id INT NOT NULL IDENTITY(1,1),
@@ -74,14 +67,17 @@ CREATE TABLE vay_von (
     IDSP INT ,
     ngay_vay date,
     Id_status INT,
-    FOREIGN KEY(Id_status) REFERENCES status(ID)
+    FOREIGN KEY(Id_status) REFERENCES status(ID),
     FOREIGN KEY(IDSP) REFERENCES SanPham(IDSP),
     FOREIGN KEY(id_nguoisudung) REFERENCES thongtinnguoidung(id_nguoisudung)
 );
-CREATE TABLE status (
-  ID INT PRIMARY KEY IDENTITY(1,1),
-  status_name CHAR(255)
-)
+
+
+--Nhap du lieu cho bang quyen--
+insert into quyen values( N'nhân viên')
+insert into quyen values (N'khách hàng')
+insert into quyen values( N'giám đốc')
+select * from quyen
 
 
 --nhap du lieu cho bang thông tin người dùng----
@@ -93,20 +89,12 @@ insert into thongtinnguoidung values( N'nguyễn xuân T', '2000-01-10', N'hà n
 
 select * from thongtinnguoidung
 
---Nhap du lieu cho bang quyen--
-insert into quyen values( N'nhân viên')
-insert into quyen values (N'khách hàng')
-insert into quyen values( N'giám đốc')
-
-select * from quyen
-
-
 --nhap du lieu cho bang tai khoan--
-insert into TaiKhoan values('1970', 190190, N'hoạt động', '20000000', 'visa', '2023-02-20',2)
-insert into TaiKhoan values('1971', 971971, N'hoạt động', '10000000', 'napas', '2022-10-20', 3)
-insert into TaiKhoan values('1972', 972972, N'hoạt động', '500000', 'napas', '2022-10-10', 4)
-insert into TaiKhoan values('1973', 973973, N'hoạt động', '1000000', 'napas', '2023-01-19', 5)
-insert into TaiKhoan values('1974', 974974, N'hoạt động', '350000', 'napas', '2023-01-02', 6)
+insert into TaiKhoan values('1974', 974974, 350000,		'2023-01-02', 1)
+insert into TaiKhoan values('1970', 190190, 20000000,	'2023-02-20', 2)
+insert into TaiKhoan values('1971', 971971, 10000000,	'2022-10-20', 3)
+insert into TaiKhoan values('1972', 972972, 500000,		'2022-10-10', 4)
+insert into TaiKhoan values('1973', 973973, 1000000,	'2023-01-19', 5)
 
 
 select * from TaiKhoan
@@ -127,29 +115,20 @@ insert into SanPham values( N'gói vay 10 triệu', 10000000)
 insert into SanPham values( N'gói vay 30 triệu', 30000000)
 insert into SanPham values( N'gói vay 50 triệu', 50000000)
 insert into SanPham values( N'gói vay 100 triệu', 100000000)
-
 select * from SanPham
 
---nhap du lieu cho bang san pham chi tiet--
-insert into SanPhamChiTiet values( 30000000, 100)
-insert into SanPhamChiTiet values( 25000000, 300)
-insert into SanPhamChiTiet values( 25000000, 200)
-insert into SanPhamChiTiet values( 30000000, 100)
-insert into SanPhamChiTiet values( 30000000, 100)
 
-select * from SanPhamChiTiet
+insert into status values(N'Đang chờ')
+insert into status values(N'Hoàn thành')
+insert into status values(N'Từ chối')
+select * from status
+
 
 insert into vay_von values( 2, 1, '2023-05-20',1)
 insert into vay_von values( 2, 3, '2023-05-28',2)
 insert into vay_von values( 2, 4, '2023-04-10',3)
-
 select * from vay_von
 
-insert into status values('Đang chờ')
-insert into status values('Hoàn thành')
-insert into status values('Từ chối')
-
-select * from status
 --CÂU TRUY VẤN--
 -----------------------------------------------------------
 use QL_NGANHANG
@@ -313,7 +292,8 @@ SELECT * from thongtinnguoidung
 
 select so_du from taikhoan where id_nguoisudung = 1 
 -------------------------BANKIng-----------
-CREATE PROC USP_Banking @soTaiKhoanGoc INT,@soTaiKhoanNhan INT,@soTien INT
+CREATE PROC USP_Banking 
+@soTaiKhoanGoc INT, @soTaiKhoanNhan INT, @soTien INT
 AS
 BEGIN 
 
@@ -361,4 +341,48 @@ CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_
 AS 
 BEGIN 
 insert into GiaoDich(so_tien,ngay_gd,so_tai_khoan,so_tai_khoan_nhan,text) values (@money,@ngay_gd,@from,@to,@text)
+END
+
+-- Log list vay von
+
+CREATE PROC USP_logListLoan @idStatus INT
+AS 
+BEGIN
+	SELECT * FROM vay_von
+	WHERE @idStatus = vay_von.Id_status
+END
+
+-- Handle vayVon status
+CREATE PROC USP_handleStatus @idVayVon INT, @handle INT
+AS
+BEGIN 
+	IF @handle = 0
+	UPDATE vay_von 
+	SET Id_status = 3
+	WHERE @idVayVon = vay_von.Id;
+
+	IF @handle = 1
+	UPDATE vay_von 
+	SET  Id_status = 2
+	WHERE @idVayVon = vay_von.Id;
+END
+-- handle = 1 = acp // handle = 0 = decl
+EXEC USP_handleStatus @idVayVon=1, @handle = 1
+
+--GET LIST VAY VON FROM TO --
+
+CREATE PROC USP_getListVVWithDate @from DATE, @to Date
+AS
+BEGIN
+	SELECT * FROM vay_von
+	WHERE vay_von.ngay_vay BETWEEN @from AND @to
+END
+
+--GET LIST GIAO DICH FROM TO --
+
+CREATE PROC USP_getListGDWithDate @from DATE, @to Date
+AS
+BEGIN
+	SELECT * FROM GiaoDich
+	WHERE GiaoDich.ngay_gd BETWEEN @from AND @to
 END
