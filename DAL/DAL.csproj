@@ -55,6 +55,7 @@
     <Compile Include="Interface\IThuTucVay.cs" />
     <Compile Include="ManagerDAO.cs" />
     <Compile Include="MobileRechargeDAO.cs" />
+    <Compile Include="NhanVienDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterDAO.cs" />
     <Compile Include="ThuTucVayDAO.cs" />

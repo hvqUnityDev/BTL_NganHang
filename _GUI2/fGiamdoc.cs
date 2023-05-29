@@ -17,6 +17,7 @@ namespace WindowsFormsApp2
         {
             InitializeComponent();
             Show_NhanVien();
+            Show_KhachHang();
             InitTypeSearch();
         }
 
@@ -29,7 +30,7 @@ namespace WindowsFormsApp2
         private void Show_NhanVien()
         {
             ManagerBLL managerBLL = new ManagerBLL();
-            managerBLL.ShowListView_NhanVien(lsvThuTuc);
+            managerBLL.ShowListView_NhanVien(lsvEmployee);
         }
 
         private void Show_KhachHang()
@@ -49,17 +50,16 @@ namespace WindowsFormsApp2
         {
             ManagerBLL managerBLL = new ManagerBLL();
             if ( tabControl1.SelectedIndex == 0){
-                managerBLL.Search(cbTypeSearch.Text, txtKeyword.Text, lsvThuTuc);
+                managerBLL.Search(cbTypeSearch.Text, txtKeyword.Text, lsvEmployee);
             }
             else if(tabControl1.SelectedIndex == 1)
             {
                 managerBLL.Search(cbTypeSearch.Text, txtKeyword.Text, lsvCustomer);
             }
             else if (tabControl1.SelectedIndex == 2)
-            { 
+            {
                 managerBLL.Search(cbTypeSearch.Text, txtKeyword.Text, lsvThuTuc);
             }
-
         }
 
         private void tabControl1_Click(object sender, EventArgs e)

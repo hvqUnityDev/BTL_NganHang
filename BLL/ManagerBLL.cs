@@ -35,8 +35,6 @@ namespace BLL
             ManagerDAO.Ins.Search(txtTypeSearcht, txtKeyword, lsvNhanVien);
         }
 
-        
-
         public void ShowListView_NhanVien(ListView lsvNhanVien)
         {
             if(lsvNhanVien == null)

@@ -11,6 +11,9 @@ namespace WindowsFormsApp2.Scripts.Interface
     interface IManager
     {
         void ShowListView_NhanVien(ListView lsvNhanVien);
+        void ShowListView_ThuTuc(ListView lsvThuTuc);
+        void ShowListView_Customer(ListView lsvCustomer);
         void Search(string txtType, string txtKeyword, ListView lsvNhanVien);
+        void Accpect(string id);
     }
 }

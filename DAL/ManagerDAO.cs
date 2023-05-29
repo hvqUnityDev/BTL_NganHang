@@ -14,6 +14,7 @@ namespace WindowsFormsApp2.Scripts.DAO
     public class ManagerDAO : IManager
     {
         private List<Employee> listEmployee = new List<Employee>();
+        private List<Customer> listCustomer = new List<Customer>();
 
         private static ManagerDAO ins;
         public static ManagerDAO Ins
@@ -55,6 +56,35 @@ namespace WindowsFormsApp2.Scripts.DAO
             }
         }
 
+        void ShowCustomer(ListView lsvCustomer, string query, object[] objects)
+        {
+            lsvCustomer.Items.Clear();
+            listCustomer.Clear();
+            var data = DataProvider.Ins.ExecuteQuery(query, objects);
+
+            foreach (DataRow row in data.Rows)
+            {
+                Customer employee = new Customer(row);
+                listCustomer.Add(employee);
+            }
+
+            int i = 1;
+            foreach (var item in listCustomer)
+            {
+                ListViewItem lsvItem = new ListViewItem(i.ToString());
+                lsvItem.SubItems.Add(item.Name.ToString());
+                lsvItem.SubItems.Add(item.DateOfBirth.ToString());
+                lsvItem.SubItems.Add(item.SexName.ToString());
+                lsvItem.SubItems.Add(item.Address.ToString());
+                lsvItem.SubItems.Add(item.SoTaiKhoan.ToString());
+                lsvItem.SubItems.Add(item.SoDu.ToString());
+                lsvItem.SubItems.Add(item.PhoneNumber.ToString());
+                lsvItem.SubItems.Add(item.Email.ToString());
+                lsvCustomer.Items.Add(lsvItem);
+                i++;
+            }
+        }
+
         private void SearchWithName(string keyWord, ListView lsv)
         {
             MessageBox.Show("TODO: search with name");
@@ -92,8 +122,8 @@ namespace WindowsFormsApp2.Scripts.DAO
 
         public void ShowListView_NhanVien(ListView lsvNhanVien)
         {
-            string query = "select * from thongtinnguoidung where idquyen = 2";
-            ShowNhanVien(lsvNhanVien, query, null);
+            string query = "USP_getListUser @userRole";
+            ShowNhanVien(lsvNhanVien, query, new object[] {1});
         }
 
         public void ShowListView_ThuTuc(ListView lsvThuTuc)
@@ -104,8 +134,13 @@ namespace WindowsFormsApp2.Scripts.DAO
 
         public void ShowListView_Customer(ListView lsvCustomer)
         {
-            string query = "select * from thongtinnguoidung where idquyen = 1";
-            ShowNhanVien(lsvCustomer, query, null);
+            string query = "exec USP_GetListCustomer";
+            ShowCustomer(lsvCustomer, query, null);
+        }
+
+        public void Accpect(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

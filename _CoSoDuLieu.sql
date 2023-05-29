@@ -1,4 +1,7 @@
-﻿CREATE DATABASE QL_NGANHANG
+﻿use hoc
+drop database ql_nganhang
+
+CREATE DATABASE QL_NGANHANG
 GO
 
 USE QL_NGANHANG
@@ -115,7 +118,8 @@ insert into SanPham values( N'gói vay 100 triệu', 100000000)
 select * from SanPham
 
 
-insert into status values(N'Đang chờ')
+insert into status values(N'Đang chờ xác nhận')
+insert into status values(N'Đang chờ duyệt')
 insert into status values(N'Hoàn thành')
 insert into status values(N'Từ chối')
 select * from status
@@ -145,7 +149,6 @@ end
 EXEC USP_Login @userName = 'hop1992@gmail.com' , @passWord = '888888888'
 
 -------------------------------------------------------------------------
-drop proc USP_GetInfoWithUserNameAndPassword
 CREATE PROC USP_GetInfoWithUserNameAndPassword
 @userName nvarchar(255), @passWord nvarchar(255)
 as
@@ -162,35 +165,87 @@ select * from taikhoan
 -- Register
 ----------------------------------------------------------------------------------
 CREATE PROC USP_register
-	@userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh DATE, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20),@id_quyen INT 
+	@userName nvarchar(255), 
+	@passWord nvarchar(255),
+	@ho_ten NVARCHAR(255), 
+	@ngay_sinh DATE, 
+	@dia_chi NVARCHAR(255),
+	@gioi_tinh NVARCHAR(255), 
+	@SDT NVARCHAR(20),
+	@id_quyen INT,
+	@PIN int,
+	@soTaiKhoan char(255)
 AS
 BEGIN
-	insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password,ID_quyen) values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord,@id_quyen)
+	insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password,ID_quyen) 
+	values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord, @id_quyen)
+
+	declare @site_value int;
+	select @site_value = id_nguoisudung from thongtinnguoidung where @SDT = SDT
+
+	insert into taikhoan (so_tai_khoan, pin, so_du, ngay_mo_tai_khoan, id_nguoisudung)
+	values(@soTaiKhoan, @PIN, 0, getdate(), @site_value)
 END
+
+exec USP_register @username = 'a' ,
+	@passWord = 'a',
+	@ho_ten = 'a', 
+	@ngay_sinh = '2020-02-02', 
+	@dia_chi = 'aa',
+	@gioi_tinh = 'nam', 
+	@SDT = '111',
+	@id_quyen = 1,
+	@PIN = 999,
+	@soTaiKhoan = '1000'
+
 select * from thongtinnguoidung
---UPDATE
+select * from taikhoan
+
+--UPDATE---------------------------------------------------------
 CREATE PROC USP_update
- @userName nvarchar(255), @passWord nvarchar(255), @ho_ten NVARCHAR(255), @ngay_sinh DATE, @dia_chi NVARCHAR(255),@gioi_tinh NVARCHAR(255), @SDT NVARCHAR(20) 
+ @userName nvarchar(255), 
+ @passWord nvarchar(255), 
+ @ho_ten NVARCHAR(255), 
+ @ngay_sinh DATE, 
+ @dia_chi NVARCHAR(255),
+ @gioi_tinh NVARCHAR(255), 
+ @SDT NVARCHAR(20) 
 AS
 BEGIN
-UPDATE thongtinnguoidung 
+	UPDATE thongtinnguoidung 
 	SET ho_ten = @ho_ten, ngay_sinh = @ngay_sinh, dia_chi = @dia_chi, gioi_tinh = @gioi_tinh, SDT = @SDT, email = @userName, passWord = @passWord
 	WHERE @userName = thongtinnguoidung.email 
 END
 
-SELECT * FROM nguoisudung 
-	inner join  thongtinnguoidung on nguoisudung.ID_nguoiDung = thongtinnguoidung.ID_nguoisudung
-	inner join TaiKhoan on TaiKhoan.ID_nguoisudung = nguoisudung.ID_nguoiDung 
+---show vay_von-------------------------------------------------------
+CREATE PROC USP_GetVay
+AS
+BEGIN
+SELECT * FROM vay_von
+END
 
- --SHOW USERS
+ --SHOW USERS----------------------------------------------
 CREATE PROC USP_getListUser @userRole INT
 AS
 BEGIN
 SELECT * 
 FROM thongtinnguoidung
 WHERE  @userRole = thongtinnguoidung.ID_quyen
-
 END
+
+USP_getListUser @userRole = 1
+
+-----------------------------------------------
+CREATE PROC USP_GetListCustomer
+AS
+BEGIN
+SELECT thongtinnguoidung.ID_nguoisudung, ho_ten, ngay_sinh, dia_chi, gioi_tinh, so_tai_khoan, so_du, SDT, Email
+FROM thongtinnguoidung inner join taikhoan on thongtinnguoidung.id_nguoisudung = taikhoan.id_nguoisudung
+WHERE  thongtinnguoidung.ID_quyen = 2
+END
+
+exec USP_GetListCustomer
+
   -- WITH EMAIL
 CREATE PROC USP_getListUserWithEmail @email NVARCHAR(255)
 AS
@@ -225,15 +280,6 @@ END
 
 EXEC USP_getListUser @userRole = 2
 
- --SHOW USER
-CREATE PROC USP_getuser @userid INT
-AS
-BEGIN
-SELECT * FROM thongtinnguoidung
-WHERE @userid = thongtinnguoidung.ID_nguoisudung
-END
-
-
 --PIN CHANGE--
 CREATE PROC USP_changePin  @soTaiKhoan INT,@oldPin INT,@newPin INT
 AS
@@ -248,7 +294,6 @@ END
 EXEC USP_changePin @soTaiKhoan = 1970 , @oldPin = 190191, @newPin = 91           
 
 ---------------
-drop proc USP_GetNameUser
 
 CREATE PROC USP_GetNameUser @soTaiKhoan INT
 AS
@@ -261,28 +306,6 @@ END
 
 EXEC USP_GetNameUser @soTaiKhoan = 1970
 
-----------------------------
-create table ls 
-(
-	id char(20),
-	stknhan char(20),
-	sotien char(20),
-	ngaygd char(20)
-)
-go
-
--- LOAN --
-CREATE PROC USP_searchLoan @can_cuoc INT 
-AS
-BEGIN 
-	SELECT * 
-	FROM vay_von 
-	WHERE @can_cuoc = vay_von.can_cuoc
-END
-
-select * from thongtinnguoidung
-
-use QL_NGANHANG
 select * from GiaoDich
 
 SELECT * from thongtinnguoidung
@@ -333,7 +356,7 @@ select * from ls
 
 -- SAVE BANKING
 
-CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_gd INT, @text CHAR(255)
+CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_gd date, @text CHAR(255)
 AS 
 BEGIN 
 insert into GiaoDich(so_tien,ngay_gd,so_tai_khoan,so_tai_khoan_nhan,text) values (@money,@ngay_gd,@from,@to,@text)

@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtPINAgain = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtPIN = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.cbSex = new System.Windows.Forms.ComboBox();
             this.dtBirth = new System.Windows.Forms.DateTimePicker();
             this.txtPasswordAgain = new System.Windows.Forms.TextBox();
@@ -48,10 +52,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSend = new System.Windows.Forms.Button();
-            this.txtPIN = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtPINAgain = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +87,46 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 535);
             this.panel1.TabIndex = 0;
+            // 
+            // txtPINAgain
+            // 
+            this.txtPINAgain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPINAgain.Location = new System.Drawing.Point(257, 476);
+            this.txtPINAgain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPINAgain.Name = "txtPINAgain";
+            this.txtPINAgain.Size = new System.Drawing.Size(330, 22);
+            this.txtPINAgain.TabIndex = 12;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(120, 477);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 18);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Nhập lại PIN";
+            // 
+            // txtPIN
+            // 
+            this.txtPIN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPIN.Location = new System.Drawing.Point(257, 433);
+            this.txtPIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPIN.Name = "txtPIN";
+            this.txtPIN.Size = new System.Drawing.Size(330, 22);
+            this.txtPIN.TabIndex = 10;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(120, 437);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 18);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Nhập PIN";
             // 
             // cbSex
             // 
@@ -282,46 +322,6 @@
             this.btnSend.Text = "Gửi";
             this.btnSend.UseVisualStyleBackColor = false;
             this.btnSend.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtPIN
-            // 
-            this.txtPIN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPIN.Location = new System.Drawing.Point(257, 433);
-            this.txtPIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtPIN.Name = "txtPIN";
-            this.txtPIN.Size = new System.Drawing.Size(330, 22);
-            this.txtPIN.TabIndex = 10;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(120, 437);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 18);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Nhập PIN";
-            // 
-            // txtPINAgain
-            // 
-            this.txtPINAgain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPINAgain.Location = new System.Drawing.Point(257, 476);
-            this.txtPINAgain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtPINAgain.Name = "txtPINAgain";
-            this.txtPINAgain.Size = new System.Drawing.Size(330, 22);
-            this.txtPINAgain.TabIndex = 12;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(120, 477);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 18);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Nhập lại PIN";
             // 
             // fDangki
             // 
