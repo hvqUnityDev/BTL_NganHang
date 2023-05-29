@@ -6,9 +6,9 @@ GO
 
  --bang thông tin người dùng--
  CREATE TABLE thongtinnguoidung(
-  ID_nguoisudung INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+  ID_nguoisudung INT PRIMARY KEY IDENTITY(1,1) NOT NULL , 
   ho_ten NVARCHAR(255) NOT NULL,
-  ngay_sinh INT NOT NULL,
+  ngay_sinh date NOT NULL,
   dia_chi NVARCHAR(255) NOT NULL,
   gioi_tinh NVARCHAR(255) NOT NULL,
   SDT NVARCHAR(20) NOT NULL,
@@ -18,13 +18,13 @@ GO
 
 --bang QUYỀN--
 CREATE TABLE quyen (
-ID_quyen INT PRIMARY KEY,
+ID_quyen INT PRIMARY KEY IDENTITY(1,1) ,
 ten_quyen NVARCHAR(255)
 );
 
 --bang người sử dụng--
 CREATE TABLE nguoisudung(
-ID_nguoiDung INT primary key NOT NULL,
+ID_nguoiDung INT PRIMARY KEY IDENTITY(1,1) NOT NULL ,
 ID_quyen CHAR(255) NOT NULL,
 CONSTRAINT ID_nguoiDung FOREIGN KEY(ID_nguoiDung) references thongtinnguoidung(ID_nguoisudung)
  );
@@ -36,21 +36,21 @@ CONSTRAINT ID_nguoiDung FOREIGN KEY(ID_nguoiDung) references thongtinnguoidung(I
 
   --BỎ IDTK cho so_tai_khoan làm khóa chính
 CREATE TABLE TaiKhoan (
-  so_tai_khoan CHAR(255) PRIMARY KEY NOT NULL,
+  so_tai_khoan CHAR(255) PRIMARY KEY IDENTITY(1,1) NOT NULL,
   pin INT NOT NULL,
   trangthai NVARCHAR(255) NOT NULL,
   so_du FLOAT NOT NULL,
   loai_tai_khoan NVARCHAR(255) NOT NULL,
-  ngay_mo_tai_khoan INT NOT NULL,
+  ngay_mo_tai_khoan date,
   ID_nguoisudung INT NOT NULL,
   FOREIGN KEY (ID_nguoisudung) REFERENCES thongtinnguoidung(ID_nguoisudung)
 );
 
  --bang giao dich--
 CREATE TABLE GiaoDich (
-  IDGiaoDich INT PRIMARY KEY AUTO_INCREMENT,
+  IDGiaoDich INT PRIMARY KEY IDENTITY(1,1) ,
   so_tien FLOAT NOT NULL,
-  ngay_gd INT NOT NULL,
+  ngay_gd date NOT NULL,
   so_tai_khoan CHAR(255) NOT NULL,
   so_tai_khoan_nhan CHAR(255),
   text CHAR(255),
@@ -61,8 +61,7 @@ CREATE TABLE GiaoDich (
 CREATE TABLE SanPham (
   IDSP INT PRIMARY KEY,
   tenSP NVARCHAR(255) NOT NULL,
-  giaSP INT NOT NULL,
-  so_luong INT NOT NULL
+  giaSP INT NOT NULL
 );
 
 --bang san pham chi tiet--
@@ -70,13 +69,13 @@ CREATE TABLE SanPhamChiTiet (
   IDSP INT NOT NULL,
   giaSP INT NOT NULL,
   so_luong INT NOT NULL
-  PRIMARY KEY (IDSP),
+  PRIMARY KEY IDENTITY(1,1) (IDSP),
   CONSTRAINT fk_SanPham FOREIGN KEY (IDSP) REFERENCES SanPham(IDSP)
 );
 
 --bang bill--
 CREATE TABLE Bill (
-  ID_Bill INT PRIMARY KEY,
+  ID_Bill INT PRIMARY KEY IDENTITY(1,1),
   ID_nguoiDung INT,
   so_tien INT NOT NULL,
   FOREIGN KEY (ID_nguoiDung) REFERENCES thongtinnguoidung (ID_nguoisudung)
@@ -84,7 +83,7 @@ CREATE TABLE Bill (
 
 --bang billinfo--
 CREATE TABLE BillInfo (
-  ID_BillInfo INT PRIMARY KEY,
+  ID_BillInfo INT PRIMARY KEY IDENTITY(1,1),
   ID_Bill INT NOT NULL,
   IDSP INT NOT NULL,
   so_tien INT NOT NULL,
@@ -92,10 +91,10 @@ CREATE TABLE BillInfo (
   FOREIGN KEY (IDSP) REFERENCES SanPham(IDSP)
 );
 CREATE TABLE vay_von (
-    can_cuoc INT PRIMARY KEY,
+    can_cuoc INT PRIMARY KEY IDENTITY(1,1),
     sdt VARCHAR(255),
     tien_vay FLOAT,
-    ngay_vay CHAR(50)
+    ngay_vay date,
 );
 
 
@@ -109,11 +108,9 @@ insert into thongtinnguoidung values(5, N'nguyễn xuân T', 01102000, N'hà n�
 select * from thongtinnguoidung
 
 --Nhap du lieu cho bang quyen--
-insert into quyen values(01, N'Cho vay')
-insert into quyen values(02, N'Phát hành thẻ tín dụng')
-insert into quyen values(03, N'Mở tài khoản ')
-insert into quyen values(04, N'Nhận tiền gửi')
-insert into quyen values(05, N'Thực hiện dịch vụ thanh toán ')
+insert into quyen values(01, N'nhân viên')
+insert into quyen values(02, N'khách hàng')
+insert into quyen values(03, N'giám đốc')
 
 select * from quyen
 
@@ -147,11 +144,11 @@ select * from GiaoDich
 
 
 --nhap du lieu cho bang san pham--
-insert into SanPham values(010, N'bảo hiểm nhân thọ', 30000000, 100)
-insert into SanPham values(020, N'bảo hiểm hỗn hợp', 25000000, 300)
-insert into SanPham values(030, N'bảo hiểm tiết kiệp', 25000000, 200)
-insert into SanPham values(040, N'bảo hiểm trọn đời', 30000000, 100)
-insert into SanPham values(050, N'bảo hiểm tử kỳ', 30000000, 100)
+insert into SanPham values(010, N'gói vay 1 triệu', 1000000)
+insert into SanPham values(020, N'gói vay 10 triệu', 10000000)
+insert into SanPham values(030, N'gói vay 30 triệu', 30000000)
+insert into SanPham values(040, N'gói vay 50 triệu', 50000000)
+insert into SanPham values(050, N'gói vay 100 triệu', 100000000)
 
 select * from SanPham
 
