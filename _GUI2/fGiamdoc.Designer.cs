@@ -101,6 +101,7 @@
             this.columnHeader5,
             this.columnHeader7,
             this.columnHeader15});
+            this.lsvNhanVien.FullRowSelect = true;
             this.lsvNhanVien.GridLines = true;
             this.lsvNhanVien.HideSelection = false;
             this.lsvNhanVien.Location = new System.Drawing.Point(0, 3);
