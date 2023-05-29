@@ -155,7 +155,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "fVay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "fVay";
+            this.Text = "Vay tiền";
             this.ResumeLayout(false);
             this.PerformLayout();
 
