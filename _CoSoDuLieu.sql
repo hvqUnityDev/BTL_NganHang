@@ -164,21 +164,25 @@ select * from taikhoan
 
 -- Register
 ----------------------------------------------------------------------------------
+drop PROC usp_register
+
 CREATE PROC USP_register
-	@userName nvarchar(255), 
-	@passWord nvarchar(255),
 	@ho_ten NVARCHAR(255), 
-	@ngay_sinh DATE, 
+	@ngay_sinh nvarchar(10), 
 	@dia_chi NVARCHAR(255),
 	@gioi_tinh NVARCHAR(255), 
 	@SDT NVARCHAR(20),
-	@id_quyen INT,
+	@email nvarchar(255), 
+	@passWord nvarchar(255),
 	@PIN int,
 	@soTaiKhoan char(255)
 AS
 BEGIN
+	declare @site_date date;
+	SET  @site_date =  CONVERT(DATE, @ngay_sinh)
+
 	insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password,ID_quyen) 
-	values(@ho_ten, @ngay_sinh, @dia_chi, @gioi_tinh, @SDT,@userName, @passWord, @id_quyen)
+	values(@ho_ten, @site_date, @dia_chi, @gioi_tinh, @SDT,@email, @passWord, 1)
 
 	declare @site_value int;
 	select @site_value = id_nguoisudung from thongtinnguoidung where @SDT = SDT
@@ -187,19 +191,42 @@ BEGIN
 	values(@soTaiKhoan, @PIN, 0, getdate(), @site_value)
 END
 
-exec USP_register @username = 'a' ,
-	@passWord = 'a',
-	@ho_ten = 'a', 
+exec USP_register 
+	@ho_ten = 'a10', 
 	@ngay_sinh = '2020-02-02', 
-	@dia_chi = 'aa',
-	@gioi_tinh = 'nam', 
-	@SDT = '111',
-	@id_quyen = 1,
-	@PIN = 999,
-	@soTaiKhoan = '1000'
+	@dia_chi = 'aa10',
+	@gioi_tinh = 'nam10', 
+	@SDT = '11110',
+	@email = 'a10' ,
+	@passWord = 'a10',
+	@PIN = 9999,
+	@soTaiKhoan = '100010'
 
 select * from thongtinnguoidung
 select * from taikhoan
+
+CREATE PROC USP_registerW
+	@ho_ten NVARCHAR(255), 
+	@dia_chi NVARCHAR(255),
+	@gioi_tinh NVARCHAR(255), 
+	@SDT NVARCHAR(20),
+	@email nvarchar(255), 
+	@passWord nvarchar(255),
+	@PIN int,
+	@soTaiKhoan char(255)
+AS
+BEGIN
+	insert into thongtinnguoidung(ho_ten, ngay_sinh, dia_chi, gioi_tinh, SDT, email, password,ID_quyen) 
+	values(@ho_ten, getdate(), @dia_chi, @gioi_tinh, @SDT,@email, @passWord, 1)
+
+	declare @site_value int;
+	select @site_value = id_nguoisudung from thongtinnguoidung where @SDT = SDT
+
+	insert into taikhoan (so_tai_khoan, pin, so_du, ngay_mo_tai_khoan, id_nguoisudung)
+	values(@soTaiKhoan, @PIN, 0, getdate(), @site_value)
+END
+exec USP_registerW @ho_ten , @dia_chi , @gioi_tinh , @SDT , @email , @passWord , @PIN , @soTaiKhoan  
+
 
 --UPDATE---------------------------------------------------------
 CREATE PROC USP_update
