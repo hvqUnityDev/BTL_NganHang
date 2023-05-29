@@ -6,7 +6,7 @@ GO
 
  --bang thông tin người dùng--
  CREATE TABLE thongtinnguoidung(
-  ID_nguoisudung INT PRIMARY KEY NOT NULL,
+  ID_nguoisudung INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
   ho_ten NVARCHAR(255) NOT NULL,
   ngay_sinh INT NOT NULL,
   dia_chi NVARCHAR(255) NOT NULL,
@@ -48,11 +48,12 @@ CREATE TABLE TaiKhoan (
 
  --bang giao dich--
 CREATE TABLE GiaoDich (
-  IDGiaoDich INT PRIMARY KEY,
+  IDGiaoDich INT PRIMARY KEY AUTO_INCREMENT,
   so_tien FLOAT NOT NULL,
   ngay_gd INT NOT NULL,
   so_tai_khoan CHAR(255) NOT NULL,
-  so_tai_khoan_nhan CHAR(255)
+  so_tai_khoan_nhan CHAR(255),
+  text CHAR(255),
   FOREIGN KEY (so_tai_khoan) REFERENCES TaiKhoan(so_tai_khoan)
 );
 
@@ -404,8 +405,8 @@ select * from ls
 
 -- SAVE BANKING
 
-CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_gd INT
+CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_gd INT, @text CHAR(255)
 AS 
 BEGIN 
-insert into GiaoDich(so_tien,ngay_gd,so_tai_khoan,so_tai_khoan_nhan) values (@money,@ngay_gd,@from,@to)
+insert into GiaoDich(so_tien,ngay_gd,so_tai_khoan,so_tai_khoan_nhan,text) values (@money,@ngay_gd,@from,@to,@text)
 END
