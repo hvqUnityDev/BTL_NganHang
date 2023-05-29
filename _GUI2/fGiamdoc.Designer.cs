@@ -73,7 +73,7 @@
             this.tabControl1.Location = new System.Drawing.Point(26, 184);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1018, 360);
+            this.tabControl1.Size = new System.Drawing.Size(1275, 360);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -83,7 +83,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1010, 331);
+            this.tabPage1.Size = new System.Drawing.Size(1267, 331);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Nhân sự";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             this.lsvNhanVien.HideSelection = false;
             this.lsvNhanVien.Location = new System.Drawing.Point(0, 3);
             this.lsvNhanVien.Name = "lsvNhanVien";
-            this.lsvNhanVien.Size = new System.Drawing.Size(1004, 320);
+            this.lsvNhanVien.Size = new System.Drawing.Size(1261, 320);
             this.lsvNhanVien.TabIndex = 1;
             this.lsvNhanVien.UseCompatibleStateImageBehavior = false;
             this.lsvNhanVien.View = System.Windows.Forms.View.Details;
@@ -129,9 +129,9 @@
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Giới Tính";
+            this.columnHeader4.Text = "Giới tính";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 69;
+            this.columnHeader4.Width = 75;
             // 
             // columnHeader5
             // 
@@ -158,7 +158,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1010, 331);
+            this.tabPage2.Size = new System.Drawing.Size(1267, 331);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Khách hàng";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -182,7 +182,7 @@
             this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(6, 3);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(998, 322);
+            this.listView2.Size = new System.Drawing.Size(1255, 322);
             this.listView2.TabIndex = 2;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -253,7 +253,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(796, 565);
+            this.button4.Location = new System.Drawing.Point(1053, 565);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(248, 100);
             this.button4.TabIndex = 4;
@@ -264,9 +264,9 @@
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(439, 21);
+            this.btnSearch.Location = new System.Drawing.Point(502, 21);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(117, 69);
+            this.btnSearch.Size = new System.Drawing.Size(117, 84);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -280,10 +280,10 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cbTypeSearch);
             this.groupBox1.Controls.Add(this.txtKeyword);
-            this.groupBox1.Location = new System.Drawing.Point(478, 83);
+            this.groupBox1.Location = new System.Drawing.Point(672, 68);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox1.Size = new System.Drawing.Size(562, 95);
+            this.groupBox1.Size = new System.Drawing.Size(625, 110);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
@@ -292,7 +292,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(82, 69);
+            this.label4.Location = new System.Drawing.Point(73, 69);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 18);
             this.label4.TabIndex = 14;
@@ -303,7 +303,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(22, 26);
+            this.label5.Location = new System.Drawing.Point(22, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 18);
             this.label5.TabIndex = 13;
@@ -326,7 +326,7 @@
             "Số dư"});
             this.cbTypeSearch.Location = new System.Drawing.Point(146, 23);
             this.cbTypeSearch.Name = "cbTypeSearch";
-            this.cbTypeSearch.Size = new System.Drawing.Size(287, 24);
+            this.cbTypeSearch.Size = new System.Drawing.Size(350, 24);
             this.cbTypeSearch.TabIndex = 11;
             // 
             // txtKeyword
@@ -336,14 +336,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKeyword.Location = new System.Drawing.Point(146, 65);
             this.txtKeyword.Name = "txtKeyword";
-            this.txtKeyword.Size = new System.Drawing.Size(287, 22);
+            this.txtKeyword.Size = new System.Drawing.Size(350, 22);
             this.txtKeyword.TabIndex = 12;
             // 
             // fGiamdoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1056, 677);
+            this.ClientSize = new System.Drawing.Size(1313, 677);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
