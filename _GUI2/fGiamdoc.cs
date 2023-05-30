@@ -81,7 +81,38 @@ namespace WindowsFormsApp2
 
         private void button6_Click(object sender, EventArgs e)
         {
+            RP_ThuTuc_DaDuyet r = new RP_ThuTuc_DaDuyet();
 
+            ManagerBLL managerBLL = new ManagerBLL();
+            r.SetDataSource(managerBLL.RP_ThuTuc_DaDuyet());
+
+            fSaoKe fSaoKe = new fSaoKe();
+            fSaoKe.crystalReportViewer.ReportSource = r;
+            fSaoKe.ShowDialog(); 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            RP_ThuTuc_TuChoi r = new RP_ThuTuc_TuChoi();
+
+            ManagerBLL managerBLL = new ManagerBLL();
+            r.SetDataSource(managerBLL.RP_ThuTuc_TuChoi());
+
+            fSaoKe fSaoKe = new fSaoKe();
+            fSaoKe.crystalReportViewer.ReportSource = r;
+            fSaoKe.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            RP_ThuTuc_DangChoDuyet r = new RP_ThuTuc_DangChoDuyet();
+
+            ManagerBLL managerBLL = new ManagerBLL();
+            r.SetDataSource(managerBLL.RP_ThuTuc_ChoDuyet());
+
+            fSaoKe fSaoKe = new fSaoKe();
+            fSaoKe.crystalReportViewer.ReportSource = r;
+            fSaoKe.ShowDialog();
         }
     }
 }

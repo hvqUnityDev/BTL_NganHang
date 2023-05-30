@@ -142,5 +142,23 @@ namespace WindowsFormsApp2.Scripts.DAO
         {
             throw new NotImplementedException();
         }
+
+        public DataTable RP_ThuTuc_DaDuyet()
+        {
+            string query = "USP_GetVayVon_WithIDStatus @idStatus ";
+            return DataProvider.Ins.ExecuteQuery(query, new object[] { 3 });
+        }
+
+        public DataTable RP_ThuTuc_TuChoi()
+        {
+            string query = "USP_GetVayVon_WithIDStatus @idStatus ";
+            return DataProvider.Ins.ExecuteQuery(query, new object[] { 4 });
+        }
+
+        public object RP_ThuTuc_ChoDuyet()
+        {
+            string query = "USP_GetVayVon_WithIDStatus @idStatus ";
+            return DataProvider.Ins.ExecuteQuery(query, new object[] { 2 });
+        }
     }
 }

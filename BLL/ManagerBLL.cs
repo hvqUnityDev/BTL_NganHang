@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,6 +68,16 @@ namespace BLL
             }
 
             ManagerDAO.Ins.ShowListView_Customer(lsvCustomer);
+        }
+
+        public DataTable RP_ThuTuc_DaDuyet()
+        {
+            return ManagerDAO.Ins.RP_ThuTuc_DaDuyet();
+        }
+
+        public DataTable RP_ThuTuc_TuChoi()
+        {
+            return ManagerDAO.Ins.RP_ThuTuc_TuChoi();
         }
     }
 }
