@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,30 +16,31 @@ namespace BLL
             return "https://mbbank.com.vn/26/273/1236/Chi-tiet/%7B%7Bx.url%7D%7D";
         }
 
-        public void Send(string txtCCCD, string txtSDT, string txtGoiVay, CheckBox ckbDieuKhoan, ComboBox cbGoiVay)
+        public bool Send(string txtSDT, string txtGoiVay, CheckBox ckbDieuKhoan, ComboBox cbGoiVay)
         {
             if (!ckbDieuKhoan.Checked)
             {
                 MessageBox.Show("Check Điều Khoản!");
-                return;
+                return false;
             }
 
-            if (txtSDT.Length <= 0 || txtCCCD.Length <= 0 || cbGoiVay.ToString().Length <= 0)
+            if (txtSDT.Length <= 0 || cbGoiVay.ToString().Length <= 0)
             {
                 MessageBox.Show("Hãy điền đủ thông tin!");
-                return;
+                return false;
             }
 
-            ThuTucVayDAO.Ins.Send(txtCCCD, txtSDT, txtGoiVay);
+            return ThuTucVayDAO.Ins.Send(txtSDT, txtGoiVay);
         }
 
         private List<string> goiVay = new List<string>() { "1.000.000", "10.000.000", "100.000.000" };
         public void InitGoiVay(ComboBox cb)
         {
             cb.Items.Clear();
-            foreach (string item in goiVay)
+            DataTable dt = ThuTucVayDAO.Ins.GetGoiVay();
+            foreach (DataRow row in dt.Rows)
             {
-                cb.Items.Add(item);
+                cb.Items.Add(row["tensp"]);
             }
         }
     }

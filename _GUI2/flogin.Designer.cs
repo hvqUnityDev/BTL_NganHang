@@ -37,6 +37,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbxUseName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -44,6 +45,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnthoat);
             this.panel1.Controls.Add(this.btnlogin);
             this.panel1.Controls.Add(this.panel3);
@@ -135,6 +137,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = " Tên đăng nhập:  ";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(34, 132);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 34);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Đăng Ký";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // flogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -166,6 +179,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnthoat;
         private System.Windows.Forms.Button btnlogin;
+        private System.Windows.Forms.Button button1;
     }
 }
 

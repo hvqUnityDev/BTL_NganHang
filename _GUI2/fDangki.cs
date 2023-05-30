@@ -16,10 +16,20 @@ namespace WindowsFormsApp2
         public fDangki()
         {
             InitializeComponent();
+            SetValueCb();
+        }
+
+        void SetValueCb()
+        {
+            cbSex.Items.Clear();
+            cbSex.Items.Add("Nam");
+            cbSex.Items.Add("Nu");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+
             AccountBLL accountBLL = new AccountBLL();
 
             accountBLL.Register
@@ -34,6 +44,11 @@ namespace WindowsFormsApp2
                 txtPIN.Text,
                 txtPINAgain.Text,
                 txtSTK.Text);
+        }
+
+        private void cbSex_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

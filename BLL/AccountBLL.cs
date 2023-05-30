@@ -36,6 +36,21 @@ namespace BLL
             return AccountDAO.Ins.TheAccount.SoTK;
         }
 
+        private string GetSDT()
+        {
+            return AccountDAO.Ins.TheAccount.Sdt;
+        }
+
+        private string GetEmail()
+        {
+            return AccountDAO.Ins.TheAccount.Email;
+        }
+
+        private string GetSex()
+        {
+            return AccountDAO.Ins.TheAccount.GioiTinh;
+        }
+
         public bool Login(string username, string password)
         {
             if(username == null || password == null) return false;
@@ -57,7 +72,8 @@ namespace BLL
                 || txtPasswordAgain.Length <= 0
                 || txtPIN.Length <= 0
                 || txtPINAgain.Length <= 0
-                || txtSTK.Length <= 0)
+                || txtSTK.Length <= 0
+                || (txtSex != "Nam" && txtSex != "Nu"))
             {
                 MessageBox.Show("Xin hãy điền đủ thông tin!");
                 return;
@@ -70,7 +86,43 @@ namespace BLL
             }
 
             MessageBox.Show("Đăng kí thành công!");
-
         }
+
+        public bool UpdateInfo(string txtName, string txtBirth, string txtAddress, string txtSex, string txtSDT, string txtEmail, string txtPassword)
+        {
+            if (txtName.Length <= 0
+                || txtAddress.Length <= 0
+                || txtSex.Length <= 0
+                || txtSDT.Length <= 0
+                || txtEmail.Length <= 0
+                || txtPassword.Length <= 0
+                || (txtSex != "Nam"
+                && txtSex != "Nu"))
+            {
+                MessageBox.Show("Xin hãy điền đủ thông tin!");
+                return false;
+            }
+
+            if (!AccountDAO.Ins.UpdateInfo(txtName, txtBirth, txtAddress, txtSex, txtSDT, txtEmail, txtPassword))
+            {
+                MessageBox.Show("Cập nhật thất bại");
+                return false;
+            }
+
+            MessageBox.Show("Cập nhật thành công!");
+            return true;
+        }
+
+        public void FillData(TextBox txtName, DateTimePicker dtBirth, TextBox txtAddress, ComboBox cbSex, TextBox txtSDT, TextBox txtEmail)
+        {
+            txtName.Text = GetName();
+            dtBirth.Text = GetDateOfBirth();
+            txtAddress.Text = GetAddress();
+            txtEmail.Text = GetEmail();
+            txtSDT.Text = GetSDT();
+            cbSex.Text = GetSex();
+        }
+
+        
     }
 }

@@ -48,5 +48,13 @@ namespace WindowsFormsApp2
                 e.Cancel = true;
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            fDangki f = new fDangki();
+            f.ShowDialog();
+            this.Show();
+        }
     }
 }

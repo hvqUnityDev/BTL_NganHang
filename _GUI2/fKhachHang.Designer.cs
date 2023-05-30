@@ -43,6 +43,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +82,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "VAY TIỀN";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnPhanHoi
             // 
@@ -231,11 +233,24 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Số Dư";
             // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Location = new System.Drawing.Point(825, 84);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(145, 57);
+            this.button4.TabIndex = 9;
+            this.button4.Text = "ĐỔI THÔNG TIN";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
             // fKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 653);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
@@ -272,5 +287,6 @@
         private System.Windows.Forms.Button btnSaoKe;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button4;
     }
 }

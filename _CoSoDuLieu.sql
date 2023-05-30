@@ -229,19 +229,22 @@ exec USP_registerW @ho_ten , @dia_chi , @gioi_tinh , @SDT , @email , @passWord ,
 
 
 --UPDATE---------------------------------------------------------
+drop proc usp_update
 CREATE PROC USP_update
  @userName nvarchar(255), 
- @passWord nvarchar(255), 
  @ho_ten NVARCHAR(255), 
- @ngay_sinh DATE, 
  @dia_chi NVARCHAR(255),
  @gioi_tinh NVARCHAR(255), 
- @SDT NVARCHAR(20) 
+ @SDT NVARCHAR(20),
+ @Password NVarchar(255)
 AS
 BEGIN
+	declare @id int
+	select @id = id_nguoisudung from thongtinnguoidung where @Password = thongtinnguoidung.password
+	
 	UPDATE thongtinnguoidung 
-	SET ho_ten = @ho_ten, ngay_sinh = @ngay_sinh, dia_chi = @dia_chi, gioi_tinh = @gioi_tinh, SDT = @SDT, email = @userName, passWord = @passWord
-	WHERE @userName = thongtinnguoidung.email 
+	SET ho_ten = @ho_ten, ngay_sinh = getdate(), dia_chi = @dia_chi, gioi_tinh = @gioi_tinh, SDT = @SDT, email = @userName
+	WHERE @id = id_nguoisudung
 END
 
 ---show vay_von-------------------------------------------------------
@@ -395,27 +398,55 @@ END
 CREATE PROC USP_logListLoan @idStatus INT
 AS 
 BEGIN
-	SELECT * FROM vay_von
+	SELECT * FROM vay_von 
 	WHERE @idStatus = vay_von.Id_status
 END
 
--- Handle vayVon status
-CREATE PROC USP_handleStatus @idVayVon INT, @handle INT
+------------get ID GOiVay-------------
+CREATE PROC USP_GetIDGoiVay @txtGoiVay nvarchar(255)
+AS 
+BEGIN
+	SELECT * FROM SanPham where @txtGoiVay = tenSP
+END
+
+------------USP_CreateVayVon-------------
+CREATE PROC USP_CreateVayVon @idGoiVay INT, @sdt nvarchar(20)
+AS 
+BEGIN
+	declare @id int;
+	select @id = id_nguoisudung from thongtinnguoidung where @sdt = sdt
+
+	insert into vay_von values( @id , @idGoiVay, getdate() , 1)
+END
+
+select id_nguoisudung from thongtinnguoidung where'0363338021' = sdt
+exec USP_CreateVayVon @idGoiVay = 5 , @sdt = '0363338021'
+--=====================================================
+select * from status
+			-- Handle vayVon status
+
+CREATE PROC USP_HandleVayVon_ForNhanVien_ChapNhan @idVayVon INT
 AS
 BEGIN 
-	IF @handle = 0
-	UPDATE vay_von 
-	SET Id_status = 3
-	WHERE @idVayVon = vay_von.Id;
-
-	IF @handle = 1
-	UPDATE vay_von 
-	SET  Id_status = 2
-	WHERE @idVayVon = vay_von.Id;
+	UPDATE vay_von  SET Id_status = 2 WHERE @idVayVon = vay_von.Id;
 END
--- handle = 1 = acp // handle = 0 = decl
-EXEC USP_handleStatus @idVayVon=1, @handle = 1
+--=====================================================
 
+CREATE PROC USP_HandleVayVon_ForGiamDoc_ChapNhan @idVayVon INT
+AS
+BEGIN 
+	UPDATE vay_von  SET Id_status = 3 WHERE @idVayVon = vay_von.Id;
+END
+--=====================================================
+
+
+CREATE PROC USP_HandleVayVon_TuChoi @idVayVon INT
+AS
+BEGIN 
+	UPDATE vay_von  SET Id_status = 4 WHERE @idVayVon = vay_von.Id;
+END
+
+--=====================================================
 --GET LIST VAY VON FROM TO --
 
 CREATE PROC USP_getListVVWithDate @from DATE, @to Date
@@ -433,3 +464,13 @@ BEGIN
 	SELECT * FROM GiaoDich
 	WHERE GiaoDich.ngay_gd BETWEEN @from AND @to
 END
+
+--------get goi vay--------------------
+CREATE PROC USP_GetGoiVay
+AS
+BEGIN
+	SELECT tensp FROM SanPham
+END
+
+select * from SanPham
+select * from thongtinnguoidung

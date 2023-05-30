@@ -59,5 +59,15 @@ namespace WindowsFormsApp2.Scripts.DAO
             int value = (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] { txtName, txtAddress, txtSex, txtSDT, txtEmail, txtPassword, txtPIN, txtSTK });
             return value == 0 ? false : true;
         }
+
+        public bool UpdateInfo(string txtName, string txtBirth, string txtAddress, string txtSex, string txtSDT, string txtEmail, string txtPassword)
+        {
+            if (!Login(AccountDAO.Ins.theAccount.Email, txtPassword)) return false;
+
+            string query = "USP_update  @userName , @ho_ten , @dia_chi , @gioi_tinh , @SDT , @Password";
+            int value = (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] { txtEmail, txtName, txtAddress,  txtSex, txtSDT, txtPassword });
+
+            return value == 0 ? false : true;
+        }
     }
 }

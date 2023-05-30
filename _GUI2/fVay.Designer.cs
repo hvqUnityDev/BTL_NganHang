@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtCCCD = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,23 +37,6 @@
             this.ckbDieuKhoan = new System.Windows.Forms.CheckBox();
             this.linkDieuKhoan = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
-            // 
-            // txtCCCD
-            // 
-            this.txtCCCD.Location = new System.Drawing.Point(300, 149);
-            this.txtCCCD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCCCD.Name = "txtCCCD";
-            this.txtCCCD.Size = new System.Drawing.Size(262, 22);
-            this.txtCCCD.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(194, 153);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "CCCD";
             // 
             // label3
             // 
@@ -70,7 +51,7 @@
             // 
             // txtSDT
             // 
-            this.txtSDT.Location = new System.Drawing.Point(300, 203);
+            this.txtSDT.Location = new System.Drawing.Point(300, 174);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(262, 22);
@@ -79,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(194, 207);
+            this.label2.Location = new System.Drawing.Point(194, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 16);
             this.label2.TabIndex = 1;
@@ -101,7 +82,7 @@
             // cbGoiVay
             // 
             this.cbGoiVay.FormattingEnabled = true;
-            this.cbGoiVay.Location = new System.Drawing.Point(300, 256);
+            this.cbGoiVay.Location = new System.Drawing.Point(300, 227);
             this.cbGoiVay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbGoiVay.Name = "cbGoiVay";
             this.cbGoiVay.Size = new System.Drawing.Size(261, 24);
@@ -110,7 +91,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(194, 262);
+            this.label4.Location = new System.Drawing.Point(194, 233);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 16);
             this.label4.TabIndex = 5;
@@ -149,9 +130,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSDT);
-            this.Controls.Add(this.txtCCCD);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "fVay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -162,9 +141,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtCCCD;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label2;

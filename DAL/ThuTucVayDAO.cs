@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +24,22 @@ namespace WindowsFormsApp2.Scripts.DAO
             private set => ins = value;
         }
 
-        
-
-        public void Send(string txtCCCD, string txtSDT, string txtGoiVay)
+        public DataTable GetGoiVay()
         {
-            MessageBox.Show("toDO: save");
+            string query = "USP_GetGoiVay";
+            return DataProvider.Ins.ExecuteQuery(query);
+        }
+
+        public bool Send(string txtSDT, string txtGoiVay)
+        {
+            string query = "USP_GetIDGoiVay @txtGoiVay ";
+            DataTable dt = DataProvider.Ins.ExecuteQuery(query, new object[] { txtGoiVay });
+            int id = Int16.Parse(dt.Rows[0]["IDSP"].ToString());
+
+
+            query = "USP_CreateVayVon @idGoiVay , @SDT ";
+            int value = (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] {id, txtSDT });
+            return value == 0 ? false :true;
         }
     }
 }

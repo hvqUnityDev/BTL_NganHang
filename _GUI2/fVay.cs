@@ -30,7 +30,17 @@ namespace WindowsFormsApp2
         private void button1_Click(object sender, EventArgs e)
         {
             ThuTucVayBLL thuTucVayBLL = new ThuTucVayBLL();
-            thuTucVayBLL.Send(txtCCCD.Text, txtSDT.Text, cbGoiVay.Text.ToString(), ckbDieuKhoan, cbGoiVay);
+            if(thuTucVayBLL.Send(txtSDT.Text, cbGoiVay.Text.ToString(), ckbDieuKhoan, cbGoiVay))
+            {
+                MessageBox.Show("Xin hãy đợi nhân viên xác nhận!");
+                txtSDT.Text = "";
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Thất bại!");
+            }
+            
         }
     }
 }

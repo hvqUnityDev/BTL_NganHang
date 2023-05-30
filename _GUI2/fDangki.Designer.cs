@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSTK = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtPINAgain = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtPIN = new System.Windows.Forms.TextBox();
@@ -52,8 +54,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSend = new System.Windows.Forms.Button();
-            this.txtSTK = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +91,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 626);
             this.panel1.TabIndex = 0;
+            // 
+            // txtSTK
+            // 
+            this.txtSTK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSTK.Location = new System.Drawing.Point(257, 570);
+            this.txtSTK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSTK.Name = "txtSTK";
+            this.txtSTK.Size = new System.Drawing.Size(330, 22);
+            this.txtSTK.TabIndex = 14;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(120, 571);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(137, 18);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Nhập Số Tài Khoản";
             // 
             // txtPINAgain
             // 
@@ -140,6 +160,7 @@
             this.cbSex.Name = "cbSex";
             this.cbSex.Size = new System.Drawing.Size(330, 24);
             this.cbSex.TabIndex = 4;
+            this.cbSex.SelectedIndexChanged += new System.EventHandler(this.cbSex_SelectedIndexChanged);
             // 
             // dtBirth
             // 
@@ -326,26 +347,6 @@
             this.btnSend.Text = "Gửi";
             this.btnSend.UseVisualStyleBackColor = false;
             this.btnSend.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtSTK
-            // 
-            this.txtSTK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSTK.Location = new System.Drawing.Point(257, 570);
-            this.txtSTK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtSTK.Name = "txtSTK";
-            this.txtSTK.Size = new System.Drawing.Size(330, 22);
-            this.txtSTK.TabIndex = 14;
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(120, 571);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(137, 18);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "Nhập Số Tài Khoản";
             // 
             // fDangki
             // 
