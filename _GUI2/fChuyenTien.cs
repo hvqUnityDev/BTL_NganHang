@@ -45,7 +45,8 @@ namespace WindowsFormsApp2
         private void Banking()
         {
             BankingBLL bankingBLL = new BankingBLL();
-            bankingBLL.ChuyenKhoan(txtSTK.Text, numMoney.Value.ToString(), DateTime.Today.ToString());
+            ///DateTime.Today.ToString("yyyy-mm-dd");
+            bankingBLL.ChuyenKhoan(txtSTK.Text, numMoney.Value.ToString(), "2023-05-03", txtMess.Text);
             MessageBox.Show($"ChuyenKhoan {txtSTK.Text} {numMoney.Value}");
         }
 

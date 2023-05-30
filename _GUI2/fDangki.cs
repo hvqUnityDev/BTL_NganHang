@@ -34,7 +34,7 @@ namespace WindowsFormsApp2
 
             accountBLL.Register
                 (txtName.Text,
-                dtBirth.Text,
+                dtBirth.Value.ToString("yyyy-mm-dd"),
                 txtAddress.Text,
                 cbSex.Text,
                 txtSDT.Text,

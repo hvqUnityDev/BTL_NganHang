@@ -382,11 +382,10 @@ BEGIN
 END
 
 exec USP_CheckPIN @soTaiKhoan = 1970, @maPIN = 2
-
-select * from ls
+.
 
 -- SAVE BANKING
-
+drop proc USP_saveBanking
 CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_gd date, @text CHAR(255)
 AS 
 BEGIN 
@@ -474,3 +473,4 @@ END
 
 select * from SanPham
 select * from thongtinnguoidung
+select * from taikhoan

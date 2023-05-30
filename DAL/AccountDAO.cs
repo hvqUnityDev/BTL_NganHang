@@ -44,19 +44,20 @@ namespace WindowsFormsApp2.Scripts.DAO
 
         public bool Register(string txtName, string txtDateOfBirth, string txtAddress, string txtSex, string txtSDT, string txtEmail, string txtPassword, string txtPIN, string txtSTK)
         {
-            var a = txtDateOfBirth.Split('/');
-            txtDateOfBirth = a[a.Length - 1];
-            for (int i = a.Length - 2; i >= 0; i--)
-            {
-                txtDateOfBirth += "-" + a[i] ;
-            }
+            //var a = txtDateOfBirth.Split('/');
+            //txtDateOfBirth = a[a.Length - 1];
+            //for (int i = a.Length - 2; i >= 0; i--)
+            //{
+            //    txtDateOfBirth += "-" + a[i] ;
+            //}
 
-            txtDateOfBirth = '\'' + txtDateOfBirth + '\'';
+            //txtDateOfBirth = '\'' + txtDateOfBirth + '\'';
 
-            //string query = "exec USP_register @ho_ten , @ngay_sinh , @dia_chi , @gioi_tinh , @SDT , @email , @passWord , @PIN , @soTaiKhoan ";
-            string query = "exec USP_registerW @ho_ten , @dia_chi , @gioi_tinh , @SDT , @email , @passWord , @PIN , @soTaiKhoan ";
 
-            int value = (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] { txtName, txtAddress, txtSex, txtSDT, txtEmail, txtPassword, txtPIN, txtSTK });
+            string query = "exec USP_register @ho_ten , @ngay_sinh , @dia_chi , @gioi_tinh , @SDT , @email , @passWord , @PIN , @soTaiKhoan ";
+            //string query = "exec USP_registerW @ho_ten , @dia_chi , @gioi_tinh , @SDT , @email , @passWord , @PIN , @soTaiKhoan ";
+
+            int value = (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] { txtName, txtDateOfBirth, txtAddress, txtSex, txtSDT, txtEmail, txtPassword, txtPIN, txtSTK });
             return value == 0 ? false : true;
         }
 

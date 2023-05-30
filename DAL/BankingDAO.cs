@@ -14,7 +14,6 @@ namespace DAL
 {
     public class BankingDAO : IBanking
     {
-
         private static BankingDAO ins;
         public static BankingDAO Ins
         {
@@ -27,19 +26,13 @@ namespace DAL
 
             private set => ins = value;
         }
-        public void ChuyenKhoan(string toSTk, string money, string date)
+        public void ChuyenKhoan(string toSTk, string money, string date, string text)
         {
             string fromSTk = AccountDAO.Ins.TheAccount.SoTK;
-            string query = "exec USP_Banking @soTaiKhoanGoc , @soTaiKhoanNhan , @soTien ";
-            DataProvider.Ins.ExecuteNonQuery(query, new object[] { Int64.Parse(fromSTk), Int64.Parse(toSTk), Int64.Parse(money) * 1.0f });
-            SaveLichSuGiaoDich(fromSTk, toSTk, money, date);
+            string query = "USP_saveBanking @from , @to , @money , @ngay_gd , @text ";
+            DataProvider.Ins.ExecuteNonQuery(query, new object[] { Int64.Parse(fromSTk), Int64.Parse(toSTk), Int64.Parse(money) * 1.0f, date, text });
         }
 
-        private void SaveLichSuGiaoDich(string from, string to, string money, string ngayGD)
-        {
-            string query = "exec USP_saveBanking @from , @to , @money , @ngay_gd ";
-            DataProvider.Ins.ExecuteScalar(query, new object[] { from, to , money, ngayGD });
-        }
 
         public string CheckNameWithSTK(string txtSTK)
         {
@@ -64,7 +57,7 @@ namespace DAL
         public int CheckPIN(string txtPIN)
         {
             string query = "USP_CheckPIN @soTaiKhoan , @maPIN";
-            return (int)DataProvider.Ins.ExecuteScalar(query, new object[] {AccountDAO.Ins.TheAccount.SoTK , txtPIN });
+            return (int)DataProvider.Ins.ExecuteScalar(query, new object[] {AccountDAO.Ins.TheAccount.SoTK , Int32.Parse(txtPIN) });
         }
 
         public int ChangePIN(string txtOldPass, string txtNewPass)
@@ -75,7 +68,7 @@ namespace DAL
 
         public DataTable SaoKe()
         {
-            string query = "usp_saoke @from ";
+            string query = "usp_saoke @id ";
             return DataProvider.Ins.ExecuteQuery(query, new object[] { AccountDAO.Ins.TheAccount.SoTK });
         }
     }

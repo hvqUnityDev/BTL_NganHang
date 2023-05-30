@@ -36,7 +36,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtMess = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -63,7 +63,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.txtMess);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtName);
@@ -156,13 +156,13 @@
             this.label2.Text = "Tên ngân hàng ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox5
+            // txtMess
             // 
-            this.textBox5.Location = new System.Drawing.Point(220, 198);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(218, 22);
-            this.textBox5.TabIndex = 5;
+            this.txtMess.Location = new System.Drawing.Point(220, 198);
+            this.txtMess.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMess.Name = "txtMess";
+            this.txtMess.Size = new System.Drawing.Size(218, 22);
+            this.txtMess.TabIndex = 5;
             // 
             // label5
             // 
@@ -232,7 +232,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtSTK;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtMess;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;

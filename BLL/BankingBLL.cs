@@ -39,9 +39,9 @@ namespace BLL
             return BankingDAO.Ins.CheckNameWithSTK(txtSTK);
         }
 
-        public void ChuyenKhoan(string txtSTk, string money, string date) 
+        public void ChuyenKhoan(string txtSTk, string money, string date, string text) 
         { 
-            BankingDAO.Ins.ChuyenKhoan(txtSTk, money, date);
+            BankingDAO.Ins.ChuyenKhoan(txtSTk, money, date, text);
         }
 
         public int CheckPIN(string txtPIN)
