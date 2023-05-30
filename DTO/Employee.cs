@@ -9,6 +9,7 @@ namespace WindowsFormsApp2.Scripts.DTO
 {
     public class Employee
     {
+        protected string id;
         protected string name;
         protected string dateOfBirth;
         protected string address;
@@ -22,7 +23,7 @@ namespace WindowsFormsApp2.Scripts.DTO
         public string Address { get => address; set => address = value; }
         public string DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
         public string Name { get => name; set => name = value; }
-
+        public string ID { get => id; set => id = value; }
 
         public Employee(string name, string dateOfBirth, string address, string sexName, string phoneNumber, string email)
         {
@@ -36,6 +37,7 @@ namespace WindowsFormsApp2.Scripts.DTO
 
         public Employee(DataRow row)
         {
+            this.id = row["id_nguoisudung"].ToString();
             this.name = row["ho_ten"].ToString();
             this.dateOfBirth = row["ngay_sinh"].ToString();
             this.address = row["dia_chi"].ToString();

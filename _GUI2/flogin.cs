@@ -21,13 +21,29 @@ namespace WindowsFormsApp2
         private void button1_Click(object sender, EventArgs e)
         {
             AccountBLL accountBLL = new AccountBLL();
-            if (accountBLL.Login(tbxUseName.Text, tbxpassWord.Text))
+            int value = accountBLL.Login(tbxUseName.Text, tbxpassWord.Text);
+            if (value == 1)
             {
                 this.Hide();
                 fKhachHang f = new fKhachHang();
                 f.ShowDialog();
                 this.Show();
             }
+            else if(value == 2)
+            {
+                this.Hide();
+                fNhanVien f = new fNhanVien();
+                f.ShowDialog();
+                this.Show();
+            }
+            else if (value == 3)
+            {
+                this.Hide();
+                fGiamdoc f = new fGiamdoc();
+                f.ShowDialog();
+                this.Show();
+            }
+
             else
             {
                 MessageBox.Show("Try Again!");

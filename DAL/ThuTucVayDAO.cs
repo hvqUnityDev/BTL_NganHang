@@ -36,7 +36,6 @@ namespace WindowsFormsApp2.Scripts.DAO
             DataTable dt = DataProvider.Ins.ExecuteQuery(query, new object[] { txtGoiVay });
             int id = Int16.Parse(dt.Rows[0]["IDSP"].ToString());
 
-
             query = "USP_CreateVayVon @idGoiVay , @SDT ";
             int value = (int)DataProvider.Ins.ExecuteNonQuery(query, new object[] {id, txtSDT });
             return value == 0 ? false :true;

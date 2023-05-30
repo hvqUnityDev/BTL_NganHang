@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnthoat = new System.Windows.Forms.Button();
             this.btnlogin = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -37,7 +38,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbxUseName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -55,6 +55,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(518, 179);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(34, 132);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 34);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Đăng Ký";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnthoat
             // 
@@ -95,7 +106,7 @@
             this.tbxpassWord.Name = "tbxpassWord";
             this.tbxpassWord.Size = new System.Drawing.Size(271, 22);
             this.tbxpassWord.TabIndex = 2;
-            this.tbxpassWord.Text = "123123123";
+            this.tbxpassWord.Text = "55555555";
             this.tbxpassWord.UseSystemPasswordChar = true;
             // 
             // label2
@@ -125,7 +136,7 @@
             this.tbxUseName.Name = "tbxUseName";
             this.tbxUseName.Size = new System.Drawing.Size(271, 22);
             this.tbxUseName.TabIndex = 1;
-            this.tbxUseName.Text = "tu1990@gmail.com";
+            this.tbxUseName.Text = "tien2000@gmail.com";
             // 
             // label1
             // 
@@ -136,17 +147,6 @@
             this.label1.Size = new System.Drawing.Size(147, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = " Tên đăng nhập:  ";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(34, 132);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 34);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Đăng Ký";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // flogin
             // 

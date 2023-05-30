@@ -17,6 +17,7 @@ namespace WindowsFormsApp2.Scripts.DTO
         private string sdt;
         private string email;
         private string password;
+        private int role;
 
         public string Password { get => password; set => password = value; }
         public string Email { get => email; set => email = value; }
@@ -30,6 +31,7 @@ namespace WindowsFormsApp2.Scripts.DTO
         public string Pin { get => pin; set => pin = value; }
         public string TrangThai { get => trangThai; set => trangThai = value; }
         public string SoDu { get => soDu; set => soDu = value; }
+        public int Role { get => role; set => role = value; }
 
         public Account(string iDNguoiSuDung, string hoTen, string ngaySinh, string diaChi, string gioiTinh, string sdt, string email, string password)
         {
@@ -52,7 +54,7 @@ namespace WindowsFormsApp2.Scripts.DTO
             Sdt = row["sdt"].ToString();
             Password = row["password"].ToString();
             Email = row["email"].ToString();
-
+            this.Role = Int16.Parse(row["ID_quyen"].ToString());
             SetMoreValue(row);
         }
 
@@ -63,8 +65,13 @@ namespace WindowsFormsApp2.Scripts.DTO
 
         private void SetMoreValue(DataRow row)
         {
-            
-            SoTK = row["so_tai_khoan"].ToString();
+            string str = row["so_tai_khoan"].ToString();
+            while(str.Contains(' '))
+            {
+                str = str.Substring(0, str.IndexOf(" "));
+            }
+
+            SoTK = str;
             Pin = row["pin"].ToString();
             SoDu = row["so_du"].ToString();
         }

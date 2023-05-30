@@ -51,14 +51,14 @@ namespace BLL
             return AccountDAO.Ins.TheAccount.GioiTinh;
         }
 
-        public bool Login(string username, string password)
+        public int Login(string username, string password)
         {
-            if(username == null || password == null) return false;
-            if(username.Length <= 0 || password.Length <= 0) return false; 
+            if(username == null || password == null) return -1;
+            if(username.Length <= 0 || password.Length <= 0) return -1; 
 
-            if(!AccountDAO.Ins.Login(username, password)) return false;
+            if(!AccountDAO.Ins.Login(username, password)) return -1;
 
-            return true;
+            return AccountDAO.Ins.TheAccount.Role;
         }
 
         public void Register(string txtName, string txtDateOfBirth, string txtAddress, string txtSex, string txtSDT, string txtEmail, string txtPassword, string txtPasswordAgain, string txtPIN, string txtPINAgain, string txtSTK)

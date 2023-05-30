@@ -18,6 +18,13 @@ namespace WindowsFormsApp2
             InitializeComponent();
             InitTypeSearch();
             Show_KhachHang();
+            Show_VayVon();
+        }
+
+        private void Show_VayVon()
+        {
+            NhanVienBLL nhanVienBLL = new NhanVienBLL();
+            nhanVienBLL.ShowListView_ThuTuc(lsvThuTuc);
         }
 
         private void InitTypeSearch()
@@ -48,7 +55,17 @@ namespace WindowsFormsApp2
         private void button1_Click(object sender, EventArgs e)
         {
             NhanVienBLL nhanVienBLL = new NhanVienBLL();
-            nhanVienBLL.XacNhan(txtIDPicked.Text);
+            if (nhanVienBLL.XacNhan(txtIDPicked))
+            {
+                Show_VayVon();
+            }
+        }
+
+        private void lsvThuTuc_Click(object sender, EventArgs e)
+        {
+            string id = lsvThuTuc.SelectedItems[0].ToString();
+            id = id.Substring(id.IndexOf('{')+1, id.IndexOf('}') - id.IndexOf('{')-1);
+            txtIDPicked.Text = id;
         }
     }
 }

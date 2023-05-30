@@ -52,6 +52,7 @@
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.lsvThuTuc = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -71,7 +72,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cbTypeSearch = new System.Windows.Forms.ComboBox();
             this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -118,6 +119,7 @@
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "Xóa Nhân Sự";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSuaTT
             // 
@@ -129,6 +131,7 @@
             this.btnSuaTT.TabIndex = 2;
             this.btnSuaTT.Text = "Sửa thông tin Nhân sự";
             this.btnSuaTT.UseVisualStyleBackColor = true;
+            this.btnSuaTT.Click += new System.EventHandler(this.btnSuaTT_Click);
             // 
             // lsvEmployee
             // 
@@ -155,7 +158,7 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "STT";
+            this.columnHeader1.Text = "ID";
             this.columnHeader1.Width = 40;
             // 
             // columnHeader2
@@ -233,7 +236,7 @@
             // 
             // columnHeader8
             // 
-            this.columnHeader8.Text = "STT";
+            this.columnHeader8.Text = "ID";
             this.columnHeader8.Width = 40;
             // 
             // columnHeader9
@@ -286,6 +289,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.button6);
             this.tabPage3.Controls.Add(this.lsvThuTuc);
@@ -299,6 +303,18 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Thủ tục vay";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(708, 271);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(143, 77);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Thống kê Thủ Tục vay đã từ chối";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button6
             // 
@@ -501,17 +517,17 @@
             this.txtKeyword.Size = new System.Drawing.Size(414, 22);
             this.txtKeyword.TabIndex = 12;
             // 
-            // button2
+            // button3
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(708, 271);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(143, 77);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Thống kê Thủ Tục vay đã từ chối";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(708, 141);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(146, 66);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Từ Chối Thủ Tục";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // fGiamdoc
             // 
@@ -580,5 +596,6 @@
         private System.Windows.Forms.Button btnSuaTT;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

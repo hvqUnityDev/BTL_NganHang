@@ -146,8 +146,8 @@
       <DependentUpon>RP_SaoKe.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="RP_ThuTuc_DangChoDuyet- Copy.cs">
-      <DependentUpon>RP_ThuTuc_DangChoDuyet- Copy.rpt</DependentUpon>
+    <Compile Include="RP_ThuTuc_DangChoDuyet.cs">
+      <DependentUpon>RP_ThuTuc_DangChoDuyet.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -216,9 +216,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RP_SaoKe.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RP_ThuTuc_DangChoDuyet- Copy.rpt">
+    <EmbeddedResource Include="RP_ThuTuc_DangChoDuyet.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RP_ThuTuc_DangChoDuyet- Copy.cs</LastGenOutput>
+      <LastGenOutput>RP_ThuTuc_DangChoDuyet.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RP_ThuTuc_TuChoi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

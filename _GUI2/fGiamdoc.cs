@@ -18,6 +18,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
             Show_NhanVien();
             Show_KhachHang();
+            Show_ThuTuc();
             InitTypeSearch();
         }
 
@@ -69,7 +70,11 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            ManagerBLL managerBLL = new ManagerBLL();
+            if (managerBLL.XacNhan(txtIDPicked))
+            {
+                Show_ThuTuc();
+            }
         }
 
         private void lsvThuTuc_MouseClick(object sender, MouseEventArgs e)
@@ -113,6 +118,34 @@ namespace WindowsFormsApp2
             fSaoKe fSaoKe = new fSaoKe();
             fSaoKe.crystalReportViewer.ReportSource = r;
             fSaoKe.ShowDialog();
+        }
+
+        private void btnSuaTT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            ManagerBLL ManagerBLL = new ManagerBLL();
+            string id = lsvEmployee.SelectedItems[0].ToString();
+            id = id.Substring(id.IndexOf("{")+1, id.IndexOf("}") - id.IndexOf("{") -1);
+            if (ManagerBLL.RemoveEmployee(id)){
+                MessageBox.Show("Xoa Thanh Cong");
+                ManagerBLL.ShowListView_NhanVien(lsvEmployee);
+                return;
+            }
+
+            MessageBox.Show("Xóa Thất Bại");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ManagerBLL managerBLL = new ManagerBLL();
+            if (managerBLL.TuChoi(txtIDPicked))
+            {
+                Show_ThuTuc();
+            }
         }
     }
 }

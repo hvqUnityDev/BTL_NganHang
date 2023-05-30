@@ -41,10 +41,9 @@ namespace WindowsFormsApp2.Scripts.DAO
                 listEmployee.Add(employee);
             }
 
-            int i = 1;
             foreach (var item in listEmployee)
             {
-                ListViewItem lsvItem = new ListViewItem(i.ToString());
+                ListViewItem lsvItem = new ListViewItem(item.ID.ToString());
                 lsvItem.SubItems.Add(item.Name.ToString());
                 lsvItem.SubItems.Add(item.DateOfBirth.ToString());
                 lsvItem.SubItems.Add(item.SexName.ToString());
@@ -52,7 +51,6 @@ namespace WindowsFormsApp2.Scripts.DAO
                 lsvItem.SubItems.Add(item.PhoneNumber.ToString());
                 lsvItem.SubItems.Add(item.Email.ToString());
                 lsvNhanVien.Items.Add(lsvItem);
-                i++;
             }
         }
 
@@ -68,10 +66,9 @@ namespace WindowsFormsApp2.Scripts.DAO
                 listCustomer.Add(employee);
             }
 
-            int i = 1;
             foreach (var item in listCustomer)
             {
-                ListViewItem lsvItem = new ListViewItem(i.ToString());
+                ListViewItem lsvItem = new ListViewItem(item.ID.ToString());
                 lsvItem.SubItems.Add(item.Name.ToString());
                 lsvItem.SubItems.Add(item.DateOfBirth.ToString());
                 lsvItem.SubItems.Add(item.SexName.ToString());
@@ -81,7 +78,6 @@ namespace WindowsFormsApp2.Scripts.DAO
                 lsvItem.SubItems.Add(item.PhoneNumber.ToString());
                 lsvItem.SubItems.Add(item.Email.ToString());
                 lsvCustomer.Items.Add(lsvItem);
-                i++;
             }
         }
 
@@ -123,13 +119,18 @@ namespace WindowsFormsApp2.Scripts.DAO
         public void ShowListView_NhanVien(ListView lsvNhanVien)
         {
             string query = "USP_getListUser @userRole";
-            ShowNhanVien(lsvNhanVien, query, new object[] {1});
+            ShowNhanVien(lsvNhanVien, query, new object[] {2});
         }
 
         public void ShowListView_ThuTuc(ListView lsvThuTuc)
         {
-            string query = "select * from vay_von";
-            ShowNhanVien(lsvThuTuc, query, null);
+            
+        }
+
+        public DataTable ShowListView_ThuTuc_DataTable(ListView lsvThuTuc)
+        {
+            string query = "exec USP_GetVayVon_WithIDStatus @idStatus";
+            return DataProvider.Ins.ExecuteQuery(query, new object[] { 2 });
         }
 
         public void ShowListView_Customer(ListView lsvCustomer)
@@ -138,9 +139,18 @@ namespace WindowsFormsApp2.Scripts.DAO
             ShowCustomer(lsvCustomer, query, new object[] {1});
         }
 
-        public void Accpect(string id)
+        public bool Accpect(string id)
         {
-            throw new NotImplementedException();
+            string query = "USP_HandleVayVon_ForGiamDoc_ChapNhan @idVayVon";
+            int value = DataProvider.Ins.ExecuteNonQuery(query, new object[] { id });
+            return value > 0;
+        }
+
+        public bool Refuse(string id)
+        {
+            string query = "USP_HandleVayVon_ForGiamDoc_TuChoi @idVayVon";
+            int value = DataProvider.Ins.ExecuteNonQuery(query, new object[] { id });
+            return value > 0;
         }
 
         public DataTable RP_ThuTuc_DaDuyet()
@@ -155,10 +165,22 @@ namespace WindowsFormsApp2.Scripts.DAO
             return DataProvider.Ins.ExecuteQuery(query, new object[] { 4 });
         }
 
-        public object RP_ThuTuc_ChoDuyet()
+        public DataTable RP_ThuTuc_ChoDuyet()
         {
             string query = "USP_GetVayVon_WithIDStatus @idStatus ";
             return DataProvider.Ins.ExecuteQuery(query, new object[] { 2 });
+        }
+
+        public bool RemoveEmployee(string id)
+        {
+            string query = "USP_DeleteNguoiDung @id";
+            int value = DataProvider.Ins.ExecuteNonQuery(query, new object[] {Int16.Parse(id) });
+            return value > 0;
+        }
+
+        DataTable IManager.ShowListView_ThuTuc(ListView lsvThuTuc)
+        {
+            throw new NotImplementedException();
         }
     }
 }
