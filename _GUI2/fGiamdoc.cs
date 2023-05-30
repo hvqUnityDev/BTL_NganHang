@@ -78,5 +78,10 @@ namespace WindowsFormsApp2
 
             txtIDPicked.Text = txtID;
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

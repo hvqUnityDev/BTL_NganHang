@@ -134,8 +134,8 @@ namespace WindowsFormsApp2.Scripts.DAO
 
         public void ShowListView_Customer(ListView lsvCustomer)
         {
-            string query = "exec USP_GetListCustomer";
-            ShowCustomer(lsvCustomer, query, null);
+            string query = "exec USP_GetListUser @userRole";
+            ShowCustomer(lsvCustomer, query, new object[] {1});
         }
 
         public void Accpect(string id)
