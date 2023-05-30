@@ -392,6 +392,10 @@ BEGIN
 insert into GiaoDich(so_tien,ngay_gd,so_tai_khoan,so_tai_khoan_nhan,text) values (@money,@ngay_gd,@from,@to,@text)
 END
 
+select * from taikhoan
+select * from thongtinnguoidung
+
+
 -- Log list vay von
 
 CREATE PROC USP_logListLoan @idStatus INT
@@ -471,6 +475,17 @@ BEGIN
 	SELECT tensp FROM SanPham
 END
 
-select * from SanPham
+------------
+drop proc USP_saoke
+CREATE PROC USP_SaoKe @id int
+AS
+BEGIN
+	select idgiaodich, so_tai_khoan, so_tai_khoan_nhan, so_tien, ngay_gd from giaodich where so_tai_khoan = @id or so_tai_khoan_nhan = @id
+END
+
+	select idgiaodich, so_tai_khoan, so_tai_khoan_nhan, so_tien, ngay_gd from giaodich 
+	where so_tai_khoan = '1970' or so_tai_khoan_nhan = '1970'
+
+select * from giaodich
 select * from thongtinnguoidung
 select * from taikhoan

@@ -95,18 +95,18 @@ namespace WindowsFormsApp2
 
             AccountBLL accountBLL = new AccountBLL();
 
-            TextObject txt;
-            txt = (TextObject)r.ReportDefinition.ReportObjects["txtName"];
-            txt.Text = accountBLL.GetName();
+            //TextObject txt;
+            //txt = (TextObject)r.ReportDefinition.ReportObjects["txtName"];
+            //txt.Text = accountBLL.GetName();
 
-            txt = (TextObject)r.ReportDefinition.ReportObjects["txtSTK"];
-            txt.Text = accountBLL.GetSoTK();
+            //txt = (TextObject)r.ReportDefinition.ReportObjects["txtSTK"];
+            //txt.Text = accountBLL.GetSoTK();
 
-            txt = (TextObject)r.ReportDefinition.ReportObjects["txtDateOfBirth"];
-            txt.Text = accountBLL.GetDateOfBirth();
+            //txt = (TextObject)r.ReportDefinition.ReportObjects["txtDateOfBirth"];
+            //txt.Text = accountBLL.GetDateOfBirth();
 
-            txt = (TextObject)r.ReportDefinition.ReportObjects["txtAddress"];
-            txt.Text = accountBLL.GetAddress();
+            //txt = (TextObject)r.ReportDefinition.ReportObjects["txtAddress"];
+            //txt.Text = accountBLL.GetAddress();
 
             fSaoKe.ShowDialog();
         }

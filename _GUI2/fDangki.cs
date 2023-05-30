@@ -32,9 +32,11 @@ namespace WindowsFormsApp2
 
             AccountBLL accountBLL = new AccountBLL();
 
+            
+
             accountBLL.Register
                 (txtName.Text,
-                dtBirth.Value.ToString("yyyy-mm-dd"),
+                "2002-01-16",
                 txtAddress.Text,
                 cbSex.Text,
                 txtSDT.Text,

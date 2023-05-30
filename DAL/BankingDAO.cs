@@ -68,7 +68,7 @@ namespace DAL
 
         public DataTable SaoKe()
         {
-            string query = "usp_saoke @id ";
+            string query = "USP_SaoKe @id ";
             return DataProvider.Ins.ExecuteQuery(query, new object[] { AccountDAO.Ins.TheAccount.SoTK });
         }
     }
