@@ -339,7 +339,8 @@ SELECT * from thongtinnguoidung
 
 select so_du from taikhoan where id_nguoisudung = 1 
 -------------------------BANKIng-----------
-CREATE PROC USP_Banking @soTaiKhoanGoc INT,@soTaiKhoanNhan INT,@soTien INT
+CREATE PROC USP_Banking 
+@soTaiKhoanGoc INT, @soTaiKhoanNhan INT, @soTien INT
 AS
 BEGIN 
 
@@ -387,4 +388,48 @@ CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_
 AS 
 BEGIN 
 insert into GiaoDich(so_tien,ngay_gd,so_tai_khoan,so_tai_khoan_nhan,text) values (@money,@ngay_gd,@from,@to,@text)
+END
+
+-- Log list vay von
+
+CREATE PROC USP_logListLoan @idStatus INT
+AS 
+BEGIN
+	SELECT * FROM vay_von
+	WHERE @idStatus = vay_von.Id_status
+END
+
+-- Handle vayVon status
+CREATE PROC USP_handleStatus @idVayVon INT, @handle INT
+AS
+BEGIN 
+	IF @handle = 0
+	UPDATE vay_von 
+	SET Id_status = 3
+	WHERE @idVayVon = vay_von.Id;
+
+	IF @handle = 1
+	UPDATE vay_von 
+	SET  Id_status = 2
+	WHERE @idVayVon = vay_von.Id;
+END
+-- handle = 1 = acp // handle = 0 = decl
+EXEC USP_handleStatus @idVayVon=1, @handle = 1
+
+--GET LIST VAY VON FROM TO --
+
+CREATE PROC USP_getListVVWithDate @from DATE, @to Date
+AS
+BEGIN
+	SELECT * FROM vay_von
+	WHERE vay_von.ngay_vay BETWEEN @from AND @to
+END
+
+--GET LIST GIAO DICH FROM TO --
+
+CREATE PROC USP_getListGDWithDate @from DATE, @to Date
+AS
+BEGIN
+	SELECT * FROM GiaoDich
+	WHERE GiaoDich.ngay_gd BETWEEN @from AND @to
 END
