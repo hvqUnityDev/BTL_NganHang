@@ -28,9 +28,16 @@ namespace DAL
         }
         public void ChuyenKhoan(string toSTk, string money, string date, string text)
         {
+            string query = "USP_Banking @soTaiKhoanGoc , @soTaiKhoanNhan , @soTien";
+
+            if ((int)DataProvider.Ins.ExecuteNonQuery(query, new object[] { AccountDAO.Ins.TheAccount.SoTK, toSTk, money }) < 1) 
+            {
+                return;
+            }
             string fromSTk = AccountDAO.Ins.TheAccount.SoTK;
-            string query = "USP_saveBanking @from , @to , @money , @ngay_gd , @text ";
+            query = "USP_saveBanking @from , @to , @money , @ngay_gd , @text ";
             DataProvider.Ins.ExecuteNonQuery(query, new object[] { Int64.Parse(fromSTk), Int64.Parse(toSTk), Int64.Parse(money) * 1.0f, date, text });
+            
         }
 
 

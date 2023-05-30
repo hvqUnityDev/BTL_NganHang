@@ -119,7 +119,7 @@ namespace WindowsFormsApp2.Scripts.DAO
         public void ShowListView_NhanVien(ListView lsvNhanVien)
         {
             string query = "USP_getListUser @userRole";
-            ShowNhanVien(lsvNhanVien, query, new object[] {2});
+            ShowNhanVien(lsvNhanVien, query, new object[] { 2 });
         }
 
         public void ShowListView_ThuTuc(ListView lsvThuTuc)
@@ -136,7 +136,7 @@ namespace WindowsFormsApp2.Scripts.DAO
         public void ShowListView_Customer(ListView lsvCustomer)
         {
             string query = "exec USP_GetListCustomer";
-            ShowCustomer(lsvCustomer, query, new object[] {1});
+            ShowCustomer(lsvCustomer, query, null);
         }
 
         public bool Accpect(string id)
@@ -148,7 +148,7 @@ namespace WindowsFormsApp2.Scripts.DAO
 
         public bool Refuse(string id)
         {
-            string query = "USP_HandleVayVon_ForGiamDoc_TuChoi @idVayVon";
+            string query = "USP_HandleVayVon_TuChoi @idVayVon";
             int value = DataProvider.Ins.ExecuteNonQuery(query, new object[] { id });
             return value > 0;
         }

@@ -164,7 +164,6 @@ select * from taikhoan
 
 -- Register
 ----------------------------------------------------------------------------------
-drop PROC usp_register
 
 CREATE PROC USP_register
 	@ho_ten NVARCHAR(255), 
@@ -229,7 +228,6 @@ exec USP_registerW @ho_ten , @dia_chi , @gioi_tinh , @SDT , @email , @passWord ,
 
 
 --UPDATE---------------------------------------------------------
-drop proc usp_update
 CREATE PROC USP_update
  @userName nvarchar(255), 
  @ho_ten NVARCHAR(255), 
@@ -266,12 +264,13 @@ END
 USP_getListUser @userRole = 1
 
 -----------------------------------------------
+drop proc USP_GetListCustomer
 CREATE PROC USP_GetListCustomer
 AS
 BEGIN
 SELECT thongtinnguoidung.ID_nguoisudung, ho_ten, ngay_sinh, dia_chi, gioi_tinh, so_tai_khoan, so_du, SDT, Email
 FROM thongtinnguoidung inner join taikhoan on thongtinnguoidung.id_nguoisudung = taikhoan.id_nguoisudung
-WHERE  thongtinnguoidung.ID_quyen = 2
+WHERE  thongtinnguoidung.ID_quyen = 1
 END
 
 exec USP_GetListCustomer
@@ -385,7 +384,6 @@ exec USP_CheckPIN @soTaiKhoan = 1970, @maPIN = 2
 .
 
 -- SAVE BANKING
-drop proc USP_saveBanking
 CREATE PROC USP_saveBanking @from CHAR(255), @to CHAR(255), @money FLOAT, @ngay_gd date, @text CHAR(255)
 AS 
 BEGIN 
@@ -434,6 +432,8 @@ BEGIN
 	UPDATE vay_von  SET Id_status = 2 WHERE @idVayVon = vay_von.Id;
 END
 --=====================================================
+select * from vay_von
+--=====================================================
 
 CREATE PROC USP_HandleVayVon_ForGiamDoc_ChapNhan @idVayVon INT
 AS
@@ -441,7 +441,6 @@ BEGIN
 	UPDATE vay_von  SET Id_status = 3 WHERE @idVayVon = vay_von.Id;
 END
 --=====================================================
-
 
 CREATE PROC USP_HandleVayVon_TuChoi @idVayVon INT
 AS
@@ -476,7 +475,6 @@ BEGIN
 END
 
 ------------
-drop proc USP_saoke
 CREATE PROC USP_SaoKe @id int
 AS
 BEGIN
@@ -489,3 +487,30 @@ END
 select * from giaodich
 select * from thongtinnguoidung
 select * from taikhoan
+
+CREATE PROC USP_GetGoiVay
+AS
+BEGIN
+	SELECT tensp FROM SanPham
+END
+
+select * from vay_von where id_status = 4
+
+exec USP_GetVayVon_WithIDStatus @idStatus = 4
+drop proc USP_GetVayVon_WithIDStatus
+
+CREATE PROC USP_GetVayVon_WithIDStatus @idStatus int
+AS
+BEGIN
+	select vay_von.id, ho_ten, so_tai_khoan, sdt,sanpham.tensp,  ngay_vay, status_name  from vay_von 
+	inner join thongtinnguoidung on thongtinnguoidung.id_nguoisudung =  vay_von.id_nguoisudung
+	inner join taikhoan on taikhoan.id_nguoisudung = vay_von.id_nguoisudung
+	inner join status on vay_von.id_status = status.id
+	inner join sanpham on sanpham.idsp = vay_von.idsp
+	where vay_von.id_status = @idStatus
+END
+
+select * from taikhoan
+select * from thongtinnguoidung
+
+select * from status
